@@ -1,9 +1,10 @@
-# app/__init__.py
 from flask import Flask
+import secrets
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = secrets.token_hex(16)  # Generate a random 32-character hexadecimal string as secret key
 
-# Register Blueprints
 from .views import main
 app.register_blueprint(main)
+
 
