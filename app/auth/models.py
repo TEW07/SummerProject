@@ -1,5 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 from app import db
 
 
@@ -18,5 +19,18 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+    def get_login_count(self, user_id):
+        return LoginEvent.query.filter_by(user_id=user_id).count()
+
     def __repr__(self):
         return f"user('{self.username}', '{self.email}')"
+
+
+class LoginEvent(db.Model):
+    login_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow(), nullable=False)
+
+    def __repr__(self):
+        return f"LoginEvent('{self.user_id}', '{self.timestamp}')"
+

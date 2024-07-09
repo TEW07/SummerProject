@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect
 from app.auth import auth_blueprint
 from app.auth.forms import RegistrationForm, LoginForm
-from .models import User
+from .models import User, LoginEvent
 from flask_login import login_user, login_required, logout_user, current_user
 from app import db
 
@@ -27,6 +27,12 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user, remember=True)
             flash('Sign in successful', 'success')
+
+            # Log the login event
+            login_event = LoginEvent(user_id=user.user_id)
+            db.session.add(login_event)
+            db.session.commit()
+
             return redirect(url_for('main.dashboard'))
         else:
             flash('Sign in unsuccessful', 'danger')
