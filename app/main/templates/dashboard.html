@@ -2,4 +2,6 @@
 
 {% block title %}Dashboard{% endblock %}
 {% block heading %}Flashcard Creation Dashboard!{% endblock %}
-{% block content %}<p>You are logged in as {{ username }}</p>{% endblock %}
+{% block content %}<p>You are logged in as {{ username }}</p>
+                    <p>You have logged in {{ log_count }} times.</p>
+                    <p>Your most recent login was at {{ log_latest }}</p>{% endblock %}

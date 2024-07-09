@@ -12,11 +12,11 @@ def index():
 def decks():
     return render_template('decks.html')
 
-@main_blueprint.route('/deck')
-
 
 @main_blueprint.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    return render_template('dashboard.html', username=current_user.username)
+    return render_template('dashboard.html', username=current_user.username,
+                           log_count=current_user.get_login_count(current_user.user_id),
+                           log_latest=current_user.get_latest_login(current_user.user_id))
 
 

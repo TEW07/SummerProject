@@ -22,6 +22,9 @@ class User(db.Model, UserMixin):
     def get_login_count(self, user_id):
         return LoginEvent.query.filter_by(user_id=user_id).count()
 
+    def get_latest_login(self, user_id):
+        return LoginEvent.query.filter_by(user_id=user_id).order_by(LoginEvent.timestamp.desc()).first()
+
     def __repr__(self):
         return f"user('{self.username}', '{self.email}')"
 
