@@ -3,6 +3,7 @@ from app.auth import auth_blueprint
 from app.auth.forms import RegistrationForm, LoginForm
 from .models import User, LoginEvent
 from flask_login import login_user, login_required, logout_user, current_user
+from datetime import datetime
 from app import db
 
 
@@ -28,6 +29,10 @@ def login():
             login_user(user, remember=True)
             flash('Sign in successful', 'success')
 
+            # Update the last_login column
+            user.last_login = datetime.utcnow()
+            db.session.commit()
+
             # Log the login event
             login_event = LoginEvent(user_id=user.user_id)
             db.session.add(login_event)
@@ -37,6 +42,7 @@ def login():
         else:
             flash('Sign in unsuccessful', 'danger')
     return render_template('login.html', title='Sign In', form=form)
+
 
 
 @auth_blueprint.route('/logout', methods=['GET'])

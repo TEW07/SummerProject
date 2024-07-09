@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_migrate import Migrate
 import secrets
 
 
@@ -14,7 +15,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Put this in your configuration file or where you initialize your app
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SQLALCHEMY_RECORD_QUERIES'] = True
+
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 from .main.routes import main_blueprint
 from .auth.routes import auth_blueprint
@@ -38,6 +41,6 @@ def load_user(user_id):
 
 @app.shell_context_processor
 def make_shell_context():
-    return dict(db=db, User=User)
+    return dict(db=db, User=User, LoginEvent=LoginEvent)
 
 

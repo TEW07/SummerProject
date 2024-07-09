@@ -23,7 +23,8 @@ class User(db.Model, UserMixin):
         return LoginEvent.query.filter_by(user_id=user_id).count()
 
     def get_latest_login(self, user_id):
-        return LoginEvent.query.filter_by(user_id=user_id).order_by(LoginEvent.timestamp.desc()).first()
+        latest_login_event = LoginEvent.query.filter_by(user_id=user_id).order_by(LoginEvent.timestamp.desc()).first()
+        return latest_login_event.timestamp if latest_login_event else None
 
     def __repr__(self):
         return f"user('{self.username}', '{self.email}')"
@@ -32,8 +33,12 @@ class User(db.Model, UserMixin):
 class LoginEvent(db.Model):
     login_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow(), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
     def __repr__(self):
         return f"LoginEvent('{self.user_id}', '{self.timestamp}')"
+
+
+
+
 
