@@ -21,5 +21,14 @@ class RegistrationForm(FlaskForm):
             raise ValidationError('That email is already in use. Please choose a different one.')
 
 
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Sign In')
+
+    def validate_username(self, username):
+        user = User.query.filter_by(username=username.data).first()
+        if not user:
+            raise ValidationError('Username does not exist')
 
 #TODO: Create password constraint to prompt more secure user passwords
