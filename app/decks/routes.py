@@ -48,7 +48,6 @@ def add_card():
             front=form.front.data,
             back=form.back.data,
             deck_id=form.deck.data,
-            user_id=current_user.user_id
         )
         db.session.add(card)
         db.session.commit()
