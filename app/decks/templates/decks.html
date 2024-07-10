@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Decks{% endblock %}
+{% block heading %}Your Decks{% endblock %}
+{% block content %}
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Deck Name</th>
+                    <th scope="col">Cards</th>
+
+                    <th scope="col">Due for Review</th>
+                    <th scope="col">Next Review Date</th>
+                    <th scope="col">Last Reviewed</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for deck in decks %}
+                    <tr>
+                        <td>{{ deck.name }}</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>{{ deck.next_review_date }}</td>
+                        <td>{{ deck.last_review_date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

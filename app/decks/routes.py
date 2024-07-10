@@ -17,3 +17,11 @@ def create_deck():
         flash('Your deck has been created!', 'success')
         return redirect(url_for('main.decks'))
     return render_template('create_deck.html', form=form)
+
+
+@decks_blueprint.route('/decks')
+@login_required
+def decks():
+    # Query to get all decks for the current user
+    user_decks = Deck.query.filter_by(user_id=current_user.user_id).all()
+    return render_template('decks.html', decks=user_decks)
