@@ -22,19 +22,37 @@ def create_deck():
 @decks_blueprint.route('/decks')
 @login_required
 def decks():
-    # Query to get all decks for the current user
     user_decks = Deck.query.filter_by(user_id=current_user.user_id).all()
-    return render_template('decks.html', decks=user_decks)
+    deck_data = []
+
+    for deck in user_decks:
+        card_count = Card.query.filter_by(deck_id=deck.deck_id).count()
+        deck_data.append({
+            'name': deck.name,
+            'cards': card_count,
+        })
+
+    return render_template('decks.html', decks=deck_data)  # Use 'decks' to match the template
 
 
 @decks_blueprint.route('/add_card', methods=['GET', 'POST'])
 @login_required
 def add_card():
+    # Query to get all decks for the current user
+    user_decks = Deck.query.filter_by(user_id=current_user.user_id).all()
     form = AddCardForm()
+    form.deck.choices = [(deck.deck_id, deck.name) for deck in user_decks]  # Populate form dropdown
+
     if form.validate_on_submit():
-        card = Card(front=form.front.data, back=form.back.data, deck_id=form.deck_id.data)
+        card = Card(
+            front=form.front.data,
+            back=form.back.data,
+            deck_id=form.deck.data,
+            user_id=current_user.user_id
+        )
         db.session.add(card)
         db.session.commit()
-        flash('Card added successfully!', 'success')
-        return redirect(url_for('decks.decks', deck_id=form.deck_id.data))
+        flash('Card has been added!', 'success')
+        return redirect(url_for('decks.decks'))
+
     return render_template('add_card.html', title='Add Card', form=form)

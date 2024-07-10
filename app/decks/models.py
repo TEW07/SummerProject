@@ -7,6 +7,7 @@ class Deck(db.Model):
     name = db.Column(db.String(100), unique=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
 
+
     def __repr__(self):
         return f"Deck('{self.name}', '{self.user_id}')"
 
@@ -16,7 +17,6 @@ class Card(db.Model):
     front = db.Column(db.String(255), nullable=False)
     back = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    next_review_date = db.Column(db.DateTime, default=datetime.utcnow)
     deck_id = db.Column(db.Integer, db.ForeignKey('deck.deck_id'), nullable=False)
 
     def __repr__(self):

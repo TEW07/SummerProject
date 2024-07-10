@@ -34,7 +34,7 @@ login_manager.login_view = 'auth.login'
 
 
 from app.auth.models import User
-
+from app.decks.models import Deck, Card
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -43,6 +43,6 @@ def load_user(user_id):
 
 @app.shell_context_processor
 def make_shell_context():
-    return dict(db=db, User=User, LoginEvent=LoginEvent)
+    return dict(db=db, User=User, LoginEvent=LoginEvent, Card=Card, Deck=Deck)
 
 

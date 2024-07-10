@@ -10,11 +10,7 @@ class CreateDeckForm(FlaskForm):
 
 
 class AddCardForm(FlaskForm):
-    front = StringField('Front', validators=[DataRequired(), Length(min=1, max=255)])
-    back = StringField('Back', validators=[DataRequired(), Length(min=1, max=255)])
-    deck_id = SelectField('Deck', coerce=int, validators=[DataRequired()])
+    front = StringField('Front', validators=[DataRequired()])
+    back = StringField('Back', validators=[DataRequired()])
+    deck = SelectField('Deck', coerce=int)  # Add coerce=int to ensure proper handling of deck IDs
     submit = SubmitField('Add Card')
-
-    def __init__(self, *args, **kwargs):
-        super(AddCardForm, self).__init__(*args, **kwargs)
-        self.deck_id.choices = [(deck.deck_id, deck.name) for deck in Deck.query.all()]

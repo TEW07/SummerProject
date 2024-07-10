@@ -9,7 +9,6 @@
                 <tr>
                     <th scope="col">Deck Name</th>
                     <th scope="col">Cards</th>
-
                     <th scope="col">Due for Review</th>
                     <th scope="col">Next Review Date</th>
                     <th scope="col">Last Reviewed</th>
@@ -19,14 +18,16 @@
                 {% for deck in decks %}
                     <tr>
                         <td>{{ deck.name }}</td>
+                        <td>{{ deck.cards }}</td>
                         <td>0</td>
-                        <td>0</td>
-                        <td>{{ deck.next_review_date }}</td>
-                        <td>{{ deck.last_review_date }}</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 {% endblock %}
+
+
 
