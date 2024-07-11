@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Card{% endblock %}
+{% block heading %}Edit Card{% endblock %}
+{% block content %}
+<div class="container">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+            {{ form.front.label(class="form-label") }}
+            {{ form.front(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.back.label(class="form-label") }}
+            {{ form.back(class="form-control") }}
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

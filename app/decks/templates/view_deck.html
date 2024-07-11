@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}View Deck{% endblock %}
+{% block heading %}Deck: {{ deck.name }}{% endblock %}
+{% block content %}
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Front</th>
+                <th scope="col">Back</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Next Review Date</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for card in cards %}
+                <tr>
+                    <td>{{ card.front }}</td>
+                    <td>
+                        <button class="btn btn-primary" onclick="toggleAnswer('answer-{{ card.card_id }}')">Show Answer</button>
+                        <div id="answer-{{ card.card_id }}" class="answer" style="display: none;">
+                            {{ card.back }}
+                        </div>
+                    </td>
+                    <td>{{ card.created_at }}</td>
+                    <td>{{ card.next_review_date }}</td>
+                    <td>
+                        <a href="{{ url_for('decks.edit_card', card_id=card.card_id) }}" class="btn btn-warning">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+function toggleAnswer(id) {
+    var answerElement = document.getElementById(id);
+    if (answerElement.style.display === "none") {
+        answerElement.style.display = "block";
+    } else {
+        answerElement.style.display = "none";
+    }
+}
+</script>
+{% endblock %}
+
+
+
+

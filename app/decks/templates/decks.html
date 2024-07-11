@@ -17,17 +17,19 @@
             <tbody>
                 {% for deck in decks %}
                     <tr>
-                        <td>{{ deck.name }}</td>
-                        <td>{{ deck.cards }}</td>
+                        <td><a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}">{{ deck['name'] }}</a></td>
+                        <td>{{ deck['cards'] }}</td>
                         <td>0</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ deck['next_review_date'] }}</td>
+                        <td>{{ deck['last_review_date'] }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 {% endblock %}
+
+
 
 
 
