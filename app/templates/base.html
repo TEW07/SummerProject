@@ -17,7 +17,7 @@
             <div class="collapse navbar-collapse" id="navbarToggle">
                 <div class="navbar-nav me-auto">
                     {% if current_user.is_authenticated %}
-                    <a class="nav-item nav-link" href="{{ url_for('main.dashboard') }}">Home</a>
+                    <a class="nav-item nav-link" href="{{ url_for('main.dashboard') }}">Dashboard</a>
                         <a class="nav-item nav-link" href="{{ url_for('decks.create_deck') }}">Create Deck</a>
                         <a class="nav-item nav-link" href="{{ url_for('decks.add_card') }}">Add Card</a>
                     <a class="nav-item nav-link" href="{{ url_for('decks.decks') }}">Decks</a>

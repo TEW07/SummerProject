@@ -21,10 +21,11 @@
                         <td><a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}">{{ deck['name'] }}</a></td>
                         <td>{{ deck['cards'] }}</td>
                         <td>0</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ deck['next_review_date'] }}</td>
+                        <td>{{ deck['last_review_date'] }}</td>
                         <td>
-                            <button class="btn btn-danger" onclick="confirmDelete({{ deck['deck_id'] }})">Delete</button>
+                            <a href="{{ url_for('review.start_review', deck_id=deck['deck_id']) }}" class="btn btn-primary btn-sm" style="margin-right: 5px;">Review Deck</a>
+                            <button class="btn btn-danger btn-sm" onclick="confirmDelete({{ deck['deck_id'] }})">Delete</button>
                         </td>
                     </tr>
                 {% endfor %}
@@ -62,6 +63,10 @@
         }
     </script>
 {% endblock %}
+
+
+
+
 
 
 

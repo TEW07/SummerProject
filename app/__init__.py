@@ -22,11 +22,13 @@ migrate = Migrate(app, db)
 from .main.routes import main_blueprint
 from .auth.routes import auth_blueprint
 from .decks.routes import decks_blueprint
+from .review.routes import review_blueprint
 from app.auth.models import *
 
 app.register_blueprint(main_blueprint)
 app.register_blueprint(auth_blueprint)
 app.register_blueprint(decks_blueprint)
+app.register_blueprint(review_blueprint)
 
 login_manager = LoginManager()
 login_manager.init_app(app)

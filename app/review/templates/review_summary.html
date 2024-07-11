@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Review Summary{% endblock %}
+{% block heading %}Review Summary{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>Review Session Complete</h2>
+        <p>You have completed your review session.</p>
+        <a href="{{ url_for('decks.decks') }}" class="btn btn-primary">Back to Decks</a>
+    </div>
+{% endblock %}
+

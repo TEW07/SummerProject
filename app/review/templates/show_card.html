@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Review Card{% endblock %}
+{% block heading %}Review Card{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>{{ card.front }}</h2>
+        <form method="POST" action="{{ url_for('review.process_review', card_id=card.card_id) }}">
+            <button type="button" class="btn btn-primary" onclick="toggleAnswer()">Show Answer</button>
+            <div id="answer" style="display: none;">
+                <h3>{{ card.back }}</h3>
+                <button name="correct" value="true" class="btn btn-success">Correct</button>
+                <button name="correct" value="false" class="btn btn-danger">Incorrect</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function toggleAnswer() {
+            var answerElement = document.getElementById("answer");
+            if (answerElement.style.display === "none") {
+                answerElement.style.display = "block";
+            } else {
+                answerElement.style.display = "none";
+            }
+        }
+    </script>
+{% endblock %}
+
+

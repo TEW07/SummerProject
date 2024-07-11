@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Select Deck to Review{% endblock %}
+{% block heading %}Select a Deck to Review{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>Your Decks</h2>
+        <ul class="list-group">
+            {% for deck in decks %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{ deck.name }}
+                    <a href="{{ url_for('review.start_review', deck_id=deck.deck_id) }}" class="btn btn-primary">Review</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
