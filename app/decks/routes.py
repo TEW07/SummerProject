@@ -89,3 +89,35 @@ def edit_card(card_id):
         form.back.data = card.back
 
     return render_template('edit_card.html', title='Edit Card', form=form, card=card)
+
+
+@decks_blueprint.route('/delete_card/<int:card_id>', methods=['POST', 'GET'])  # Corrected here
+@login_required
+def delete_card(card_id):
+    card = Card.query.get_or_404(card_id)
+    if card.deck.user_id != current_user.user_id:
+        abort(403)
+    db.session.delete(card)
+    db.session.commit()
+    flash('Card has been deleted!', 'success')
+    return redirect(url_for('decks.view_deck', deck_id=card.deck_id))
+
+
+@decks_blueprint.route('/delete_deck/<int:deck_id>', methods=['POST', 'GET'])
+@login_required
+def delete_deck(deck_id):
+    deck = Deck.query.get_or_404(deck_id)
+    if deck.user_id != current_user.user_id:
+        abort(403)
+
+    # Delete all cards associated with the deck
+    Card.query.filter_by(deck_id=deck_id).delete()
+
+    db.session.delete(deck)
+    db.session.commit()
+    flash('Deck has been deleted!', 'success')
+    return redirect(url_for('decks.decks'))
+
+
+
+
