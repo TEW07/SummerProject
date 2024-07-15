@@ -5,9 +5,9 @@
 {% block content %}
 <style>
     .flashcard {
-        width: 500px;  /* Adjust the width as needed */
-        height: 300px; /* Adjust the height as needed */
-        margin: 0 auto; /* Center the flashcard */
+        width: 500px;
+        height: 300px;
+        margin: 0 auto;
         padding: 2rem;
         background-color: #fff;
         border: 1px solid #ddd;
@@ -18,14 +18,17 @@
         align-items: center;
         font-size: 1.5rem;
         text-align: center;
-        position: relative; /* Required for flipping */
+        position: relative;
         transform-style: preserve-3d;
         transition: transform 0.6s;
     }
+
     .flashcard.flipped {
         transform: rotateY(180deg);
     }
-    .flashcard .front, .flashcard .back {
+
+    .flashcard .front,
+    .flashcard .back {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -34,16 +37,46 @@
         justify-content: center;
         align-items: center;
     }
+
     .flashcard .back {
         transform: rotateY(180deg);
     }
+
     .review-buttons {
         display: flex;
-        justify-content: center; /* Center the buttons */
+        justify-content: center;
         margin-top: 1.5rem;
     }
+
     .review-buttons form {
-        margin: 0 10px; /* Add space between the buttons */
+        margin: 0 10px;
+    }
+
+    .notification {
+        position: fixed;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px 30px;
+        background-color: #333;
+        color: white;
+        border-radius: 5px;
+        font-size: 1.25rem;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+        z-index: 1000;
+    }
+
+    .notification.show {
+        opacity: 1;
+    }
+
+    .notification.correct {
+        background-color: #28a745;
+    }
+
+    .notification.incorrect {
+        background-color: #dc3545;
     }
 </style>
 <div class="flashcard" id="flashcard">
@@ -58,32 +91,71 @@
     </div>
 </div>
 <div class="review-buttons">
-    <form id="incorrect-form" action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
-        <input type="hidden" name="correct" value="0">
-        <button type="submit" class="btn btn-danger">Incorrect (Left Arrow)</button>
-    </form>
     <form id="correct-form" action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
         <input type="hidden" name="correct" value="1">
         <button type="submit" class="btn btn-success">Correct (Right Arrow)</button>
     </form>
+    <form id="incorrect-form" action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
+        <input type="hidden" name="correct" value="0">
+        <button type="submit" class="btn btn-danger">Incorrect (Left Arrow)</button>
+    </form>
 </div>
+
+<div id="notification" class="notification"></div>
 
 <script>
     function toggleAnswer() {
         var flashcard = document.getElementById('flashcard');
         flashcard.classList.toggle('flipped');
     }
+
+    function showNotification(message, type) {
+        var notification = document.getElementById('notification');
+        notification.innerText = message;
+        notification.className = 'notification ' + type + ' show';
+        setTimeout(function() {
+            notification.classList.remove('show');
+        }, 2000); // Display the notification for 2 seconds
+    }
+
     document.addEventListener('keydown', function(event) {
         if (event.code === 'Space') {
             toggleAnswer();
         } else if (event.code === 'ArrowRight') {
-            document.getElementById('correct-form').submit();
+            showNotification('Correct!', 'correct');
+            setTimeout(function() {
+                document.getElementById('correct-form').submit();
+            }, 2000); // Delay for 2 seconds
         } else if (event.code === 'ArrowLeft') {
-            document.getElementById('incorrect-form').submit();
+            showNotification('Incorrect!', 'incorrect');
+            setTimeout(function() {
+                document.getElementById('incorrect-form').submit();
+            }, 2000); // Delay for 2 seconds
         }
+    });
+
+    document.getElementById('correct-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        showNotification('Correct!', 'correct');
+        setTimeout(function() {
+            event.target.submit();
+        }, 2000); // Delay for 2 seconds
+    });
+
+    document.getElementById('incorrect-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        showNotification('Incorrect!', 'incorrect');
+        setTimeout(function() {
+            event.target.submit();
+        }, 2000); // Delay for 2 seconds
     });
 </script>
 {% endblock %}
+
+
+
+
+
 
 
 
