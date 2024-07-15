@@ -58,13 +58,13 @@
     </div>
 </div>
 <div class="review-buttons">
-    <form action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
-        <input type="hidden" name="correct" value="1">
-        <button type="submit" class="btn btn-success">Correct</button>
-    </form>
-    <form action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
+    <form id="incorrect-form" action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
         <input type="hidden" name="correct" value="0">
-        <button type="submit" class="btn btn-danger">Incorrect</button>
+        <button type="submit" class="btn btn-danger">Incorrect (Left Arrow)</button>
+    </form>
+    <form id="correct-form" action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
+        <input type="hidden" name="correct" value="1">
+        <button type="submit" class="btn btn-success">Correct (Right Arrow)</button>
     </form>
 </div>
 
@@ -76,10 +76,16 @@
     document.addEventListener('keydown', function(event) {
         if (event.code === 'Space') {
             toggleAnswer();
+        } else if (event.code === 'ArrowRight') {
+            document.getElementById('correct-form').submit();
+        } else if (event.code === 'ArrowLeft') {
+            document.getElementById('incorrect-form').submit();
         }
     });
 </script>
 {% endblock %}
+
+
 
 
 
