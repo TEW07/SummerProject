@@ -7,7 +7,6 @@ import uuid
 
 review_blueprint = Blueprint('review', __name__, template_folder='templates')
 
-
 @review_blueprint.route('/start_review/<int:deck_id>', methods=['GET'])
 @login_required
 def start_review(deck_id):
@@ -20,7 +19,6 @@ def start_review(deck_id):
     session['session_id'] = str(uuid.uuid4())
     return redirect(url_for('review.show_card'))
 
-
 @review_blueprint.route('/show_card', methods=['GET'])
 @login_required
 def show_card():
@@ -32,7 +30,6 @@ def show_card():
 
     card = Card.query.get(card_ids[current_card_index])
     return render_template('show_card.html', card=card)
-
 
 @review_blueprint.route('/process_review/<int:card_id>', methods=['POST'])
 @login_required
@@ -53,7 +50,6 @@ def process_review(card_id):
     session['current_card_index'] += 1
     return redirect(url_for('review.show_card'))
 
-
 @review_blueprint.route('/review_summary')
 @login_required
 def review_summary():
@@ -72,6 +68,8 @@ def review_summary():
 
     return render_template('review_summary.html', correct_count=correct_count, incorrect_count=incorrect_count,
                            total=len(review_outcomes))
+
+
 
 
 

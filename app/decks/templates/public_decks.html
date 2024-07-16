@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Public Decks{% endblock %}
+{% block heading %}Public Decks{% endblock %}
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Deck Name</th>
+            <th>Cards</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for deck in decks %}
+        <tr>
+            <td><a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}">{{ deck['name'] }}</a></td>
+            <td>{{ deck['cards'] }}</td>
+            <td>
+                <a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}" class="btn btn-primary">View Deck</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
