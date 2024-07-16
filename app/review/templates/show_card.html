@@ -91,13 +91,13 @@
     </div>
 </div>
 <div class="review-buttons">
-    <form id="correct-form" action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
-        <input type="hidden" name="correct" value="1">
-        <button type="submit" class="btn btn-success">Correct (Right Arrow)</button>
-    </form>
     <form id="incorrect-form" action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
         <input type="hidden" name="correct" value="0">
         <button type="submit" class="btn btn-danger">Incorrect (Left Arrow)</button>
+    </form>
+    <form id="correct-form" action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
+        <input type="hidden" name="correct" value="1">
+        <button type="submit" class="btn btn-success">Correct (Right Arrow)</button>
     </form>
 </div>
 

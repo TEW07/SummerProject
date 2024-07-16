@@ -3,10 +3,34 @@
 {% block title %}Review Summary{% endblock %}
 {% block heading %}Review Summary{% endblock %}
 {% block content %}
-    <div class="container">
-        <h2>Review Session Complete</h2>
-        <p>You have completed your review session.</p>
+<div class="container mt-4">
+    <h3 class="text-center">You're doing brilliantly! Keep it up to build your confidence.</h3>
+    <div class="d-flex justify-content-center my-4">
+        <div class="card text-white bg-success m-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Correct Answers</h5>
+                <p class="card-text">{{ correct_count }}</p>
+            </div>
+        </div>
+        <div class="card text-white bg-danger m-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Incorrect Answers</h5>
+                <p class="card-text">{{ incorrect_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center my-4">
+        <div class="progress-circle p{{ correct_count * 100 // total }}">
+            <span>{{ correct_count * 100 // total }}%</span>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center my-4">
         <a href="{{ url_for('decks.decks') }}" class="btn btn-primary">Back to Decks</a>
     </div>
+</div>
 {% endblock %}
+
+
+
+
 
