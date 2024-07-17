@@ -16,14 +16,17 @@
         <tr>
             <td><a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}">{{ deck['name'] }}</a></td>
             <td>{{ deck['cards'] }}</td>
-            <td>{{ deck['creator_username'] }}</td>
+            <td>{{ deck['creator'] }}</td> <!-- Display the creator's username -->
             <td>
                 <a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}" class="btn btn-primary">View Deck</a>
+                <a href="{{ url_for('decks.clone_deck', deck_id=deck['deck_id']) }}" class="btn btn-secondary">Clone Deck</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 {% endblock %}
+
+
 
 

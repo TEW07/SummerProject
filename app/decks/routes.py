@@ -141,16 +141,34 @@ def public_decks():
 
     for deck in shared_decks:
         card_count = Card.query.filter_by(deck_id=deck.deck_id).count()
-        creator = User.query.filter_by(user_id=deck.user_id).first()
+        creator = User.query.get(deck.user_id).username  # Fetch the username of the deck creator
         deck_data.append({
             'deck_id': deck.deck_id,
             'name': deck.name,
             'cards': card_count,
-            'creator_username': creator.username,
-            'next_review_date': '',  # Add logic for next review date
-            'last_review_date': ''   # Add logic for last review date
+            'creator': creator  # Add the creator's username to the deck data
         })
 
     return render_template('public_decks.html', decks=deck_data)
+
+
+
+@decks_blueprint.route('/clone_deck/<int:deck_id>', methods=['POST', 'GET'])
+@login_required
+def clone_deck(deck_id):
+    original_deck = Deck.query.get_or_404(deck_id)
+    new_deck = Deck(name='CLONE: ' + original_deck.name, user_id=current_user.user_id)
+    db.session.add(new_deck)
+    db.session.commit()
+
+    original_cards = Card.query.filter_by(deck_id=deck_id).all()
+    for card in original_cards:
+        new_card = Card(front=card.front, back=card.back, deck_id=new_deck.deck_id)
+        db.session.add(new_card)
+
+    db.session.commit()
+    flash('Deck has been cloned successfully!', 'success')
+    return redirect(url_for('decks.decks'))
+
 
 
