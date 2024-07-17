@@ -4,6 +4,7 @@ from app import db
 from . import decks_blueprint
 from .forms import CreateDeckForm, AddCardForm, EditCardForm
 from .models import Deck, Card
+from app.auth.models import User
 
 
 @decks_blueprint.route('/create_deck', methods=['GET', 'POST'])
@@ -32,7 +33,8 @@ def decks():
             'name': deck.name,
             'cards': card_count,
             'next_review_date': '',  # Add logic for next review date
-            'last_review_date': ''  # Add logic for last review date
+            'last_review_date': '',  # Add logic for last review date
+            'shared': deck.shared
         })
 
     return render_template('decks.html', decks=deck_data)
@@ -139,10 +141,12 @@ def public_decks():
 
     for deck in shared_decks:
         card_count = Card.query.filter_by(deck_id=deck.deck_id).count()
+        creator = User.query.filter_by(user_id=deck.user_id).first()
         deck_data.append({
             'deck_id': deck.deck_id,
             'name': deck.name,
             'cards': card_count,
+            'creator_username': creator.username,
             'next_review_date': '',  # Add logic for next review date
             'last_review_date': ''   # Add logic for last review date
         })

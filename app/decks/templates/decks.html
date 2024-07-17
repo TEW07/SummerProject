@@ -22,7 +22,13 @@
             <td>{{ deck['next_review_date'] }}</td>
             <td>{{ deck['last_review_date'] }}</td>
             <td>
-                <a href="{{ url_for('decks.share_deck', deck_id=deck['deck_id']) }}" class="btn btn-info">Share Deck</a>
+                <a href="{{ url_for('decks.share_deck', deck_id=deck['deck_id']) }}" class="btn btn-info">
+                    {% if deck['shared'] %}
+                    Unshare Deck
+                    {% else %}
+                    Share Deck
+                    {% endif %}
+                </a>
                 <a href="{{ url_for('review.start_review', deck_id=deck['deck_id']) }}" class="btn btn-primary">Review Deck</a>
                 <form action="{{ url_for('decks.delete_deck', deck_id=deck['deck_id']) }}" method="POST" style="display:inline;">
                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -33,6 +39,7 @@
     </tbody>
 </table>
 {% endblock %}
+
 
 
 
