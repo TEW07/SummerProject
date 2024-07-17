@@ -42,10 +42,12 @@ def decks():
 @login_required
 def view_deck(deck_id):
     deck = Deck.query.get_or_404(deck_id)
-    if deck.user_id != current_user.user_id:
-        abort(403)  # Forbidden access
+    is_owner = deck.user_id == current_user.user_id
+    if not deck.shared and not is_owner:
+        abort(403)  # Forbidden access if the deck is not shared and not owned by the current user
+
     cards = Card.query.filter_by(deck_id=deck.deck_id).all()
-    return render_template('view_deck.html', deck=deck, cards=cards)
+    return render_template('view_deck.html', deck=deck, cards=cards, is_owner=is_owner)
 
 
 @decks_blueprint.route('/add_card', methods=['GET', 'POST'])
