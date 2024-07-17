@@ -5,6 +5,7 @@ from . import decks_blueprint
 from .forms import CreateDeckForm, AddCardForm, EditCardForm
 from .models import Deck, Card
 from app.auth.models import User
+from datetime import datetime, timedelta
 
 
 @decks_blueprint.route('/create_deck', methods=['GET', 'POST'])
@@ -28,16 +29,18 @@ def decks():
 
     for deck in user_decks:
         card_count = Card.query.filter_by(deck_id=deck.deck_id).count()
+        due_count = Card.query.filter(Card.deck_id == deck.deck_id, Card.next_review_date <= datetime.utcnow()).count()
         deck_data.append({
             'deck_id': deck.deck_id,
             'name': deck.name,
             'cards': card_count,
+            'due_for_review': due_count,
             'next_review_date': '',  # Add logic for next review date
-            'last_review_date': '',  # Add logic for last review date
-            'shared': deck.shared
+            'last_review_date': ''  # Add logic for last review date
         })
 
     return render_template('decks.html', decks=deck_data)
+
 
 
 @decks_blueprint.route('/view_deck/<int:deck_id>')
@@ -57,13 +60,15 @@ def view_deck(deck_id):
 def add_card():
     user_decks = Deck.query.filter_by(user_id=current_user.user_id).all()
     form = AddCardForm()
-    form.deck.choices = [(deck.deck_id, deck.name) for deck in user_decks]
+    form.deck.choices = [(deck.deck_id, deck.name) for deck in user_decks]  # Populate form dropdown
 
     if form.validate_on_submit():
         card = Card(
             front=form.front.data,
             back=form.back.data,
             deck_id=form.deck.data,
+            next_review_date=datetime.utcnow(),  # Schedule for immediate review
+            box=1  # New cards start in box 1
         )
         db.session.add(card)
         db.session.commit()

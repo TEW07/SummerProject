@@ -4,6 +4,7 @@ from app.decks.models import Deck, Card
 from app import db
 from app.review.models import ReviewOutcome
 import uuid
+from datetime import datetime, timedelta
 
 review_blueprint = Blueprint('review', __name__, template_folder='templates')
 
@@ -14,10 +15,11 @@ def start_review(deck_id):
     if deck.user_id != current_user.user_id:
         abort(403)
     session['deck_id'] = deck_id
-    session['card_ids'] = [card.card_id for card in deck.cards]
+    session['card_ids'] = [card.card_id for card in deck.cards if card.next_review_date and card.next_review_date <= datetime.utcnow()]
     session['current_card_index'] = 0
     session['session_id'] = str(uuid.uuid4())
     return redirect(url_for('review.show_card'))
+
 
 @review_blueprint.route('/show_card', methods=['GET'])
 @login_required
@@ -30,6 +32,7 @@ def show_card():
 
     card = Card.query.get(card_ids[current_card_index])
     return render_template('show_card.html', card=card)
+
 
 @review_blueprint.route('/process_review/<int:card_id>', methods=['POST'])
 @login_required
@@ -47,8 +50,13 @@ def process_review(card_id):
     db.session.add(review_outcome)
     db.session.commit()
 
+    schedule_review(card, correct)
+    db.session.commit()
+
     session['current_card_index'] += 1
     return redirect(url_for('review.show_card'))
+
+
 
 @review_blueprint.route('/review_summary')
 @login_required
@@ -70,7 +78,21 @@ def review_summary():
                            total=len(review_outcomes))
 
 
+def schedule_review(card, success):
+    if success:
+        card.box = min(card.box + 1, 5)  # Move to the next box, max box number is 5
+    else:
+        card.box = 1  # Reset to the first box on failure
 
+    card.next_review_date = datetime.utcnow() + timedelta(days=card.box * 2)
+
+
+def check_due_cards():
+    now = datetime.utcnow()
+    due_cards = Card.query.filter(Card.next_review_date <= now).all()
+    for card in due_cards:
+        # Logic to notify user or mark cards as due for review
+        pass
 
 
 
