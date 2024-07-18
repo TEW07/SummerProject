@@ -6,7 +6,7 @@ from .forms import CreateDeckForm, AddCardForm, EditCardForm
 from .models import Deck, Card
 from app.auth.models import User
 from datetime import datetime, timedelta
-from app.review.routes import schedule_review
+from app.review.models import ReviewOutcome
 
 
 @decks_blueprint.route('/create_deck', methods=['GET', 'POST'])
@@ -31,18 +31,37 @@ def decks():
     for deck in user_decks:
         card_count = Card.query.filter_by(deck_id=deck.deck_id).count()
         due_count = Card.query.filter(Card.deck_id == deck.deck_id,
-                                           Card.next_review_date <= datetime.utcnow()).count()
+                                      Card.next_review_date <= datetime.utcnow()).count()
+
+        # Get the last review date
+        last_review = db.session.query(ReviewOutcome.timestamp).join(Card, Card.card_id == ReviewOutcome.card_id).filter(
+            Card.deck_id == deck.deck_id,
+            ReviewOutcome.user_id == current_user.user_id
+        ).order_by(ReviewOutcome.timestamp.desc()).first()
+        last_review_date = last_review.timestamp.strftime('%Y-%m-%d') if last_review else 'N/A'
+
+        # Get the next review date
+        next_review = db.session.query(Card.next_review_date).filter(
+            Card.deck_id == deck.deck_id,
+            Card.next_review_date > datetime.utcnow()
+        ).order_by(Card.next_review_date.asc()).first()
+        next_review_date = next_review.next_review_date.strftime('%Y-%m-%d') if next_review else 'N/A'
+
         deck_data.append({
             'deck_id': deck.deck_id,
             'name': deck.name,
             'cards': card_count,
             'due_for_review': due_count,
             'shared': deck.shared,
-            'next_review_date': '',
-            'last_review_date': ''  # Add logic for last review date
+            'next_review_date': next_review_date,
+            'last_review_date': last_review_date
         })
 
     return render_template('decks.html', decks=deck_data)
+
+
+
+
 
 
 

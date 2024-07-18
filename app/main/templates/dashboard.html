@@ -1,32 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
 {% block head %}
-<style>
-body {
-    background-color: #f8f9fa; /* Light gray background */
-}
-
-.container {
-    max-width: 800px; /* Limit width for better readability */
-}
-
-.card {
-    margin-bottom: 1rem; /* Space between cards */
-}
-
-.list-group-item {
-    cursor: pointer;
-}
-
-.list-group-item:hover {
-    background-color: #f1f1f1; /* Slight hover effect */
-}
-</style>
 {% endblock %}
 {% block content %}
 <div class="container mt-4">
     <h1 class="mb-4">Flashcard Creation Dashboard!</h1>
-
     <div class="card mb-4">
         <div class="card-body">
             <h5 class="card-title">Welcome, {{ user_info.username }}!</h5>

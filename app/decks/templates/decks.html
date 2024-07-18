@@ -18,7 +18,7 @@
         <tr>
             <td><a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}">{{ deck['name'] }}</a></td>
             <td>{{ deck['cards'] }}</td>
-            <td>{{ deck['due_for_review'] }}</td> <!-- Updated to display due for review count -->
+            <td>{{ deck['due_for_review'] }}</td>
             <td>{{ deck['next_review_date'] }}</td>
             <td>{{ deck['last_review_date'] }}</td>
             <td>
@@ -65,6 +65,7 @@ function confirmDelete(deleteUrl) {
 }
 </script>
 {% endblock %}
+
 
 
 
