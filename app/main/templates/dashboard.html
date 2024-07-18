@@ -1,7 +1,61 @@
 {% extends "base.html" %}
-
 {% block title %}Dashboard{% endblock %}
-{% block heading %}Flashcard Creation Dashboard!{% endblock %}
-{% block content %}<p>You are logged in as {{ username }}</p>
-                    <p>You have logged in {{ log_count }} times.</p>
-                    <p>Your most recent login was at {{ log_latest }}</p>{% endblock %}
+{% block head %}
+<style>
+body {
+    background-color: #f8f9fa; /* Light gray background */
+}
+
+.container {
+    max-width: 800px; /* Limit width for better readability */
+}
+
+.card {
+    margin-bottom: 1rem; /* Space between cards */
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: #f1f1f1; /* Slight hover effect */
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Flashcard Creation Dashboard!</h1>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Welcome, {{ user_info.username }}!</h5>
+            <p class="card-text">You have logged in {{ user_info.login_count }} times.</p>
+            <p class="card-text">Your most recent login was at {{ user_info.last_login_at }}</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Due Reviews</h5>
+            {% if due_reviews %}
+                <ul class="list-group">
+                    {% for review in due_reviews %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{{ url_for('review.start_review', deck_id=review.deck_id) }}">{{ review.name }}</a>
+                            <span class="badge bg-primary rounded-pill">{{ review.due_count }} due</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="card-text">No reviews due at the moment.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
