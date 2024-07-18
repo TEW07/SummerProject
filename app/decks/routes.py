@@ -6,6 +6,7 @@ from .forms import CreateDeckForm, AddCardForm, EditCardForm
 from .models import Deck, Card
 from app.auth.models import User
 from datetime import datetime, timedelta
+from app.review.routes import schedule_review
 
 
 @decks_blueprint.route('/create_deck', methods=['GET', 'POST'])
@@ -29,13 +30,15 @@ def decks():
 
     for deck in user_decks:
         card_count = Card.query.filter_by(deck_id=deck.deck_id).count()
-        due_count = Card.query.filter(Card.deck_id == deck.deck_id, Card.next_review_date <= datetime.utcnow()).count()
+        due_count = Card.query.filter(Card.deck_id == deck.deck_id,
+                                           Card.next_review_date <= datetime.utcnow()).count()
         deck_data.append({
             'deck_id': deck.deck_id,
             'name': deck.name,
             'cards': card_count,
             'due_for_review': due_count,
-            'next_review_date': '',  # Add logic for next review date
+            'shared': deck.shared,
+            'next_review_date': '',
             'last_review_date': ''  # Add logic for last review date
         })
 
@@ -157,23 +160,25 @@ def public_decks():
     return render_template('public_decks.html', decks=deck_data)
 
 
-
 @decks_blueprint.route('/clone_deck/<int:deck_id>', methods=['POST', 'GET'])
 @login_required
 def clone_deck(deck_id):
     original_deck = Deck.query.get_or_404(deck_id)
-    new_deck = Deck(name='CLONE: ' + original_deck.name, user_id=current_user.user_id)
+    new_deck = Deck(name='CLONE: ' + original_deck.name, user_id=current_user.user_id, review_start_date=datetime.utcnow())
     db.session.add(new_deck)
     db.session.commit()
 
     original_cards = Card.query.filter_by(deck_id=deck_id).all()
     for card in original_cards:
-        new_card = Card(front=card.front, back=card.back, deck_id=new_deck.deck_id)
+        new_card = Card(front=card.front, back=card.back, deck_id=new_deck.deck_id, box=1)
+        new_card.next_review_date = datetime.utcnow()  # Schedule for review immediately
         db.session.add(new_card)
 
     db.session.commit()
     flash('Deck has been cloned successfully!', 'success')
     return redirect(url_for('decks.decks'))
+
+
 
 
 

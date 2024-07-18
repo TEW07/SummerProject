@@ -8,12 +8,19 @@ from datetime import datetime, timedelta
 
 review_blueprint = Blueprint('review', __name__, template_folder='templates')
 
+
 @review_blueprint.route('/start_review/<int:deck_id>', methods=['GET'])
 @login_required
 def start_review(deck_id):
     deck = Deck.query.get_or_404(deck_id)
     if deck.user_id != current_user.user_id:
         abort(403)
+
+    # Set the review start date if not already set
+    if not deck.review_start_date:
+        deck.review_start_date = datetime.utcnow()
+        db.session.commit()
+
     session['deck_id'] = deck_id
     session['card_ids'] = [card.card_id for card in deck.cards if card.next_review_date and card.next_review_date <= datetime.utcnow()]
     session['current_card_index'] = 0
@@ -40,6 +47,8 @@ def process_review(card_id):
     correct = request.form.get('correct') == '1'
     card = Card.query.get_or_404(card_id)
     session_id = session.get('session_id')
+    deck_id = session.get('deck_id')
+    deck = Deck.query.get(deck_id)
 
     review_outcome = ReviewOutcome(
         user_id=current_user.user_id,
@@ -50,11 +59,12 @@ def process_review(card_id):
     db.session.add(review_outcome)
     db.session.commit()
 
-    schedule_review(card, correct)
+    schedule_review(card, correct, deck)
     db.session.commit()
 
     session['current_card_index'] += 1
     return redirect(url_for('review.show_card'))
+
 
 
 
@@ -78,13 +88,41 @@ def review_summary():
                            total=len(review_outcomes))
 
 
-def schedule_review(card, success):
-    if success:
-        card.box = min(card.box + 1, 5)  # Move to the next box, max box number is 5
-    else:
-        card.box = 1  # Reset to the first box on failure
+REVIEW_SCHEDULE = {
+        1: [1, 2],
+        2: [1, 3],
+        3: [1, 2],
+        4: [1, 4],
+        5: [1, 2],
+        6: [1, 3],
+        7: [1, 2],
+        8: [1, 2],
+        9: [1, 3],
+        10: [1, 2, 5],
+        11: [1, 4],
+        12: [1, 2],
+        13: [1, 3],
+        14: [1, 2],
+    }
 
-    card.next_review_date = datetime.utcnow() + timedelta(days=card.box * 2)
+
+def schedule_review(card, success, deck):
+    if success:
+        card.box = min(card.box + 1, 5)
+    else:
+        card.box = 1
+
+    today = datetime.utcnow().date()
+    current_cycle_day = (today - deck.review_start_date.date()).days % 14 + 1
+    for offset in range(1, 15):
+        next_cycle_day = (current_cycle_day + offset - 1) % 14 + 1
+        if card.box in REVIEW_SCHEDULE[next_cycle_day]:
+            card.next_review_date = today + timedelta(days=offset)
+            break
+
+    card.next_review_date = datetime.combine(card.next_review_date, datetime.min.time())
+    db.session.commit()
+
 
 
 def check_due_cards():

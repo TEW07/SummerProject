@@ -18,11 +18,17 @@
         <tr>
             <td><a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}">{{ deck['name'] }}</a></td>
             <td>{{ deck['cards'] }}</td>
-            <td>0</td> <!-- Placeholder for due for review -->
+            <td>{{ deck['due_for_review'] }}</td> <!-- Updated to display due for review count -->
             <td>{{ deck['next_review_date'] }}</td>
             <td>{{ deck['last_review_date'] }}</td>
             <td>
-                <a href="{{ url_for('decks.share_deck', deck_id=deck['deck_id']) }}" class="btn btn-info">{{ "Unshare Deck" if deck['shared'] else "Share Deck" }}</a>
+                <a href="{{ url_for('decks.share_deck', deck_id=deck['deck_id']) }}" class="btn btn-info">
+                    {% if deck['shared'] %}
+                    Unshare Deck
+                    {% else %}
+                    Share Deck
+                    {% endif %}
+                </a>
                 <a href="{{ url_for('review.start_review', deck_id=deck['deck_id']) }}" class="btn btn-primary">Review Deck</a>
                 <button class="btn btn-danger" onclick="confirmDelete('{{ url_for('decks.delete_deck', deck_id=deck['deck_id']) }}')">Delete</button>
             </td>
@@ -59,6 +65,7 @@ function confirmDelete(deleteUrl) {
 }
 </script>
 {% endblock %}
+
 
 
 

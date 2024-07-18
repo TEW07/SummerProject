@@ -8,7 +8,8 @@ class Deck(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     shared = db.Column(db.Boolean, default=False)
-    cards = db.relationship('Card', backref='deck', lazy=True)  # Add this line
+    cards = db.relationship('Card', backref='deck', lazy=True)
+    review_start_date = db.Column(db.DateTime, nullable=True)
 
     def __repr__(self):
         return f"Deck('{self.name}', '{self.user_id}')"

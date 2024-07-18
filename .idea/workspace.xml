@@ -5,11 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f401114-16ea-4aa7-b0bc-59ac1f2abcdf" name="Changes" comment="Users can now clone an entire deck from public_decks into their own collection of decks, allowing them to review and manage the cards in that deck for their own requirements">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/decks/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/decks/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/decks/templates/decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/decks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/view_deck.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/view_deck.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/review/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/review/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/alembic.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/env.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/script.py.mako" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/cb4c5bda903d_add_box_and_next_review_date_to_card_.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/cc41036a2817_add_created_at_column_to_deck_model.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +110,8 @@
       <workItem from="1721038686984" duration="4738000" />
       <workItem from="1721125366080" duration="12520000" />
       <workItem from="1721211344114" duration="5601000" />
-      <workItem from="1721225374786" duration="4250000" />
+      <workItem from="1721225374786" duration="5194000" />
+      <workItem from="1721295889027" duration="3983000" />
     </task>
     <task id="LOCAL-00001" summary="Added a secure 'SECRET_KEY'">
       <option name="closed" value="true" />
