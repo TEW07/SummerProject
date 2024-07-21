@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f401114-16ea-4aa7-b0bc-59ac1f2abcdf" name="Changes" comment="Upgraded the dashboard so that a user will be notified of any reviews that are due and provides the details and links user to decks with cards due for review">
+    <list default="true" id="2f401114-16ea-4aa7-b0bc-59ac1f2abcdf" name="Changes" comment="Small improvements to decks.html. Users can now see when the next review is scheduled, and when they last reviewed each deck.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/decks/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/decks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/templates/dashboard.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,22 +34,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tomwa/OrganisedSW2/Week6/Alex Login&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "ignore_missing_gitignore": "true",
+    "last_opened_file_path": "C:/Users/Tomwa/PycharmProjects/SummerProject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\templates" />
@@ -102,7 +102,8 @@
       <workItem from="1721125366080" duration="12520000" />
       <workItem from="1721211344114" duration="5601000" />
       <workItem from="1721225374786" duration="5194000" />
-      <workItem from="1721295889027" duration="7937000" />
+      <workItem from="1721295889027" duration="8707000" />
+      <workItem from="1721561409076" duration="8402000" />
     </task>
     <task id="LOCAL-00001" summary="Added a secure 'SECRET_KEY'">
       <option name="closed" value="true" />
@@ -360,14 +361,21 @@
       <option name="project" value="LOCAL" />
       <updated>1721312498824</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Small improvements to decks.html. Users can now see when the next review is scheduled, and when they last reviewed each deck.">
+      <option name="closed" value="true" />
+      <created>1721313640700</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1721313640700</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Small adjustment to &quot;base.html&quot; to ensure headings are all inherited from this base template" />
     <MESSAGE value="Adjusted &quot;register.html&quot; so that it displays errors if registration form data is invalid such as invalid email, passwords don't match, username or email taken. TODO: Create password constraint to force users to create a more secure password." />
     <MESSAGE value="Using flask_login, added login functionality including an adaptation to &quot;base.html&quot; such that the taskbar is appropriate for the given login status. Created a placeholder dashboard for logged in users" />
     <MESSAGE value="Added a &quot;LoginEvent&quot; model to track each instance of a user logging in to the application. This will be used for features such as daily login streaks." />
@@ -392,6 +400,7 @@
     <MESSAGE value="Users can now clone an entire deck from public_decks into their own collection of decks, allowing them to review and manage the cards in that deck for their own requirements" />
     <MESSAGE value="Implemented a more accurate scheduling system based on a biweekly version of the Leitner system. Small changes to decks.html to be more responsive. Scheduling calendar relies on calculations which start from the date a user first reviews a deck." />
     <MESSAGE value="Upgraded the dashboard so that a user will be notified of any reviews that are due and provides the details and links user to decks with cards due for review" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgraded the dashboard so that a user will be notified of any reviews that are due and provides the details and links user to decks with cards due for review" />
+    <MESSAGE value="Small improvements to decks.html. Users can now see when the next review is scheduled, and when they last reviewed each deck." />
+    <option name="LAST_COMMIT_MESSAGE" value="Small improvements to decks.html. Users can now see when the next review is scheduled, and when they last reviewed each deck." />
   </component>
 </project>

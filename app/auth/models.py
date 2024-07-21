@@ -26,10 +26,6 @@ class User(db.Model, UserMixin):
         latest_login_event = LoginEvent.query.filter_by(user_id=user_id).order_by(LoginEvent.timestamp.desc()).first()
         return latest_login_event.timestamp if latest_login_event else None
 
-    def get_cycle_day(self):
-        days_since_start = (datetime.utcnow().date() - self.cycle_start_date.date()).days
-        return (days_since_start % 14) + 1
-
     def __repr__(self):
         return f"user('{self.username}', '{self.email}')"
 

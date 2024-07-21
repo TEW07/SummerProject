@@ -5,7 +5,7 @@ from . import decks_blueprint
 from .forms import CreateDeckForm, AddCardForm, EditCardForm
 from .models import Deck, Card
 from app.auth.models import User
-from datetime import datetime, timedelta
+from datetime import datetime
 from app.review.models import ReviewOutcome
 
 
@@ -33,19 +33,28 @@ def decks():
         due_count = Card.query.filter(Card.deck_id == deck.deck_id,
                                       Card.next_review_date <= datetime.utcnow()).count()
 
+        # Step 1: Query for the earliest next_review_date for the cards in the deck
+        next_review = db.session.query(Card.next_review_date).filter(
+            Card.deck_id == deck.deck_id
+        ).order_by(Card.next_review_date.asc()).first()
+
+        # Step 2: Set next_review_date based on the query result
+        if next_review:
+            # Check if the next_review_date is in the past
+            if next_review.next_review_date.date() < datetime.utcnow().date():
+                next_review_date = datetime.utcnow().strftime('%Y-%m-%d')
+            else:
+                next_review_date = next_review.next_review_date.strftime('%Y-%m-%d')
+        else:
+            next_review_date = 'N/A'
+
         # Get the last review date
-        last_review = db.session.query(ReviewOutcome.timestamp).join(Card, Card.card_id == ReviewOutcome.card_id).filter(
+        last_review = db.session.query(ReviewOutcome.timestamp).join(Card,
+                                                                     Card.card_id == ReviewOutcome.card_id).filter(
             Card.deck_id == deck.deck_id,
             ReviewOutcome.user_id == current_user.user_id
         ).order_by(ReviewOutcome.timestamp.desc()).first()
         last_review_date = last_review.timestamp.strftime('%Y-%m-%d') if last_review else 'N/A'
-
-        # Get the next review date
-        next_review = db.session.query(Card.next_review_date).filter(
-            Card.deck_id == deck.deck_id,
-            Card.next_review_date > datetime.utcnow()
-        ).order_by(Card.next_review_date.asc()).first()
-        next_review_date = next_review.next_review_date.strftime('%Y-%m-%d') if next_review else 'N/A'
 
         deck_data.append({
             'deck_id': deck.deck_id,
@@ -74,7 +83,7 @@ def view_deck(deck_id):
         abort(403)  # Forbidden access if the deck is not shared and not owned by the current user
 
     cards = Card.query.filter_by(deck_id=deck.deck_id).all()
-    return render_template('view_deck.html', deck=deck, cards=cards, is_owner=is_owner)
+    return render_template('view_deck.html', deck=deck, cards=cards)
 
 
 @decks_blueprint.route('/add_card', methods=['GET', 'POST'])

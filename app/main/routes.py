@@ -35,7 +35,6 @@ def dashboard():
         'last_login_at': current_user.get_latest_login(current_user.user_id)
     }
 
-
     return render_template('dashboard.html', due_reviews=due_reviews, user_info=user_info)
 
 

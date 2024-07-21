@@ -44,7 +44,6 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
-
 @auth_blueprint.route('/logout', methods=['GET'])
 @login_required
 def logout():
