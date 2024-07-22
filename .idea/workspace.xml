@@ -4,64 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f401114-16ea-4aa7-b0bc-59ac1f2abcdf" name="Changes" comment="Small improvements to decks.html. Users can now see when the next review is scheduled, and when they last reviewed each deck.">
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/SummerProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SummerProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/review/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/review/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
+  &quot;associatedIndex&quot;: 3
 }</component>
-  <component name="ProjectId" id="2ipV9340XihyZ4Dch9pawwFeArn" />
+  <component name="ProjectId" id="2jbaKSw5kv5cn5xMmtbpCUGv060" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ignore_missing_gitignore": "true",
-    "last_opened_file_path": "C:/Users/Tomwa/PycharmProjects/SummerProject",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;leitner-system&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\templates" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\decks\templates" />
-      <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\decks" />
-      <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\main\templates" />
-      <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\auth\templates" />
-      <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\main\templates\main" />
-    </key>
-  </component>
+}</component>
   <component name="RunManager">
     <configuration name="SummerProject" type="Python.FlaskServer">
       <module name="SummerProject" />
@@ -82,325 +61,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2f401114-16ea-4aa7-b0bc-59ac1f2abcdf" name="Changes" comment="" />
-      <created>1720187350870</created>
+      <changelist id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="" />
+      <created>1721658166258</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1720187350870</updated>
-      <workItem from="1720187351947" duration="3000" />
-      <workItem from="1720187435144" duration="3065000" />
-      <workItem from="1720262023546" duration="9639000" />
-      <workItem from="1720349007380" duration="5846000" />
-      <workItem from="1720438323173" duration="4706000" />
-      <workItem from="1720452721231" duration="2259000" />
-      <workItem from="1720519357953" duration="4894000" />
-      <workItem from="1720531987781" duration="6155000" />
-      <workItem from="1720605472110" duration="9474000" />
-      <workItem from="1720692258268" duration="9771000" />
-      <workItem from="1720956948779" duration="2932000" />
-      <workItem from="1721038686984" duration="4738000" />
-      <workItem from="1721125366080" duration="12520000" />
-      <workItem from="1721211344114" duration="5601000" />
-      <workItem from="1721225374786" duration="5194000" />
-      <workItem from="1721295889027" duration="8707000" />
-      <workItem from="1721561409076" duration="8402000" />
+      <updated>1721658166258</updated>
+      <workItem from="1721658167501" duration="331000" />
+      <workItem from="1721658549120" duration="2924000" />
     </task>
-    <task id="LOCAL-00001" summary="Added a secure 'SECRET_KEY'">
-      <option name="closed" value="true" />
-      <created>1720188380523</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1720188380523</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Created a generic placeholder template 'base.html' to be inherited after further styling">
-      <option name="closed" value="true" />
-      <created>1720194595302</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1720194595302</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Modified app structure to make the design modular, more structured, and easier to maintain">
-      <option name="closed" value="true" />
-      <created>1720270120204</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1720270120204</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Small changes to &quot;base.html&quot;, adjusting styling and creating a 'heading' block to be inherited">
-      <option name="closed" value="true" />
-      <created>1720354416445</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1720354416445</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Added a registration form and initial 'user' db model. Valid completion of the registration form successfully registers a user with account information and hashed passwords stored securely in the databse.">
-      <option name="closed" value="true" />
-      <created>1720441826502</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1720441826502</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Small adjustment to &quot;base.html&quot; to ensure headings are all inherited from this base template">
-      <option name="closed" value="true" />
-      <created>1720442430974</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1720442430974</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Adjusted &quot;register.html&quot; so that it displays errors if registration form data is invalid such as invalid email, passwords don't match, username or email taken. TODO: Create password constraint to force users to create a more secure password.">
-      <option name="closed" value="true" />
-      <created>1720453590534</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1720453590534</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Adjusted &quot;register.html&quot; so that it displays errors if registration form data is invalid such as invalid email, passwords don't match, username or email taken. TODO: Create password constraint to force users to create a more secure password.">
-      <option name="closed" value="true" />
-      <created>1720453892378</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1720453892378</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Using flask_login, added login functionality including an adaptation to &quot;base.html&quot; such that the taskbar is appropriate for the given login status. Created a placeholder dashboard for logged in users">
-      <option name="closed" value="true" />
-      <created>1720524153838</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1720524153838</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Added a &quot;LoginEvent&quot; model to track each instance of a user logging in to the application. This will be used for features such as daily login streaks.">
-      <option name="closed" value="true" />
-      <created>1720533328599</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1720533328599</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Small experiments with &quot;get_login_count&quot; and &quot;get_latest_login&quot; user functions">
-      <option name="closed" value="true" />
-      <created>1720533877996</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1720533877996</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Imported flask_migrate to preserve database records between changes to database models">
-      <option name="closed" value="true" />
-      <created>1720537099806</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1720537099806</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Implemented a simple Deck creation feature, inside a new blueprint &quot;Decks&quot; where more complex features such as card creation and edit/manage deck will also be kept">
-      <option name="closed" value="true" />
-      <created>1720615208361</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1720615208361</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Moved &quot;Decks.html&quot; to relevant subfolder and updated the template to display the current_user's Decks with placeholders for number of cards, cards due for review, and date of next and most recent reviews">
-      <option name="closed" value="true" />
-      <created>1720616589938</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1720616589938</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Added a card creation feature which allows user to create a new card with a front and back and select a deck to add this to">
-      <option name="closed" value="true" />
-      <created>1720621559046</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1720621559046</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Added 2 files to git which were not being tracked">
-      <option name="closed" value="true" />
-      <created>1720621608689</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1720621608689</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Small fix to ensure the select deck dropdown menu only shows decks associated with the current user">
-      <option name="closed" value="true" />
-      <created>1720623202242</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1720623202242</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Fixed error caused by redundant user_id in add_Card route logic">
-      <option name="closed" value="true" />
-      <created>1720623682944</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1720623682944</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Implemented feature for users to click on one of their decks and view the cards in that deck. Users can click a button to reveal the answer on the back of the card and can click another button to edit either side of the card">
-      <option name="closed" value="true" />
-      <created>1720695590023</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1720695590023</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Added buttons to delete cards and decks. Both buttons require confirmation from user before deleting. Upon deletion of a deck, all cards are deleted from that first as part of the delete_deck function">
-      <option name="closed" value="true" />
-      <created>1720704592063</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1720704592063</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Added buttons to delete cards and decks. Both buttons require confirmation from user before deleting. Upon deletion of a deck, all cards are deleted from that first as part of the delete_deck function">
-      <option name="closed" value="true" />
-      <created>1720716096380</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1720716096380</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Improved the layout of the card review screen. Cards are now displayed in a rectangle to give the impression of authentic flashcards. Cards can be flipped by clicking &quot;show answer&quot; or pressing spacebar for enhanced usability. Flipping of cards implemented using basic Javascript.">
-      <option name="closed" value="true" />
-      <created>1720959685528</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1720959685528</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Small changes allowing users to press Left Arrow if they recall the card incorrectly, and Right Arrow if correct">
-      <option name="closed" value="true" />
-      <created>1721040148177</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1721040148177</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Using Javascript fore enforced delays, implemented visible feedback on Correct/ Incorrect button presses">
-      <option name="closed" value="true" />
-      <created>1721042284388</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1721042284388</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Added ReviewOutcome model to track user performance on the review of each card, and added logic in process_review and review_summary to store and display this information to users after each review session, identified by session_id in ReviewOutcome">
-      <option name="closed" value="true" />
-      <created>1721131155060</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1721131155060</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Added a Share Deck button and shared boolean field as part of the Deck Model. Also added public_decks.html which will be integrated soon">
-      <option name="closed" value="true" />
-      <created>1721147437001</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1721147437001</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Implemented a basic public_decks.html page which will soon allow users to clone a deck to their own Decks page">
-      <option name="closed" value="true" />
-      <created>1721147716020</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1721147716020</updated>
-    </task>
-    <task id="LOCAL-00028" summary="Small adjustments to public_decks. Now any user can view the deck and each card within the deck, but only the creator of the deck can edit or delete it">
-      <option name="closed" value="true" />
-      <created>1721213137493</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1721213137493</updated>
-    </task>
-    <task id="LOCAL-00029" summary="Further improvements to public decks, providing the creator's username alongside each shared deck. User's deck share button now responds to the shared status of the deck in question.">
-      <option name="closed" value="true" />
-      <created>1721214113162</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1721214113162</updated>
-    </task>
-    <task id="LOCAL-00030" summary="Users can now clone an entire deck from public_decks into their own collection of decks, allowing them to review and manage the cards in that deck for their own requirements">
-      <option name="closed" value="true" />
-      <created>1721216358230</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1721216358230</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Implemented a more accurate scheduling system based on a biweekly version of the Leitner system. Small changes to decks.html to be more responsive. Scheduling calendar relies on calculations which start from the date a user first reviews a deck.">
-      <option name="closed" value="true" />
-      <created>1721300232159</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1721300232159</updated>
-    </task>
-    <task id="LOCAL-00032" summary="Upgraded the dashboard so that a user will be notified of any reviews that are due and provides the details and links user to decks with cards due for review">
-      <option name="closed" value="true" />
-      <created>1721312498824</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1721312498824</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Small improvements to decks.html. Users can now see when the next review is scheduled, and when they last reviewed each deck.">
-      <option name="closed" value="true" />
-      <created>1721313640700</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1721313640700</updated>
-    </task>
-    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Adjusted &quot;register.html&quot; so that it displays errors if registration form data is invalid such as invalid email, passwords don't match, username or email taken. TODO: Create password constraint to force users to create a more secure password." />
-    <MESSAGE value="Using flask_login, added login functionality including an adaptation to &quot;base.html&quot; such that the taskbar is appropriate for the given login status. Created a placeholder dashboard for logged in users" />
-    <MESSAGE value="Added a &quot;LoginEvent&quot; model to track each instance of a user logging in to the application. This will be used for features such as daily login streaks." />
-    <MESSAGE value="Small experiments with &quot;get_login_count&quot; and &quot;get_latest_login&quot; user functions" />
-    <MESSAGE value="Imported flask_migrate to preserve database records between changes to database models" />
-    <MESSAGE value="Implemented a simple Deck creation feature, inside a new blueprint &quot;Decks&quot; where more complex features such as card creation and edit/manage deck will also be kept" />
-    <MESSAGE value="Moved &quot;Decks.html&quot; to relevant subfolder and updated the template to display the current_user's Decks with placeholders for number of cards, cards due for review, and date of next and most recent reviews" />
-    <MESSAGE value="Added a card creation feature which allows user to create a new card with a front and back and select a deck to add this to" />
-    <MESSAGE value="Added 2 files to git which were not being tracked" />
-    <MESSAGE value="Small fix to ensure the select deck dropdown menu only shows decks associated with the current user" />
-    <MESSAGE value="Fixed error caused by redundant user_id in add_Card route logic" />
-    <MESSAGE value="Implemented feature for users to click on one of their decks and view the cards in that deck. Users can click a button to reveal the answer on the back of the card and can click another button to edit either side of the card" />
-    <MESSAGE value="Added buttons to delete cards and decks. Both buttons require confirmation from user before deleting. Upon deletion of a deck, all cards are deleted from that first as part of the delete_deck function" />
-    <MESSAGE value="Improved the layout of the card review screen. Cards are now displayed in a rectangle to give the impression of authentic flashcards. Cards can be flipped by clicking &quot;show answer&quot; or pressing spacebar for enhanced usability. Flipping of cards implemented using basic Javascript." />
-    <MESSAGE value="Small changes allowing users to press Left Arrow if they recall the card incorrectly, and Right Arrow if correct" />
-    <MESSAGE value="Using Javascript fore enforced delays, implemented visible feedback on Correct/ Incorrect button presses" />
-    <MESSAGE value="Added ReviewOutcome model to track user performance on the review of each card, and added logic in process_review and review_summary to store and display this information to users after each review session, identified by session_id in ReviewOutcome" />
-    <MESSAGE value="Added a Share Deck button and shared boolean field as part of the Deck Model. Also added public_decks.html which will be integrated soon" />
-    <MESSAGE value="Implemented a basic public_decks.html page which will soon allow users to clone a deck to their own Decks page" />
-    <MESSAGE value="Small adjustments to public_decks. Now any user can view the deck and each card within the deck, but only the creator of the deck can edit or delete it" />
-    <MESSAGE value="Further improvements to public decks, providing the creator's username alongside each shared deck. User's deck share button now responds to the shared status of the deck in question." />
-    <MESSAGE value="Users can now clone an entire deck from public_decks into their own collection of decks, allowing them to review and manage the cards in that deck for their own requirements" />
-    <MESSAGE value="Implemented a more accurate scheduling system based on a biweekly version of the Leitner system. Small changes to decks.html to be more responsive. Scheduling calendar relies on calculations which start from the date a user first reviews a deck." />
-    <MESSAGE value="Upgraded the dashboard so that a user will be notified of any reviews that are due and provides the details and links user to decks with cards due for review" />
-    <MESSAGE value="Small improvements to decks.html. Users can now see when the next review is scheduled, and when they last reviewed each deck." />
-    <option name="LAST_COMMIT_MESSAGE" value="Small improvements to decks.html. Users can now see when the next review is scheduled, and when they last reviewed each deck." />
   </component>
 </project>

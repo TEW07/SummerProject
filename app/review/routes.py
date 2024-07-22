@@ -1,12 +1,11 @@
-from flask import Blueprint, render_template, redirect, abort, url_for, flash, request, session
+from flask import render_template, redirect, abort, url_for, flash, request, session
 from flask_login import current_user, login_required
 from app.decks.models import Deck, Card
 from app import db
 from app.review.models import ReviewOutcome
 import uuid
 from datetime import datetime, timedelta
-
-review_blueprint = Blueprint('review', __name__, template_folder='templates')
+from . import review_blueprint
 
 
 @review_blueprint.route('/start_review/<int:deck_id>', methods=['GET'])
