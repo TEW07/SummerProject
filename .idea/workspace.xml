@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Small improvement to Next_Review_Date, now considering reviews due before the current date, instead of just future review dates so that next_review_date can be set to the current date if cards are already due. Minor tweaks and removing redundancy elsewhere">
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Added database file to git tracking">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/review/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/review/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +65,15 @@
       <workItem from="1721658167501" duration="331000" />
       <workItem from="1721658549120" duration="2924000" />
     </task>
+    <task id="LOCAL-00001" summary="Added database file to git tracking">
+      <option name="closed" value="true" />
+      <created>1721734101390</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1721734101390</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,6 +92,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Small improvement to Next_Review_Date, now considering reviews due before the current date, instead of just future review dates so that next_review_date can be set to the current date if cards are already due. Minor tweaks and removing redundancy elsewhere" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small improvement to Next_Review_Date, now considering reviews due before the current date, instead of just future review dates so that next_review_date can be set to the current date if cards are already due. Minor tweaks and removing redundancy elsewhere" />
+    <MESSAGE value="Added database file to git tracking" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added database file to git tracking" />
   </component>
 </project>

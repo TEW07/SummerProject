@@ -107,20 +107,27 @@ REVIEW_SCHEDULE = {
 
 def schedule_review(card, success, deck):
     if success:
-        card.box = min(card.box + 1, 5)
+        if card.box == 5:
+            # Card is learned, no need for further review
+            card.next_review_date = None
+        else:
+            card.box += 1
     else:
         card.box = 1
 
-    today = datetime.utcnow().date()
-    current_cycle_day = (today - deck.review_start_date.date()).days % 14 + 1
-    for offset in range(1, 15):
-        next_cycle_day = (current_cycle_day + offset - 1) % 14 + 1
-        if card.box in REVIEW_SCHEDULE[next_cycle_day]:
-            card.next_review_date = today + timedelta(days=offset)
-            break
+    if card.next_review_date is not None:
+        today = datetime.utcnow().date()
+        current_cycle_day = ((today - deck.review_start_date.date()).days % 14) + 1
+        for offset in range(1, 15):
+            next_cycle_day = ((current_cycle_day + offset - 1) % 14) + 1
+            if card.box in REVIEW_SCHEDULE[next_cycle_day]:
+                card.next_review_date = today + timedelta(days=offset)
+                break
 
-    card.next_review_date = datetime.combine(card.next_review_date, datetime.min.time())
+        card.next_review_date = datetime.combine(card.next_review_date, datetime.min.time())
+
     db.session.commit()
+
 
 
 
