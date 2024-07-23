@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, session
 from . import auth_blueprint
 from app.auth.forms import RegistrationForm, LoginForm
 from .models import User, LoginEvent
@@ -20,6 +20,8 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
+from datetime import datetime, timedelta
+
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -31,7 +33,6 @@ def login():
 
             # Update the last_login column
             user.last_login = datetime.utcnow()
-            db.session.commit()
 
             # Log the login event
             login_event = LoginEvent(user_id=user.user_id)
@@ -42,6 +43,9 @@ def login():
         else:
             flash('Sign in unsuccessful', 'danger')
     return render_template('login.html', title='Sign In', form=form)
+
+
+
 
 
 @auth_blueprint.route('/logout', methods=['GET'])
