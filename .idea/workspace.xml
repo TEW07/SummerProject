@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Added comments to scheduling algorithm">
-      <change afterPath="$PROJECT_DIR$/app/static/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generate_logins.py" afterDir="false" />
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Implemented a daily login streak, displayed on the user's dashboard, and created a script &quot;generate_logins.py&quot; to test this feature. Daily streak logic is inside the route for dashboard. Created and included in base.html a custom css file to make the streak badge (only slightly) more appealing">
+      <change afterPath="$PROJECT_DIR$/app/main/templates/leaderboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SummerProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SummerProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/templates/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -37,19 +38,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;leitner-system&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "leitner-system",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject" />
@@ -63,7 +65,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -82,6 +84,7 @@
       <updated>1721658166258</updated>
       <workItem from="1721658167501" duration="331000" />
       <workItem from="1721658549120" duration="2924000" />
+      <workItem from="1721814898501" duration="4470000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -107,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721737718142</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implemented a daily login streak, displayed on the user's dashboard, and created a script &quot;generate_logins.py&quot; to test this feature. Daily streak logic is inside the route for dashboard. Created and included in base.html a custom css file to make the streak badge (only slightly) more appealing">
+      <option name="closed" value="true" />
+      <created>1721746471337</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1721746471337</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +140,7 @@
     <MESSAGE value="Added database file to git tracking" />
     <MESSAGE value="Small adjustments to review scheduling, cards correctly reviewed in box 5 are removed from the review pool and can be considered &quot;learned&quot;. Cards with next_review_date are learned cards." />
     <MESSAGE value="Added comments to scheduling algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comments to scheduling algorithm" />
+    <MESSAGE value="Implemented a daily login streak, displayed on the user's dashboard, and created a script &quot;generate_logins.py&quot; to test this feature. Daily streak logic is inside the route for dashboard. Created and included in base.html a custom css file to make the streak badge (only slightly) more appealing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented a daily login streak, displayed on the user's dashboard, and created a script &quot;generate_logins.py&quot; to test this feature. Daily streak logic is inside the route for dashboard. Created and included in base.html a custom css file to make the streak badge (only slightly) more appealing" />
   </component>
 </project>

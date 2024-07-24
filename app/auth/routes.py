@@ -3,7 +3,7 @@ from . import auth_blueprint
 from app.auth.forms import RegistrationForm, LoginForm
 from .models import User, LoginEvent
 from flask_login import login_user, login_required, logout_user, current_user
-from datetime import datetime
+from datetime import datetime, timedelta
 from app import db
 
 
@@ -20,8 +20,6 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-from datetime import datetime, timedelta
-
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
@@ -31,21 +29,45 @@ def login():
             login_user(user, remember=True)
             flash('Sign in successful', 'success')
 
-            # Update the last_login column
-            user.last_login = datetime.utcnow()
+            # Calculate the streak
+            today = datetime.utcnow().date()
+            yesterday = today - timedelta(days=1)
+            login_events = LoginEvent.query.filter_by(user_id=user.user_id).order_by(LoginEvent.timestamp.desc()).all()
+            login_dates = {event.timestamp.date() for event in login_events}
+
+            streak = 1  # Default streak if today is the first login
+            if yesterday in login_dates:
+                expected_date = yesterday
+                while expected_date in login_dates:
+                    streak += 1
+                    expected_date -= timedelta(days=1)
+
+            # Check if user has already logged in today
+            if today not in login_dates:
+                # Update user points
+                base_points = 10
+                streak_points = streak * base_points  # Amplify points for streak
+
+                # Ensure points is not None
+                if user.points is None:
+                    user.points = 0
+
+                user.points += streak_points
+                db.session.commit()
 
             # Log the login event
-            login_event = LoginEvent(user_id=user.user_id)
+            now = datetime.utcnow()
+            login_event = LoginEvent(user_id=user.user_id, timestamp=now)
             db.session.add(login_event)
             db.session.commit()
+
+            # Store streak in session
+            session['streak'] = streak
 
             return redirect(url_for('main.dashboard'))
         else:
             flash('Sign in unsuccessful', 'danger')
     return render_template('login.html', title='Sign In', form=form)
-
-
-
 
 
 @auth_blueprint.route('/logout', methods=['GET'])

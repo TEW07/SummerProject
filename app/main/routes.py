@@ -1,8 +1,8 @@
-from flask import render_template, flash
+from flask import render_template, flash, session
 from . import main_blueprint
 from app.decks.models import Deck, Card
-from app.auth.models import LoginEvent
-from datetime import datetime, timedelta
+from app.auth.models import User
+from datetime import datetime
 from flask_login import current_user, login_required
 
 
@@ -30,26 +30,22 @@ def dashboard():
             })
             flash(f'{due_count} cards due for review in {deck.name}', 'warning')
 
-    # Calculate the current streak
-    login_events = LoginEvent.query.filter_by(user_id=current_user.user_id).order_by(LoginEvent.timestamp.desc()).all()
-    streak = 0
-    today = datetime.utcnow().date()
-    expected_date = today
-
-    login_dates = {event.timestamp.date() for event in login_events}
-
-    while expected_date in login_dates:
-        streak += 1
-        expected_date -= timedelta(days=1)
-
     user_info = {
         'username': current_user.username,
         'login_count': current_user.get_login_count(current_user.user_id),
         'last_login_at': current_user.get_latest_login(current_user.user_id),
-        'current_streak': streak  # Add the current streak to user_info
+        'current_streak': session.get('streak', 0)  # Retrieve the streak from the session
     }
 
     return render_template('dashboard.html', due_reviews=due_reviews, user_info=user_info)
+
+
+
+@main_blueprint.route('/leaderboard')
+def leaderboard():
+    users = User.query.order_by(User.points.desc()).limit(10).all()  # Get top 10 users
+    return render_template('leaderboard.html', users=users)
+
 
 
 
