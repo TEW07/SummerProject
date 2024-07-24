@@ -1,14 +1,19 @@
 from flask import render_template, flash, session
 from . import main_blueprint
 from app.decks.models import Deck, Card
-from app.auth.models import User
+from app.auth.models import User, LoginEvent
 from datetime import datetime
 from flask_login import current_user, login_required
+import pytz
+from pytz import timezone
+
+
 
 
 @main_blueprint.route('/')
 def index():
     return render_template('home.html')
+
 
 
 @main_blueprint.route('/dashboard')
@@ -30,14 +35,31 @@ def dashboard():
             })
             flash(f'{due_count} cards due for review in {deck.name}', 'warning')
 
+    # Get the previous login time (excluding the current login)
+    login_events = LoginEvent.query.filter_by(user_id=current_user.user_id).order_by(LoginEvent.timestamp.desc()).all()
+    previous_login_time = login_events[1].timestamp if len(login_events) > 1 else None
+
+    # Convert the previous login time to BST
+    if previous_login_time:
+        bst = timezone('Europe/London')
+        previous_login_time = previous_login_time.replace(tzinfo=pytz.utc).astimezone(bst)
+        previous_login_time_str = previous_login_time.strftime('%Y-%m-%d %H:%M')
+    else:
+        previous_login_time_str = 'N/A'
+
+    # Calculate the current streak
+    streak = session.get('streak', 1)
+
     user_info = {
         'username': current_user.username,
         'login_count': current_user.get_login_count(current_user.user_id),
-        'last_login_at': current_user.get_latest_login(current_user.user_id),
-        'current_streak': session.get('streak', 0)  # Retrieve the streak from the session
+        'last_login_at': previous_login_time_str,
+        'current_streak': streak  # Add the current streak to user_info
     }
 
     return render_template('dashboard.html', due_reviews=due_reviews, user_info=user_info)
+
+
 
 
 
