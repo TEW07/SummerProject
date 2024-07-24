@@ -76,3 +76,24 @@ def logout():
     flash(f'{current_user.username} Logged Out', 'success')
     logout_user()
     return redirect(url_for('auth.login'))
+
+
+@auth_blueprint.route('/account_settings')
+@login_required
+def account_settings():
+    return render_template('account_settings.html')
+
+
+@auth_blueprint.route('/delete_account', methods=['POST'])
+@login_required
+def delete_account():
+    user = User.query.get(current_user.user_id)
+    if user:
+        # Perform cascading deletions if necessary
+        db.session.delete(user)
+        db.session.commit()
+        logout_user()
+        flash('Your account has been deleted.', 'success')
+        return redirect(url_for('main.index'))
+    flash('Account deletion failed.', 'danger')
+    return redirect(url_for('auth.account_settings'))

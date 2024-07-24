@@ -1,3 +1,4 @@
+# app/decks/models.py
 from app import db
 from datetime import datetime
 
@@ -8,8 +9,10 @@ class Deck(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     shared = db.Column(db.Boolean, default=False)
-    cards = db.relationship('Card', backref='deck', lazy=True)
     review_start_date = db.Column(db.DateTime, nullable=True)
+
+    # Relationship to Card with cascade delete
+    cards = db.relationship('Card', backref='deck', cascade='all, delete-orphan', lazy=True)
 
     def __repr__(self):
         return f"Deck('{self.name}', '{self.user_id}')"

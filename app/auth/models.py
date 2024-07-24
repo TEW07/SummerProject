@@ -1,8 +1,8 @@
+# app/auth/models.py
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
 from app import db
-
 
 class User(db.Model, UserMixin):
     user_id = db.Column(db.Integer, primary_key=True)
@@ -10,6 +10,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
     points = db.Column(db.Integer, default=0)  # Add points column
+
+    # Relationship to LoginEvent with cascade delete
+    login_events = db.relationship('LoginEvent', backref='user', cascade='all, delete-orphan', lazy=True)
+    decks = db.relationship('Deck', backref='user', cascade='all, delete-orphan', lazy=True)
 
     def get_id(self):
         return str(self.user_id)
@@ -38,6 +42,7 @@ class LoginEvent(db.Model):
 
     def __repr__(self):
         return f"LoginEvent('{self.user_id}', '{self.timestamp}')"
+
 
 
 
