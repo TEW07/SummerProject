@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Added a new page, account_settings.html, which contains a button user's can click to delete their account. Changes made to models to facilitate this deletion, via cascading on deletion.">
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Utilised pytz to display most recent login according to BST on dashboard">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/review/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/review/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/review/templates/review_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/review/templates/review_summary.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +80,7 @@
       <updated>1721658166258</updated>
       <workItem from="1721658167501" duration="331000" />
       <workItem from="1721658549120" duration="2924000" />
-      <workItem from="1721814898501" duration="6720000" />
+      <workItem from="1721814898501" duration="9705000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -130,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721822690072</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Utilised pytz to display most recent login according to BST on dashboard">
+      <option name="closed" value="true" />
+      <created>1721824099186</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1721824099186</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,6 +163,7 @@
     <MESSAGE value="Implemented a daily login streak, displayed on the user's dashboard, and created a script &quot;generate_logins.py&quot; to test this feature. Daily streak logic is inside the route for dashboard. Created and included in base.html a custom css file to make the streak badge (only slightly) more appealing" />
     <MESSAGE value="Implemented a points system, each User has a points attribute which is defaulted to 0. Upon succesful login, users are awarded 10 points, which is amplified by their current login streak. Streak logic has been relocated to the login route so users can be awarded an appropriate number of points immediately upon login" />
     <MESSAGE value="Added a new page, account_settings.html, which contains a button user's can click to delete their account. Changes made to models to facilitate this deletion, via cascading on deletion." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a new page, account_settings.html, which contains a button user's can click to delete their account. Changes made to models to facilitate this deletion, via cascading on deletion." />
+    <MESSAGE value="Utilised pytz to display most recent login according to BST on dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Utilised pytz to display most recent login according to BST on dashboard" />
   </component>
 </project>

@@ -65,8 +65,6 @@ def process_review(card_id):
     return redirect(url_for('review.show_card'))
 
 
-
-
 @review_blueprint.route('/review_summary')
 @login_required
 def review_summary():
@@ -83,8 +81,27 @@ def review_summary():
     correct_count = sum(1 for outcome in review_outcomes if outcome.correct)
     incorrect_count = len(review_outcomes) - correct_count
 
+    # Calculate points
+    base_card_points = 10
+    correct_bonus = 5
+    total_cards_reviewed = len(review_outcomes)
+    points_earned = (total_cards_reviewed * base_card_points) + (correct_count * correct_bonus)
+
+    # Ensure user points is not None
+    if current_user.points is None:
+        current_user.points = 0
+
+    # Update user points
+    current_user.points += points_earned
+    db.session.commit()
+
+    flash(f'You earned {points_earned} points for this review session!', 'success')
+
     return render_template('review_summary.html', correct_count=correct_count, incorrect_count=incorrect_count,
-                           total=len(review_outcomes))
+                           total=total_cards_reviewed, points_earned=points_earned)
+
+
+
 
 
 REVIEW_SCHEDULE = {

@@ -25,10 +25,21 @@
         </div>
     </div>
     <div class="d-flex justify-content-center my-4">
+        <div class="card text-white bg-info m-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Points Earned</h5>
+                <p class="card-text">{{ points_earned }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center my-4">
         <a href="{{ url_for('decks.decks') }}" class="btn btn-primary">Back to Decks</a>
     </div>
 </div>
 {% endblock %}
+
+
+
 
 
 
