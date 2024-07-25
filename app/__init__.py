@@ -24,11 +24,13 @@ from .auth.routes import auth_blueprint
 from .decks.routes import decks_blueprint
 from .review.routes import review_blueprint
 from app.auth.models import *
+from .gamification.routes import gamification_blueprint  # Add this line
 
 app.register_blueprint(main_blueprint)
 app.register_blueprint(auth_blueprint)
 app.register_blueprint(decks_blueprint)
 app.register_blueprint(review_blueprint)
+app.register_blueprint(gamification_blueprint)  # Add this line
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -37,6 +39,11 @@ login_manager.login_view = 'auth.login'
 
 from app.auth.models import User
 from app.decks.models import Deck, Card
+from app.gamification.models import Achievement, UserAchievement  # Add this line
+
+from app.commands.achievements import add_achievements  # Add this line
+app.cli.add_command(add_achievements)  # Add this line
+
 
 @login_manager.user_loader
 def load_user(user_id):

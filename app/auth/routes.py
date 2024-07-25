@@ -1,6 +1,7 @@
 from flask import render_template, url_for, flash, redirect, session
 from . import auth_blueprint
 from app.auth.forms import RegistrationForm, LoginForm
+from app.gamification.routes import check_achievements
 from .models import User, LoginEvent
 from flask_login import login_user, login_required, logout_user, current_user
 from datetime import datetime, timedelta
@@ -57,6 +58,8 @@ def login():
 
                 user.points += streak_points
                 db.session.commit()
+
+                check_achievements(current_user)
 
                 # Create detailed message
                 if streak == 1:

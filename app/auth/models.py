@@ -10,6 +10,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
     points = db.Column(db.Integer, default=0)  # Add points column
+    achievements = db.relationship('UserAchievement', back_populates='user', cascade='all, delete-orphan')
 
     # Relationship to LoginEvent with cascade delete
     login_events = db.relationship('LoginEvent', backref='user', cascade='all, delete-orphan', lazy=True)

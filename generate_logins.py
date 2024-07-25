@@ -22,12 +22,12 @@ def generate_pretend_logins(user_id, start_date, num_days):
 
 if __name__ == "__main__":
     with app.app_context():
-        user = User.query.filter_by(username='Twotto7').first()
+        user = User.query.filter_by(username='TestUser').first()
         if user:
             # Clear existing login events for the user
             LoginEvent.query.filter_by(user_id=user.user_id).delete()
             db.session.commit()
 
             # Generate pretend logins
-            generate_pretend_logins(user.user_id, datetime(2024, 7, 14), 10)
+            generate_pretend_logins(user.user_id, datetime(2024, 7, 15), 10)
             print("Pretend logins generated successfully.")

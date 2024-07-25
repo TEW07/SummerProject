@@ -1,6 +1,7 @@
 from flask import render_template, redirect, abort, url_for, flash, request, session
 from flask_login import current_user, login_required
 from app.decks.models import Deck, Card
+from app.gamification.routes import check_achievements
 from app import db
 from app.review.models import ReviewOutcome
 import uuid
@@ -94,6 +95,8 @@ def review_summary():
     # Update user points
     current_user.points += points_earned
     db.session.commit()
+
+    check_achievements(current_user)
 
     flash(f'You earned {points_earned} points for this review session!', 'success')
 
