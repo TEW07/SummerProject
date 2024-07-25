@@ -5,13 +5,6 @@ from .models import Achievement, UserAchievement
 from app.auth.models import User
 from . import gamification_blueprint
 
-@gamification_blueprint.route('/achievements')
-@login_required
-def achievements():
-    achievements = Achievement.query.all()
-    user_achievements = {ua.achievement_id: ua for ua in current_user.achievements}
-    return render_template('achievements.html', achievements=achievements, user_achievements=user_achievements)
-
 @gamification_blueprint.route('/leaderboard')
 @login_required
 def leaderboard():
@@ -38,18 +31,45 @@ def check_achievements(user):
 @login_required
 def user_achievements():
     user_achievements = UserAchievement.query.filter_by(user_id=current_user.user_id).all()
+    all_achievements = Achievement.query.all()
+    user_achievements_dict = {ua.achievement_id: ua for ua in user_achievements}
+
     achievements_with_progress = [
         {
             'achievement': ua,
-            'progress': calculate_progress(current_user.points, ua.achievement.target)
+            'progress': calculate_progress(ua)
         } for ua in user_achievements
     ]
-    return render_template('user_achievements.html', achievements_with_progress=achievements_with_progress)
 
-def calculate_progress(user_points, achievement_target):
-    if achievement_target > 0:
-        return (user_points / achievement_target) * 100
+    all_achievements_with_progress = [
+        {
+            'achievement': achievement,
+            'progress': calculate_progress_all(achievement)
+        } for achievement in all_achievements if achievement.achievement_id not in user_achievements_dict
+    ]
+
+    return render_template(
+        'user_achievements.html',
+        achievements_with_progress=achievements_with_progress,
+        all_achievements_with_progress=all_achievements_with_progress,
+        user_achievements=user_achievements_dict
+    )
+
+def calculate_progress(user_achievement):
+    if user_achievement.achievement.target > 0:
+        return (current_user.points / user_achievement.achievement.target) * 100
     return 0
+
+def calculate_progress_all(achievement):
+    if achievement.target > 0:
+        return (current_user.points / achievement.target) * 100
+    return 0
+
+
+
+
+
+
 
 
 

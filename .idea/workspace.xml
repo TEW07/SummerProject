@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Implemented achievement and user_achievement models, and a script to commit some basic achievements to the database. Users are awarded these basic achievements upon certain points thresholds">
-      <change afterPath="$PROJECT_DIR$/update_schema.py" afterDir="false" />
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Added a &quot;target&quot; attribute to the achievement schema, to facilitate progress tracking. Also added a script to update the existing schema with the target column">
+      <change afterPath="$PROJECT_DIR$/app/static/badges/1000_points_badge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/badges/500_points_badge.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/commands/achievements.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/commands/achievements.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/gamification/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/gamification/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" afterDir="false" />
     </list>
@@ -156,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721904347270</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added a &quot;target&quot; attribute to the achievement schema, to facilitate progress tracking. Also added a script to update the existing schema with the target column">
+      <option name="closed" value="true" />
+      <created>1721921380550</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1721921380550</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +189,7 @@
     <MESSAGE value="Added a new page, account_settings.html, which contains a button user's can click to delete their account. Changes made to models to facilitate this deletion, via cascading on deletion." />
     <MESSAGE value="Utilised pytz to display most recent login according to BST on dashboard" />
     <MESSAGE value="Implemented achievement and user_achievement models, and a script to commit some basic achievements to the database. Users are awarded these basic achievements upon certain points thresholds" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented achievement and user_achievement models, and a script to commit some basic achievements to the database. Users are awarded these basic achievements upon certain points thresholds" />
+    <MESSAGE value="Added a &quot;target&quot; attribute to the achievement schema, to facilitate progress tracking. Also added a script to update the existing schema with the target column" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a &quot;target&quot; attribute to the achievement schema, to facilitate progress tracking. Also added a script to update the existing schema with the target column" />
   </component>
 </project>
