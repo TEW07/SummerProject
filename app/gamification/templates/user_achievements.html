@@ -5,14 +5,17 @@
 {% block content %}
 <div class="container mt-4">
     <div class="row">
-        {% for user_achievement in user_achievements %}
+        {% for item in achievements_with_progress %}
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="{{ url_for('static', filename=user_achievement.achievement.badge_image) }}" class="card-img-top" alt="{{ user_achievement.achievement.name }}">
+                    <img src="{{ url_for('static', filename=item.achievement.achievement.badge_image) }}" class="card-img-top" alt="{{ item.achievement.achievement.name }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ user_achievement.achievement.name }}</h5>
-                        <p class="card-text">{{ user_achievement.achievement.description }}</p>
-                        <p class="card-text"><small class="text-muted">Earned on: {{ user_achievement.date_earned.strftime('%Y-%m-%d %H:%M') }}</small></p>
+                        <h5 class="card-title">{{ item.achievement.achievement.name }}</h5>
+                        <p class="card-text">{{ item.achievement.achievement.description }}</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ item.progress }}%;" aria-valuenow="{{ item.progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <p class="card-text"><small class="text-muted">Earned on: {{ item.achievement.date_earned.strftime('%Y-%m-%d %H:%M') }}</small></p>
                     </div>
                 </div>
             </div>
@@ -20,6 +23,10 @@
     </div>
 </div>
 {% endblock %}
+
+
+
+
 
 
 

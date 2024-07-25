@@ -27,19 +27,30 @@ def award_achievement(user_id, achievement_id):
         achievement = Achievement.query.get(achievement_id)
         flash(f'Congratulations! You have earned the achievement: {achievement.name}', 'success')
 
-
 # Example function to award an achievement based on some criteria
 def check_achievements(user):
     achievements = Achievement.query.all()
     for achievement in achievements:
-        if user.points >= int(achievement.name.split()[0]) and not UserAchievement.query.filter_by(user_id=user.user_id, achievement_id=achievement.achievement_id).first():
+        if user.points >= achievement.target:
             award_achievement(user.user_id, achievement.achievement_id)
-
 
 @gamification_blueprint.route('/user_achievements')
 @login_required
 def user_achievements():
     user_achievements = UserAchievement.query.filter_by(user_id=current_user.user_id).all()
-    return render_template('user_achievements.html', user_achievements=user_achievements)
+    achievements_with_progress = [
+        {
+            'achievement': ua,
+            'progress': calculate_progress(current_user.points, ua.achievement.target)
+        } for ua in user_achievements
+    ]
+    return render_template('user_achievements.html', achievements_with_progress=achievements_with_progress)
+
+def calculate_progress(user_points, achievement_target):
+    if achievement_target > 0:
+        return (user_points / achievement_target) * 100
+    return 0
+
+
 
 

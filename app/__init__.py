@@ -39,11 +39,13 @@ login_manager.login_view = 'auth.login'
 
 from app.auth.models import User
 from app.decks.models import Deck, Card
-from app.gamification.models import Achievement, UserAchievement  # Add this line
+from app.gamification.models import Achievement, UserAchievement
 
-from app.commands.achievements import add_achievements, update_achievements  # Add this line
-app.cli.add_command(add_achievements)  # Add this line
+from app.commands.achievements import add_achievements, update_achievements, delete_achievements, update_targets
+app.cli.add_command(add_achievements)
 app.cli.add_command(update_achievements)
+app.cli.add_command(delete_achievements)
+app.cli.add_command(update_targets)
 
 
 @login_manager.user_loader

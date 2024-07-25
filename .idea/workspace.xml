@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Implemented achievement and user_achievement models, and a script to commit some basic achievements to the database. Users are awarded these basic achievements upon certain points thresholds">
-      <change afterPath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/badges/100_points_badge.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/update_schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/commands/achievements.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/commands/achievements.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/gamification/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gamification/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/gamification/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/templates/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/templates/leaderboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,28 +38,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "leitner-system",
-    "last_opened_file_path": "C:/Users/Tomwa/PycharmProjects/SummerProject/app/static/badges",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;leitner-system&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tomwa/PycharmProjects/SummerProject/app/static/badges&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\static\badges" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\gamification\templates" />
       <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject" />
+      <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\gamification\templates" />
     </key>
   </component>
   <component name="RunManager">

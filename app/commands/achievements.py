@@ -37,3 +37,33 @@ def update_achievements():
             print(f"Updated {name} with new badge path.")
 
 
+@click.command(name='update_targets')
+@with_appcontext
+def update_targets():
+    # Define the new achievements with their targets
+    achievements_with_targets = [
+        {'name': '100 Points Achieved', 'target': 100},
+        {'name': '500 Points Achieved', 'target': 500},
+        {'name': '1000 Points Achieved', 'target': 1000}
+    ]
+
+    # Update the existing achievements with the new target values
+    for item in achievements_with_targets:
+        achievement = Achievement.query.filter_by(name=item['name']).first()
+        if achievement:
+            achievement.target = item['target']
+            db.session.commit()
+            print(f"Updated {item['name']} with target {item['target']}.")
+
+    print("Achievements updated successfully!")
+
+@click.command(name='delete_achievements')
+@with_appcontext
+def delete_achievements():
+    achievements = Achievement.query.all()
+    for achievement in achievements:
+        db.session.delete(achievement)
+    db.session.commit()
+    print("All achievements deleted successfully!")
+
+

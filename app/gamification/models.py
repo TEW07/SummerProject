@@ -7,6 +7,7 @@ class Achievement(db.Model):
     description = db.Column(db.String(255), nullable=False)
     points = db.Column(db.Integer, nullable=False, default=0)
     badge_image = db.Column(db.String(255), nullable=False)
+    target = db.Column(db.Integer, nullable=False, default=0)  # Add this line
     users = db.relationship('UserAchievement', back_populates='achievement', cascade='all, delete-orphan')
 
 class UserAchievement(db.Model):
@@ -16,3 +17,5 @@ class UserAchievement(db.Model):
     date_earned = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     user = db.relationship('User', back_populates='achievements')
     achievement = db.relationship('Achievement', back_populates='users')
+
+
