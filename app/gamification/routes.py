@@ -36,4 +36,10 @@ def check_achievements(user):
             award_achievement(user.user_id, achievement.achievement_id)
 
 
+@gamification_blueprint.route('/user_achievements')
+@login_required
+def user_achievements():
+    user_achievements = UserAchievement.query.filter_by(user_id=current_user.user_id).all()
+    return render_template('user_achievements.html', user_achievements=user_achievements)
+
 

@@ -35,3 +35,12 @@
     background-color: #FF5722; /* Fire-like color */
     clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
 }
+
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+}
+

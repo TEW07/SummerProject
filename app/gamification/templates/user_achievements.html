@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Your Achievements{% endblock %}
+{% block heading %}Your Achievements{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        {% for user_achievement in user_achievements %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ url_for('static', filename=user_achievement.achievement.badge_image) }}" class="card-img-top" alt="{{ user_achievement.achievement.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user_achievement.achievement.name }}</h5>
+                        <p class="card-text">{{ user_achievement.achievement.description }}</p>
+                        <p class="card-text"><small class="text-muted">Earned on: {{ user_achievement.date_earned.strftime('%Y-%m-%d %H:%M') }}</small></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+
+

@@ -63,15 +63,6 @@ def dashboard():
 
 
 
-@main_blueprint.route('/leaderboard')
-def leaderboard():
-    users = User.query.order_by(User.points.desc()).limit(10).all()  # Get top 10 users
-    return render_template('leaderboard.html', users=users)
-
-
-
-
-
 
 
 
