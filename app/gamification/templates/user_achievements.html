@@ -12,9 +12,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ entry['achievement'].achievement.name }}</h5>
                         <p class="card-text">{{ entry['achievement'].achievement.description }}</p>
-                        <div class="progress position-relative">
+                        <div class="progress position-relative" style="height: 30px;">
                             <div class="progress-bar bg-success" role="progressbar" style="width: {{ entry['progress'] if entry['progress'] <= 100 else 100 }}%;" aria-valuenow="{{ entry['progress'] if entry['progress'] <= 100 else 100 }}" aria-valuemin="0" aria-valuemax="100"></div>
-                            <span class="position-absolute w-100 text-center" style="white-space: nowrap; color: {{ 'white' if entry['progress'] > 50 else 'black' }};">{{ entry['progress'] | round(1) }}% ({{ current_user.points }}/{{ entry['achievement'].achievement.target }})</span>
+                            <span class="position-absolute w-100 text-center {{ 'text-black' if entry['progress'] < 50 else 'text-white' }}" style="white-space: nowrap; font-size: 1.2em; font-weight: bold;">{{ entry['progress'] | round(1) }}% ({{ current_user.points }}/{{ entry['achievement'].achievement.target }})</span>
                         </div>
                         <p class="card-text"><small class="text-muted">Earned on: {{ entry['achievement'].date_earned.strftime('%Y-%m-%d %H:%M') }}</small></p>
                     </div>
@@ -32,9 +32,9 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ entry['achievement'].name }}</h5>
                             <p class="card-text">{{ entry['achievement'].description }}</p>
-                            <div class="progress position-relative">
+                            <div class="progress position-relative" style="height: 30px;">
                                 <div class="progress-bar bg-success" role="progressbar" style="width: {{ entry['progress'] if entry['progress'] <= 100 else 100 }}%;" aria-valuenow="{{ entry['progress'] if entry['progress'] <= 100 else 100 }}" aria-valuemin="0" aria-valuemax="100"></div>
-                                <span class="position-absolute w-100 text-center" style="white-space: nowrap; color: black;">{{ entry['progress'] | round(1) }}% ({{ current_user.points }}/{{ entry['achievement'].target }})</span>
+                                <span class="position-absolute w-100 text-center {{ 'text-black' if entry['progress'] < 50 else 'text-white' }}" style="white-space: nowrap; font-size: 1.2em; font-weight: bold;">{{ entry['progress'] | round(1) }}% ({{ current_user.points }}/{{ entry['achievement'].target }})</span>
                             </div>
                             {% if entry['achievement'].achievement_id in user_achievements %}
                                 <p class="card-text"><small class="text-muted">Earned on: {{ user_achievements[entry['achievement'].achievement_id].date_earned.strftime('%Y-%m-%d %H:%M') }}</small></p>
@@ -49,6 +49,11 @@
     </div>
 </div>
 {% endblock %}
+
+
+
+
+
 
 
 

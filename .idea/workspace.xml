@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Commiting untracked migration">
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Small changes to presentation of achievements. Incomplete achievements will have progress feedback presented in black to show against the grey progress bar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/gamification/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +86,7 @@
       <workItem from="1721814898501" duration="9705000" />
       <workItem from="1721901182663" duration="6030000" />
       <workItem from="1721988243609" duration="1348000" />
-      <workItem from="1721993080311" duration="1524000" />
+      <workItem from="1721993080311" duration="2307000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -186,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721993174336</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Small changes to presentation of achievements. Incomplete achievements will have progress feedback presented in black to show against the grey progress bar">
+      <option name="closed" value="true" />
+      <created>1721994830456</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1721994830456</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +223,7 @@
     <MESSAGE value="Changed achievements page to display user's obtained achievements seperately to those that are incomplete. Progress bars are displayed for all." />
     <MESSAGE value="Small changes to decks/routes and view_deck to ensure users cannot modify public decks that they do not own (have not shared themselves)" />
     <MESSAGE value="Commiting untracked migration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commiting untracked migration" />
+    <MESSAGE value="Small changes to presentation of achievements. Incomplete achievements will have progress feedback presented in black to show against the grey progress bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Small changes to presentation of achievements. Incomplete achievements will have progress feedback presented in black to show against the grey progress bar" />
   </component>
 </project>
