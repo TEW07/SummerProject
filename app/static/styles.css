@@ -44,3 +44,22 @@
     object-fit: contain;
 }
 
+
+.card.unearned .card-img-top {
+    filter: grayscale(100%);
+    opacity: 0.6;
+}
+
+
+
+.grayscale {
+    filter: grayscale(100%);
+}
+
+.progress-bar-dark {
+    background-color: #ccc !important;
+}
+
+.text-dark {
+    color: black !important;
+}
