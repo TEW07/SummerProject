@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Changed achievements page to display user's obtained achievements seperately to those that are incomplete. Progress bars are displayed for all.">
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Commiting untracked migration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/view_deck.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/view_deck.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gamification/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +88,7 @@
       <workItem from="1721814898501" duration="9705000" />
       <workItem from="1721901182663" duration="6030000" />
       <workItem from="1721988243609" duration="1348000" />
+      <workItem from="1721993080311" duration="1524000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -169,7 +170,23 @@
       <option name="project" value="LOCAL" />
       <updated>1721922992960</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Small changes to decks/routes and view_deck to ensure users cannot modify public decks that they do not own (have not shared themselves)">
+      <option name="closed" value="true" />
+      <created>1721993152388</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1721993152388</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Commiting untracked migration">
+      <option name="closed" value="true" />
+      <created>1721993174336</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1721993174336</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,6 +215,8 @@
     <MESSAGE value="Implemented achievement and user_achievement models, and a script to commit some basic achievements to the database. Users are awarded these basic achievements upon certain points thresholds" />
     <MESSAGE value="Added a &quot;target&quot; attribute to the achievement schema, to facilitate progress tracking. Also added a script to update the existing schema with the target column" />
     <MESSAGE value="Changed achievements page to display user's obtained achievements seperately to those that are incomplete. Progress bars are displayed for all." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed achievements page to display user's obtained achievements seperately to those that are incomplete. Progress bars are displayed for all." />
+    <MESSAGE value="Small changes to decks/routes and view_deck to ensure users cannot modify public decks that they do not own (have not shared themselves)" />
+    <MESSAGE value="Commiting untracked migration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commiting untracked migration" />
   </component>
 </project>

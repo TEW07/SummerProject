@@ -57,7 +57,8 @@ def user_achievements():
 
 def calculate_progress(user_achievement):
     if user_achievement.achievement.target > 0:
-        return (current_user.points / user_achievement.achievement.target) * 100
+        progress = (current_user.points / user_achievement.achievement.target) * 100
+        return min(progress, 100)
     return 0
 
 def calculate_progress_all(achievement):

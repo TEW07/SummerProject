@@ -12,8 +12,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ entry['achievement'].achievement.name }}</h5>
                         <p class="card-text">{{ entry['achievement'].achievement.description }}</p>
-                        <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ entry['progress'] }}%;" aria-valuenow="{{ entry['progress'] }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress position-relative">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ entry['progress'] if entry['progress'] <= 100 else 100 }}%;" aria-valuenow="{{ entry['progress'] if entry['progress'] <= 100 else 100 }}" aria-valuemin="0" aria-valuemax="100"></div>
+                            <span class="position-absolute w-100 text-center" style="white-space: nowrap; color: {{ 'white' if entry['progress'] > 50 else 'black' }};">{{ entry['progress'] | round(1) }}% ({{ current_user.points }}/{{ entry['achievement'].achievement.target }})</span>
                         </div>
                         <p class="card-text"><small class="text-muted">Earned on: {{ entry['achievement'].date_earned.strftime('%Y-%m-%d %H:%M') }}</small></p>
                     </div>
@@ -24,23 +25,33 @@
     <div class="row">
         <h3>All Achievements</h3>
         {% for entry in all_achievements_with_progress %}
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="{{ url_for('static', filename=entry['achievement'].badge_image) }}" class="card-img-top" alt="{{ entry['achievement'].name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ entry['achievement'].name }}</h5>
-                        <p class="card-text">{{ entry['achievement'].description }}</p>
-                        <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ entry['progress'] }}%;" aria-valuenow="{{ entry['progress'] }}" aria-valuemin="0" aria-valuemax="100"></div>
+            {% if entry['achievement'].achievement_id not in user_achievements %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename=entry['achievement'].badge_image) }}" class="card-img-top" alt="{{ entry['achievement'].name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ entry['achievement'].name }}</h5>
+                            <p class="card-text">{{ entry['achievement'].description }}</p>
+                            <div class="progress position-relative">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: {{ entry['progress'] if entry['progress'] <= 100 else 100 }}%;" aria-valuenow="{{ entry['progress'] if entry['progress'] <= 100 else 100 }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                <span class="position-absolute w-100 text-center" style="white-space: nowrap; color: black;">{{ entry['progress'] | round(1) }}% ({{ current_user.points }}/{{ entry['achievement'].target }})</span>
+                            </div>
+                            {% if entry['achievement'].achievement_id in user_achievements %}
+                                <p class="card-text"><small class="text-muted">Earned on: {{ user_achievements[entry['achievement'].achievement_id].date_earned.strftime('%Y-%m-%d %H:%M') }}</small></p>
+                            {% else %}
+                                <p class="card-text"><small class="text-muted">Not yet earned</small></p>
+                            {% endif %}
                         </div>
-                        <p class="card-text"><small class="text-muted">Not yet earned</small></p>
                     </div>
                 </div>
-            </div>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
 {% endblock %}
+
+
+
 
 
 
