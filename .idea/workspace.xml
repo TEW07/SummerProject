@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Added a &quot;target&quot; attribute to the achievement schema, to facilitate progress tracking. Also added a script to update the existing schema with the target column">
-      <change afterPath="$PROJECT_DIR$/app/static/badges/1000_points_badge.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/badges/500_points_badge.png" afterDir="false" />
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Changed achievements page to display user's obtained achievements seperately to those that are incomplete. Progress bars are displayed for all.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/gamification/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/decks/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/decks/templates/view_deck.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/view_deck.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,12 +61,12 @@
   <component name="RunManager">
     <configuration name="SummerProject" type="Python.FlaskServer">
       <module name="SummerProject" />
-      <option name="target" value="$PROJECT_DIR$/app/__init__.py" />
+      <option name="target" value="$PROJECT_DIR$/update_schema.py" />
       <option name="targetType" value="PATH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -89,6 +87,7 @@
       <workItem from="1721658549120" duration="2924000" />
       <workItem from="1721814898501" duration="9705000" />
       <workItem from="1721901182663" duration="6030000" />
+      <workItem from="1721988243609" duration="1348000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -162,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721921380550</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Changed achievements page to display user's obtained achievements seperately to those that are incomplete. Progress bars are displayed for all.">
+      <option name="closed" value="true" />
+      <created>1721922992960</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1721922992960</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +197,7 @@
     <MESSAGE value="Utilised pytz to display most recent login according to BST on dashboard" />
     <MESSAGE value="Implemented achievement and user_achievement models, and a script to commit some basic achievements to the database. Users are awarded these basic achievements upon certain points thresholds" />
     <MESSAGE value="Added a &quot;target&quot; attribute to the achievement schema, to facilitate progress tracking. Also added a script to update the existing schema with the target column" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a &quot;target&quot; attribute to the achievement schema, to facilitate progress tracking. Also added a script to update the existing schema with the target column" />
+    <MESSAGE value="Changed achievements page to display user's obtained achievements seperately to those that are incomplete. Progress bars are displayed for all." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed achievements page to display user's obtained achievements seperately to those that are incomplete. Progress bars are displayed for all." />
   </component>
 </project>
