@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Text will now become white once progress reaches a 50% threshold, to make it more readable against the green progress bar">
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Further stylistic changes to achievements, using a multicoloured progress bar so that text is visible over the complete and incomplete bar, with greyed out achievement badges.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +87,7 @@
       <workItem from="1721814898501" duration="9705000" />
       <workItem from="1721901182663" duration="6030000" />
       <workItem from="1721988243609" duration="1348000" />
-      <workItem from="1721993080311" duration="4011000" />
+      <workItem from="1721993080311" duration="5050000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -201,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721995604783</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Further stylistic changes to achievements, using a multicoloured progress bar so that text is visible over the complete and incomplete bar, with greyed out achievement badges.">
+      <option name="closed" value="true" />
+      <created>1721997277687</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1721997277687</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +242,7 @@
     <MESSAGE value="Commiting untracked migration" />
     <MESSAGE value="Small changes to presentation of achievements. Incomplete achievements will have progress feedback presented in black to show against the grey progress bar" />
     <MESSAGE value="Text will now become white once progress reaches a 50% threshold, to make it more readable against the green progress bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Text will now become white once progress reaches a 50% threshold, to make it more readable against the green progress bar" />
+    <MESSAGE value="Further stylistic changes to achievements, using a multicoloured progress bar so that text is visible over the complete and incomplete bar, with greyed out achievement badges." />
+    <option name="LAST_COMMIT_MESSAGE" value="Further stylistic changes to achievements, using a multicoloured progress bar so that text is visible over the complete and incomplete bar, with greyed out achievement badges." />
   </component>
 </project>
