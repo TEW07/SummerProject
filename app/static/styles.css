@@ -50,8 +50,6 @@
     opacity: 0.6;
 }
 
-
-
 .grayscale {
     filter: grayscale(100%);
 }
@@ -63,3 +61,35 @@
 .text-dark {
     color: black !important;
 }
+
+/* Custom styles */
+.navbar-dark-blue {
+    background-color: #2c3e50; /* Dark blue/navy color */
+}
+
+.navbar-dark-blue .navbar-nav .nav-link {
+    color: #fff; /* White text color */
+}
+
+.navbar-dark-blue .navbar-nav .nav-link:hover {
+    color: #ffffff; /* Light grey color on hover */
+}
+
+.navbar-dark-blue .navbar-nav .dropdown-menu {
+    background-color: #2c3e50; /* Dark blue/navy dropdown background */
+    border: none; /* Remove border */
+}
+
+.navbar-dark-blue .navbar-nav .dropdown-menu .dropdown-item {
+    color: #fff; /* White text color in dropdown */
+}
+
+.navbar-dark-blue .navbar-nav .dropdown-menu .dropdown-item:hover {
+    background-color: #34495e; /* Slightly lighter blue on hover */
+}
+
+/* styles.css */
+.bg-dark-blue {
+    background-color: #2c3573 !important; /* Change to your desired navy/dark blue color */
+}
+
