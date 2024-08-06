@@ -2,11 +2,12 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from .models import User
+import re
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=8, max=64)])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
@@ -19,6 +20,20 @@ class RegistrationForm(FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user:
             raise ValidationError('That email is already in use. Please choose a different one.')
+
+    def validate_password(self, password):
+        # Check against commonly-used passwords (example list)
+        common_passwords = ['password', '123456', '123456789', '12345678', '12345']
+        if password.data in common_passwords:
+            raise ValidationError('This password is too common. Please choose a different one.')
+
+        # Check for repetitive or sequential characters
+        if re.search(r'(.)\1{2,}', password.data):
+            raise ValidationError('Password contains repetitive characters. Please choose a different one.')
+        if re.search(r'(012|123|234|345|456|567|678|789)', password.data):
+            raise ValidationError('Password contains sequential characters. Please choose a different one.')
+
+
 
 
 class LoginForm(FlaskForm):

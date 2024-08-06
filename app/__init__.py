@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
@@ -56,5 +56,9 @@ def load_user(user_id):
 @app.shell_context_processor
 def make_shell_context():
     return dict(db=db, User=User, LoginEvent=LoginEvent, Card=Card, Deck=Deck)
+
+@app.errorhandler(429)
+def ratelimit_handler(e):
+    return render_template("429.html"), 429
 
 

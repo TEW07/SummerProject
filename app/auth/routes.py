@@ -4,9 +4,18 @@ from app.auth.forms import RegistrationForm, LoginForm
 from app.gamification.routes import check_achievements
 from .models import User, LoginEvent
 from flask_login import login_user, login_required, logout_user, current_user
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+from flask import Flask
 from datetime import datetime, timedelta
 from app import db
 
+app = Flask(__name__)
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["200 per day", "50 per hour"]
+)
 
 @auth_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
@@ -22,6 +31,7 @@ def register():
 
 
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
+@limiter.limit("5 per minute")
 def login():
     form = LoginForm()
     if form.validate_on_submit():

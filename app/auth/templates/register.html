@@ -23,7 +23,12 @@
             </div>
             <div class="form-group">
                 {{ form.password.label(class="form-control-label") }}
-                {{ form.password(class="form-control") }}
+                {{ form.password(class="form-control", id="password") }}
+                <div id="password-strength" class="mt-2">
+                    <div id="password-strength-bar" style="height: 10px;"></div>
+                    <small id="password-strength-text"></small>
+                </div>
+                <small id="password-hint" class="form-text text-muted"></small>
                 {% for error in form.password.errors %}
                     <div class="text-danger">{{ error }}</div>
                 {% endfor %}
@@ -40,6 +45,61 @@
             </div>
         </form>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordInput = document.getElementById('password');
+            const strengthBar = document.getElementById('password-strength-bar');
+            const strengthText = document.getElementById('password-strength-text');
+            const passwordHint = document.getElementById('password-hint');
+
+            passwordInput.addEventListener('input', function () {
+                const password = passwordInput.value;
+                let score = 0;
+
+                // Calculate password strength
+                if (password.length >= 8) score += 1;
+                if (password.length >= 12) score += 1;
+                if (password.length >= 16) score += 1;
+                if (password.length >= 20) score += 1;
+                if (password.length >= 24) score += 1;
+                if (/[a-z]/.test(password)) score += 1;
+                if (/[A-Z]/.test(password)) score += 1;
+                if (/[0-9]/.test(password)) score += 1;
+                if (/[^a-zA-Z0-9]/.test(password)) score += 1;
+
+                // Update the strength bar and text
+                let strength = "";
+                let color = "";
+                if (score <= 2) {
+                    strength = "Weak";
+                    color = "red";
+                    passwordHint.textContent = "Hint: Adding uppercase, lowercase, numbers, and symbols will strengthen your password. Longer passwords are more secure.";
+                } else if (score <= 4) {
+                    strength = "Average";
+                    color = "orange";
+                    passwordHint.textContent = "Hint: Adding uppercase, lowercase, numbers, and symbols will strengthen your password. Longer passwords are more secure.";
+                } else if (score <= 6) {
+                    strength = "Good";
+                    color = "lightgreen";
+                    passwordHint.textContent = "";
+                } else {
+                    strength = "Strong";
+                    color = "green";
+                    passwordHint.textContent = "";
+                }
+
+                strengthBar.style.width = (score / 9) * 100 + '%';
+                strengthBar.style.backgroundColor = color;
+                strengthText.textContent = strength;
+                strengthText.style.color = color;
+            });
+        });
+    </script>
 {% endblock %}
+
+
+
+
+
 
 

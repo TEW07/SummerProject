@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Small changes to base.html to make the navbar more organised and concise, with several features listen under 'My Decks'. Users will only see Add Card if they own a deck to add to">
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Extended &quot;styles.css&quot; for easier changes to styling and colours, changed font to 'Inter' from Google Fonts">
+      <change afterPath="$PROJECT_DIR$/app/templates/429.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -89,7 +93,8 @@
       <workItem from="1721901182663" duration="6030000" />
       <workItem from="1721988243609" duration="1348000" />
       <workItem from="1721993080311" duration="6665000" />
-      <workItem from="1722097015496" duration="679000" />
+      <workItem from="1722097015496" duration="1838000" />
+      <workItem from="1722951605715" duration="4530000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -219,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722003716120</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Extended &quot;styles.css&quot; for easier changes to styling and colours, changed font to 'Inter' from Google Fonts">
+      <option name="closed" value="true" />
+      <created>1722097901612</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1722097901612</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +267,7 @@
     <MESSAGE value="Text will now become white once progress reaches a 50% threshold, to make it more readable against the green progress bar" />
     <MESSAGE value="Further stylistic changes to achievements, using a multicoloured progress bar so that text is visible over the complete and incomplete bar, with greyed out achievement badges." />
     <MESSAGE value="Small changes to base.html to make the navbar more organised and concise, with several features listen under 'My Decks'. Users will only see Add Card if they own a deck to add to" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small changes to base.html to make the navbar more organised and concise, with several features listen under 'My Decks'. Users will only see Add Card if they own a deck to add to" />
+    <MESSAGE value="Extended &quot;styles.css&quot; for easier changes to styling and colours, changed font to 'Inter' from Google Fonts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extended &quot;styles.css&quot; for easier changes to styling and colours, changed font to 'Inter' from Google Fonts" />
   </component>
 </project>
