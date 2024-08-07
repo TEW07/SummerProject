@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Improved the login function to lock users out by using their unique login key generated using new function login_key" />
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Adjustments made to failed login attempt limits (specific to user login_key) set in app\auth\routes.py" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,7 +87,7 @@
       <workItem from="1722097015496" duration="1838000" />
       <workItem from="1722951605715" duration="5417000" />
       <workItem from="1723032843443" duration="624000" />
-      <workItem from="1723041628619" duration="2406000" />
+      <workItem from="1723041628619" duration="2795000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -257,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723044080324</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Adjustments made to failed login attempt limits (specific to user login_key) set in app\auth\routes.py">
+      <option name="closed" value="true" />
+      <created>1723044469327</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1723044469327</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,6 +305,7 @@
     <MESSAGE value="Improved the review_summary.html page so that user's correct answer percentage is shown as a blue circular progress bar. Fixed a bug where refreshing the review_summary.html page would award the user with the points for that session every time the page was loaded, leading to infinite rewards. Added an extra required install to requirements.txt" />
     <MESSAGE value="Added date_created to decks.html to distinguish between similar decks. Changed date formats to UK standard." />
     <MESSAGE value="Improved the login function to lock users out by using their unique login key generated using new function login_key" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved the login function to lock users out by using their unique login key generated using new function login_key" />
+    <MESSAGE value="Adjustments made to failed login attempt limits (specific to user login_key) set in app\auth\routes.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adjustments made to failed login attempt limits (specific to user login_key) set in app\auth\routes.py" />
   </component>
 </project>

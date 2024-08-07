@@ -13,8 +13,7 @@ from app import db
 app = Flask(__name__)
 limiter = Limiter(
     get_remote_address,
-    app=app,
-    default_limits=["5 per minute", "10 per hour"]
+    app=app
 )
 
 @auth_blueprint.route('/register', methods=['GET', 'POST'])
@@ -38,7 +37,8 @@ def login_key():
 
 
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
-@limiter.limit(limit_value= "5 per minute", key_func=login_key)
+@limiter.limit("5 per minute", key_func=login_key)
+@limiter.limit("10 per hour", key_func=login_key)
 def login():
     form = LoginForm()
     if form.validate_on_submit():
