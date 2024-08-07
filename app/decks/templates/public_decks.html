@@ -16,7 +16,7 @@
         <tr>
             <td><a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}">{{ deck['name'] }}</a></td>
             <td>{{ deck['cards'] }}</td>
-            <td>{{ deck['creator'] }}</td> <!-- Display the creator's username -->
+            <td>{{ deck['creator'] }}</td>
             <td>
                 <a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}" class="btn btn-primary">View Deck</a>
                 <a href="{{ url_for('decks.clone_deck', deck_id=deck['deck_id']) }}" class="btn btn-secondary">Clone Deck</a>

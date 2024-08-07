@@ -42,9 +42,9 @@ def decks():
         if next_review:
             # Check if the next_review_date is in the past
             if next_review.next_review_date.date() < datetime.utcnow().date():
-                next_review_date = datetime.utcnow().strftime('%Y-%m-%d')
+                next_review_date = datetime.utcnow().strftime('%d-%m-%Y')
             else:
-                next_review_date = next_review.next_review_date.strftime('%Y-%m-%d')
+                next_review_date = next_review.next_review_date.strftime('%d-%m-%Y')
         else:
             next_review_date = 'N/A'
 
@@ -54,7 +54,7 @@ def decks():
             Card.deck_id == deck.deck_id,
             ReviewOutcome.user_id == current_user.user_id
         ).order_by(ReviewOutcome.timestamp.desc()).first()
-        last_review_date = last_review.timestamp.strftime('%Y-%m-%d') if last_review else 'N/A'
+        last_review_date = last_review.timestamp.strftime('%d-%m-%Y') if last_review else 'N/A'
 
         deck_data.append({
             'deck_id': deck.deck_id,
@@ -63,10 +63,12 @@ def decks():
             'due_for_review': due_count,
             'shared': deck.shared,
             'next_review_date': next_review_date,
-            'last_review_date': last_review_date
+            'last_review_date': last_review_date,
+            'created_at': deck.created_at.strftime('%d-%m-%Y'),
         })
 
     return render_template('decks.html', decks=deck_data)
+
 
 
 

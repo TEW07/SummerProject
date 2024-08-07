@@ -10,6 +10,7 @@
             <th>Due for Review</th>
             <th>Next Review Date</th>
             <th>Last Reviewed</th>
+            <th>Date Created</th> <!-- New column for Date Created -->
             <th>Actions</th>
         </tr>
     </thead>
@@ -21,6 +22,7 @@
             <td>{{ deck['due_for_review'] }}</td>
             <td>{{ deck['next_review_date'] }}</td>
             <td>{{ deck['last_review_date'] }}</td>
+            <td>{{ deck['created_at'] }}</td>
             <td>
                 <a href="{{ url_for('decks.share_deck', deck_id=deck['deck_id']) }}" class="btn btn-info">
                     {% if deck['shared'] %}
@@ -65,6 +67,7 @@ function confirmDelete(deleteUrl) {
 }
 </script>
 {% endblock %}
+
 
 
 
