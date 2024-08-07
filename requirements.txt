@@ -3,4 +3,5 @@ Flask-WTF
 Flask-Login
 Flask-SQLAlchemy
 Flask-Limiter
+pytz
 

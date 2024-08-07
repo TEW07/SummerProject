@@ -21,7 +21,13 @@
     </div>
     <div class="d-flex justify-content-center my-4">
         <div class="progress-circle p{{ correct_count * 100 // total }}">
-            <span>{{ correct_count * 100 // total }}%</span>
+            <svg width="100" height="100">
+                <circle cx="50" cy="50" r="45" stroke-width="10" stroke="#f0f0f0" fill="none"></circle>
+                <circle cx="50" cy="50" r="45" stroke-width="10" stroke="#007bff" fill="none" class="circle"></circle>
+            </svg>
+            <div class="value-container">
+                <span>{{ correct_count * 100 // total }}%</span>
+            </div>
         </div>
     </div>
     <div class="d-flex justify-content-center my-4">
@@ -36,7 +42,49 @@
         <a href="{{ url_for('decks.decks') }}" class="btn btn-primary">Back to Decks</a>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const circle = document.querySelector('.circle');
+        const radius = circle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+        const percentage = {{ correct_count * 100 // total }};
+        const offset = circumference - (percentage / 100) * circumference;
+
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = offset;
+
+        circle.style.transition = 'stroke-dashoffset 0.5s ease';
+    });
+</script>
+<style>
+    .progress-circle {
+        position: relative;
+        width: 100px;
+        height: 100px;
+    }
+
+    .progress-circle .value-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .progress-circle svg {
+        transform: rotate(-90deg);
+    }
+
+    .progress-circle .circle {
+        stroke-dasharray: 283;
+        stroke-dashoffset: 283;
+        transition: stroke-dashoffset 0.5s ease;
+        transform-origin: 50% 50%;
+    }
+</style>
 {% endblock %}
+
 
 
 

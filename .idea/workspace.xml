@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Extended &quot;styles.css&quot; for easier changes to styling and colours, changed font to 'Inter' from Google Fonts">
-      <change afterPath="$PROJECT_DIR$/app/templates/429.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Improved the password creation process, requiring users to choose a password at least 8 characters in length. A progress bar provides feedback to users based on how secure their password is, upgraded by adding different character types and rewarding longer passwords. Passwords are also checked against a basic list of commonly used/ exposed passwords. A requirements.txt file has been provided for those looking to run the project in their own environment. Flask-Limited is used to lock users out after 5 failed login attempts per 5 minutes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/review/templates/review_summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/review/templates/review_summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +91,9 @@
       <workItem from="1721988243609" duration="1348000" />
       <workItem from="1721993080311" duration="6665000" />
       <workItem from="1722097015496" duration="1838000" />
-      <workItem from="1722951605715" duration="4530000" />
+      <workItem from="1722951605715" duration="5417000" />
+      <workItem from="1723032843443" duration="624000" />
+      <workItem from="1723041628619" duration="998000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -232,7 +231,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722097901612</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Improved the password creation process, requiring users to choose a password at least 8 characters in length. A progress bar provides feedback to users based on how secure their password is, upgraded by adding different character types and rewarding longer passwords. Passwords are also checked against a basic list of commonly used/ exposed passwords. A requirements.txt file has been provided for those looking to run the project in their own environment. Flask-Limited is used to lock users out after 5 failed login attempts per 5 minutes">
+      <option name="closed" value="true" />
+      <created>1722964564992</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1722964564992</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +275,7 @@
     <MESSAGE value="Further stylistic changes to achievements, using a multicoloured progress bar so that text is visible over the complete and incomplete bar, with greyed out achievement badges." />
     <MESSAGE value="Small changes to base.html to make the navbar more organised and concise, with several features listen under 'My Decks'. Users will only see Add Card if they own a deck to add to" />
     <MESSAGE value="Extended &quot;styles.css&quot; for easier changes to styling and colours, changed font to 'Inter' from Google Fonts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extended &quot;styles.css&quot; for easier changes to styling and colours, changed font to 'Inter' from Google Fonts" />
+    <MESSAGE value="Improved the password creation process, requiring users to choose a password at least 8 characters in length. A progress bar provides feedback to users based on how secure their password is, upgraded by adding different character types and rewarding longer passwords. Passwords are also checked against a basic list of commonly used/ exposed passwords. A requirements.txt file has been provided for those looking to run the project in their own environment. Flask-Limited is used to lock users out after 5 failed login attempts per 5 minutes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved the password creation process, requiring users to choose a password at least 8 characters in length. A progress bar provides feedback to users based on how secure their password is, upgraded by adding different character types and rewarding longer passwords. Passwords are also checked against a basic list of commonly used/ exposed passwords. A requirements.txt file has been provided for those looking to run the project in their own environment. Flask-Limited is used to lock users out after 5 failed login attempts per 5 minutes" />
   </component>
 </project>

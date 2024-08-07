@@ -82,26 +82,35 @@ def review_summary():
     correct_count = sum(1 for outcome in review_outcomes if outcome.correct)
     incorrect_count = len(review_outcomes) - correct_count
 
-    # Calculate points
-    base_card_points = 10
-    correct_bonus = 5
-    total_cards_reviewed = len(review_outcomes)
-    points_earned = (total_cards_reviewed * base_card_points) + (correct_count * correct_bonus)
+    # Check if points have already been awarded for this session
+    points_awarded_flag = f"points_awarded_{session_id}"
+    if not session.get(points_awarded_flag):
+        # Calculate points
+        base_card_points = 10
+        correct_bonus = 5
+        total_cards_reviewed = len(review_outcomes)
+        points_earned = (total_cards_reviewed * base_card_points) + (correct_count * correct_bonus)
 
-    # Ensure user points is not None
-    if current_user.points is None:
-        current_user.points = 0
+        # Ensure user points is not None
+        if current_user.points is None:
+            current_user.points = 0
 
-    # Update user points
-    current_user.points += points_earned
-    db.session.commit()
+        # Update user points
+        current_user.points += points_earned
+        db.session.commit()
 
-    check_achievements(current_user)
+        # Set the flag in the session to indicate points have been awarded
+        session[points_awarded_flag] = True
 
-    flash(f'You earned {points_earned} points for this review session!', 'success')
+        check_achievements(current_user)
+
+        flash(f'You earned {points_earned} points for this review session!', 'success')
+    else:
+        points_earned = 0  # No points awarded if already awarded
 
     return render_template('review_summary.html', correct_count=correct_count, incorrect_count=incorrect_count,
-                           total=total_cards_reviewed, points_earned=points_earned)
+                           total=len(review_outcomes), points_earned=points_earned)
+
 
 
 
