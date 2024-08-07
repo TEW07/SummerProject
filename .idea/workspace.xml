@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Improved the review_summary.html page so that user's correct answer percentage is shown as a blue circular progress bar. Fixed a bug where refreshing the review_summary.html page would award the user with the points for that session every time the page was loaded, leading to infinite rewards. Added an extra required install to requirements.txt">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/decks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/public_decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/public_decks.html" afterDir="false" />
-    </list>
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Added date_created to decks.html to distinguish between similar decks. Changed date formats to UK standard." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +87,7 @@
       <workItem from="1722097015496" duration="1838000" />
       <workItem from="1722951605715" duration="5417000" />
       <workItem from="1723032843443" duration="624000" />
-      <workItem from="1723041628619" duration="1645000" />
+      <workItem from="1723041628619" duration="2030000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -247,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723042864339</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Added date_created to decks.html to distinguish between similar decks. Changed date formats to UK standard.">
+      <option name="closed" value="true" />
+      <created>1723043526647</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1723043526647</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,6 +287,7 @@
     <MESSAGE value="Extended &quot;styles.css&quot; for easier changes to styling and colours, changed font to 'Inter' from Google Fonts" />
     <MESSAGE value="Improved the password creation process, requiring users to choose a password at least 8 characters in length. A progress bar provides feedback to users based on how secure their password is, upgraded by adding different character types and rewarding longer passwords. Passwords are also checked against a basic list of commonly used/ exposed passwords. A requirements.txt file has been provided for those looking to run the project in their own environment. Flask-Limited is used to lock users out after 5 failed login attempts per 5 minutes" />
     <MESSAGE value="Improved the review_summary.html page so that user's correct answer percentage is shown as a blue circular progress bar. Fixed a bug where refreshing the review_summary.html page would award the user with the points for that session every time the page was loaded, leading to infinite rewards. Added an extra required install to requirements.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improved the review_summary.html page so that user's correct answer percentage is shown as a blue circular progress bar. Fixed a bug where refreshing the review_summary.html page would award the user with the points for that session every time the page was loaded, leading to infinite rewards. Added an extra required install to requirements.txt" />
+    <MESSAGE value="Added date_created to decks.html to distinguish between similar decks. Changed date formats to UK standard." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added date_created to decks.html to distinguish between similar decks. Changed date formats to UK standard." />
   </component>
 </project>

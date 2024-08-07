@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, redirect, session
+from flask import render_template, url_for, flash, redirect, session, request
 from . import auth_blueprint
 from app.auth.forms import RegistrationForm, LoginForm
 from app.gamification.routes import check_achievements
@@ -30,8 +30,15 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
+def login_key():
+    username = request.form.get('username')
+    if username:
+        return f"{get_remote_address()}:{username}"
+    return get_remote_address()
+
+
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
-@limiter.limit("5 per minute")
+@limiter.limit("5 per minute", key_func=login_key)
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -97,6 +104,7 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 
+
 @auth_blueprint.route('/logout', methods=['GET'])
 @login_required
 def logout():
@@ -124,3 +132,6 @@ def delete_account():
         return redirect(url_for('main.index'))
     flash('Account deletion failed.', 'danger')
     return redirect(url_for('auth.account_settings'))
+
+
+
