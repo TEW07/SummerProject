@@ -43,65 +43,69 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        if user and user.check_password(form.password.data):
-            login_user(user, remember=True)
+        if user:
+            if user.check_password(form.password.data):
+                login_user(user, remember=True)
 
-            # Calculate the streak
-            today = datetime.utcnow().date()
-            yesterday = today - timedelta(days=1)
-            login_events = LoginEvent.query.filter_by(user_id=user.user_id).order_by(LoginEvent.timestamp.desc()).all()
-            login_dates = {event.timestamp.date() for event in login_events}
+                # Calculate the streak
+                today = datetime.utcnow().date()
+                yesterday = today - timedelta(days=1)
+                login_events = LoginEvent.query.filter_by(user_id=user.user_id).order_by(LoginEvent.timestamp.desc()).all()
+                login_dates = {event.timestamp.date() for event in login_events}
 
-            streak = 1  # Default streak if today is the first login
-            if yesterday in login_dates:
-                expected_date = yesterday
-                while expected_date in login_dates:
-                    streak += 1
-                    expected_date -= timedelta(days=1)
+                streak = 1  # Default streak if today is the first login
+                if yesterday in login_dates:
+                    expected_date = yesterday
+                    while expected_date in login_dates:
+                        streak += 1
+                        expected_date -= timedelta(days=1)
 
-            points_awarded = 0
-            detailed_message = ""
+                points_awarded = 0
+                detailed_message = ""
 
-            # Check if user has already logged in today
-            if today not in login_dates:
-                # Update user points
-                base_points = 10
-                streak_points = streak * base_points  # Amplify points for streak
-                points_awarded = streak_points
+                # Check if user has already logged in today
+                if today not in login_dates:
+                    # Update user points
+                    base_points = 10
+                    streak_points = streak * base_points  # Amplify points for streak
+                    points_awarded = streak_points
 
-                # Ensure points is not None
-                if user.points is None:
-                    user.points = 0
+                    # Ensure points is not None
+                    if user.points is None:
+                        user.points = 0
 
-                user.points += streak_points
+                    user.points += streak_points
+                    db.session.commit()
+
+                    check_achievements(current_user)
+
+                    # Create detailed message
+                    if streak == 1:
+                        detailed_message = f"You've been awarded {base_points} points! Come back tomorrow to start a streak and earn more points."
+                    else:
+                        detailed_message = f"You've been awarded {streak_points} points! (Streak: {streak} days, {base_points} points per day)"
+
+                # Log the login event
+                now = datetime.utcnow()
+                login_event = LoginEvent(user_id=user.user_id, timestamp=now)
+                db.session.add(login_event)
                 db.session.commit()
 
-                check_achievements(current_user)
+                # Store streak in session
+                session['streak'] = streak
 
-                # Create detailed message
-                if streak == 1:
-                    detailed_message = f"You've been awarded {base_points} points! Come back tomorrow to start a streak and earn more points."
+                if points_awarded > 0:
+                    flash(f"Sign in successful! {detailed_message}", 'success')
                 else:
-                    detailed_message = f"You've been awarded {streak_points} points! (Streak: {streak} days, {base_points} points per day)"
+                    flash('Sign in successful! No points awarded as you have already logged in today.', 'success')
 
-            # Log the login event
-            now = datetime.utcnow()
-            login_event = LoginEvent(user_id=user.user_id, timestamp=now)
-            db.session.add(login_event)
-            db.session.commit()
-
-            # Store streak in session
-            session['streak'] = streak
-
-            if points_awarded > 0:
-                flash(f"Sign in successful! {detailed_message}", 'success')
+                return redirect(url_for('main.dashboard'))
             else:
-                flash('Sign in successful! No points awarded as you have already logged in today.', 'success')
-
-            return redirect(url_for('main.dashboard'))
+                flash('Sign in unsuccessful: Incorrect password.', 'danger')
         else:
-            flash('Sign in unsuccessful', 'danger')
+            flash('Sign in unsuccessful: Username does not exist.', 'danger')
     return render_template('login.html', title='Sign In', form=form)
+
 
 
 
