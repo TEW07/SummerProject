@@ -29,13 +29,13 @@
                     </td>
                     <td>
                         {% if is_owner %}
-                            {{ card.created_at.strftime('%Y-%m-%d %H:%M') }}
+                            {{ card.created_at.strftime('%d-%m-%Y %H:%M') }}
                         {% else %}
-                            {{ card.created_at.strftime('%Y-%m-%d') }}
+                            {{ card.created_at.strftime('%d-%m-%Y') }}
                         {% endif %}
                     </td>
                     {% if is_owner %}
-                    <td>{{ card.next_review_date }}</td>
+                    <td>{{ card.next_review_date.strftime('%d-%m-%Y') }}</td>
                     <td>{{ card.box }}</td>
                     <td>
                         <a href="{{ url_for('decks.edit_card', card_id=card.card_id) }}" class="btn btn-warning">Edit</a>
