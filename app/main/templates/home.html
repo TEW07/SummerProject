@@ -1,31 +1,64 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
-{% block heading %}Homepage{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h3 class="mb-4">Welcome to the Flashcard Creation Application!</h3>
-    <p>This app is designed to help you create, manage, and review flashcards effectively. By utilising the biweekly Leitner Review Schedule, you'll be able to maximise your learning retention through spaced repetition and retrieval practice.</p>
+    <h2 class="mb-4 text-center">Welcome to the Flashcard Creation Application!</h2>
+    <p class="text-center">This web app is designed to help you create, manage, and review flashcards effectively.</p>
+    <p class="text-center">By utilizing the biweekly Leitner Review Schedule, you'll be able to maximize your learning retention through spaced repetition and retrieval practice.</p>
 
-    <h4 class="mt-5">The Leitner Review System</h4>
-    <p>The Leitner System is a well-established method for organising your study sessions in a way that prioritises both efficiency and effective memory retention. The system divides your flashcards into different "decks" or "boxes" based on how well you know the material. Here's how it works:</p>
-    <img src="{{ url_for('static', filename='homepage/leitner-system-diagram.png') }}" alt="Spaced Repetition Benefits" width="500" height="300" class="img-fluid mt-1 mb-1">
-    <p>Each deck represents a stage in the review process. When you correctly answer a card during a review session, it moves to the next deck, which means it will be reviewed less frequently. Conversely, if you answer a card incorrectly, it moves back to the Deck 1.</p>
-    <p>Therefore, the cards you struggle with are reviewed more often, while those you know well are reviewed less frequently. This approach allows you to allocate your time where it’s needed most.</p>
+    <h4 class="mt-5 mb-3 text-center">The Leitner Review System</h4>
+    <p class="text-center">The Leitner System is a well-established method for organizing your study sessions in a way that prioritizes both efficiency and effective memory retention.</p>
+    <p class="text-center">The system divides your flashcards into different "decks" or "boxes" based on how well you know the material. Here's how it works:</p>
 
-    <h4 class="mt-5">Spaced Repetition Schedule</h4>
-    <p>This application uses a two-week implementation of the Leitner System, as depicted in the review schedule below:</p>
-    <img src="{{ url_for('static', filename='homepage/spaced-repetition-review-schedule.png') }}" alt="Spaced Repetition Benefits" width="500" height="300" class="img-fluid mt-1 mb-1">
+    <!-- Centered Image -->
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='homepage/leitner-system-diagram.png') }}" alt="Spaced Repetition Benefits" class="img-fluid mt-1" style="max-width: 30%; height: auto;">
+    </div>
 
-    <h4 class="mt-5">Get a Glimpse of Your Learning Journey</h4>
-    <p>Once you're logged in, you can start creating decks, managing cards, and tracking your progress. Here's a sneak peek of what you'll experience:</p>
-    <img src="{{ url_for('static', filename='images/app-interface-preview.png') }}" alt="App Interface Preview" class="img-fluid mt-3 mb-4">
+    <div class="text-center">
+        <ul style="display: inline-block; text-align: left; margin-left: 15%;">
+            <li>Each deck represents a stage in the review process.</li>
+            <li>When you correctly answer a card during a review session, it moves to the next deck, which means it will be reviewed less frequently.</li>
+            <li>Conversely, if you answer a card incorrectly, it moves back to Deck 1.</li>
+        </ul>
+    </div>
+    <div class="mt-3 text-center">
+    <p>Therefore, the cards you struggle with are reviewed more often, while those you know well are reviewed less frequently.</p>
+        <p><i>This approach allows you to allocate your time where it’s needed most.</i></p>
+    </div>
+
+    <h4 class="mt-5 mb-3 text-center">Spaced Repetition Schedule</h4>
+    <p class="text-center">This application uses a two-week implementation of the Leitner System, as depicted in the review schedule below:</p>
+
+    <!-- Centered Image -->
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='homepage/spaced-repetition-review-schedule.png') }}" alt="Spaced Repetition Benefits" class="img-fluid mt-1 mb-3" style="max-width: 80%; height: auto;">
+    </div>
+
+    <h4 class="mt-5 mb-3 text-center">Get a Glimpse of Your Learning Journey</h4>
+    <p class="text-center">Once you're logged in, you can start creating decks, managing cards, and tracking your progress. Here's a preview of what you'll experience:</p>
+
+    <!-- Adjusted Dashboard Image with Description -->
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='homepage/compact-dashboard.png') }}" alt="App Interface Preview" class="img-fluid mt-4 mb-4" style="max-width: 65%; height: auto;">
+        <p class="mt-3"><b>My Dashboard</b>: This is your main hub where you can view your progress, including your current login streak, and see which decks are due for review. It’s designed to keep you on track and motivated.</p>
+    </div>
+
+    <!-- Adjusted Review Preview Image with Description -->
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='homepage/review-preview.png') }}" alt="App Interface Preview" class="img-fluid mt-4 mb-5" style="max-width: 75%; height: auto;">
+        <p class="mt-3"><b>Flashcard Review Session</b>: During a review session, flashcards are presented for you to answer. You can immediately respond with the outcome of your recall attempt using the arrow keys or mouse.</p>
+    </div>
 
     <h4 class="mt-5 text-center">Ready to Start Learning?</h4>
-    <div class="text-center mt-3">
+    <div class="text-center mt-3 mb-5">
         <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Sign Up Now</a>
     </div>
 </div>
 {% endblock %}
+
+
+
 
 

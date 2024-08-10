@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Small improvement to login view function so that users are notified of an incorrect password input for the given username">
-      <change afterPath="$PROJECT_DIR$/app/static/homepage/leitner-system-diagram.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/static/homepage/spaced-repetition-review-schedule.png" afterDir="false" />
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Improvements to homepage, educating users on the underlying theory motivating the application.">
+      <change afterPath="$PROJECT_DIR$/app/static/homepage/dashboard-preview.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/decks/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/decks/templates/decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/decks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/templates/dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -287,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723291417253</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Improvements to homepage, educating users on the underlying theory motivating the application.">
+      <option name="closed" value="true" />
+      <created>1723298045255</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1723298045255</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,7 +317,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Small improvement to Next_Review_Date, now considering reviews due before the current date, instead of just future review dates so that next_review_date can be set to the current date if cards are already due. Minor tweaks and removing redundancy elsewhere" />
     <MESSAGE value="Added database file to git tracking" />
     <MESSAGE value="Small adjustments to review scheduling, cards correctly reviewed in box 5 are removed from the review pool and can be considered &quot;learned&quot;. Cards with next_review_date are learned cards." />
     <MESSAGE value="Added comments to scheduling algorithm" />
@@ -330,6 +341,7 @@
     <MESSAGE value="Adjustments made to failed login attempt limits (specific to user login_key) set in app\auth\routes.py" />
     <MESSAGE value="Further adjustments to failed login attempt limits, limiting by the minute AND by the hour" />
     <MESSAGE value="Small improvement to login view function so that users are notified of an incorrect password input for the given username" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small improvement to login view function so that users are notified of an incorrect password input for the given username" />
+    <MESSAGE value="Improvements to homepage, educating users on the underlying theory motivating the application." />
+    <option name="LAST_COMMIT_MESSAGE" value="Improvements to homepage, educating users on the underlying theory motivating the application." />
   </component>
 </project>

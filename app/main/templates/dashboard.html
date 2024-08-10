@@ -1,38 +1,49 @@
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-<div class="container mt-4">
-    <h1 class="mb-4">Flashcard Creation Dashboard!</h1>
-    <div class="card mb-4">
-        <div class="card-body">
-            <h5 class="card-title">Welcome, {{ user_info.username }}!</h5>
-            <p class="card-text">You have logged in {{ user_info.login_count }} times.</p>
-            <p class="card-text">Your most recent login was at {{ user_info.last_login_at }}</p>
-            <div class="streak-badge">
-                Current Streak: {{ user_info.current_streak }} days
+<div class="container mt-1" style="max-width: 1500px;"> <!-- Set a max-width for the container -->
+    <h1 class="mb-4 text-center">My Dashboard</h1>
+
+    <!-- Row for Dashboard Cards -->
+    <div class="row">
+        <!-- Welcome Card -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Welcome, {{ user_info.username }}!</h5>
+                    <p class="card-text">You have logged in {{ user_info.login_count }} times.</p>
+                    <p class="card-text">Your most recent login was at {{ user_info.last_login_at }}</p>
+                    <div class="streak-badge">
+                        Current Streak: {{ 2 }} days
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Due Reviews</h5>
-            {% if due_reviews %}
-                <ul class="list-group">
-                    {% for review in due_reviews %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="{{ url_for('review.start_review', deck_id=review.deck_id) }}">{{ review.name }}</a>
-                            <span class="badge bg-primary rounded-pill">{{ review.due_count }} due</span>
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p class="card-text">No reviews due at the moment.</p>
-            {% endif %}
+        <!-- Due Reviews Card -->
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Due Reviews</h5>
+                    {% if due_reviews %}
+                        <ul class="list-group">
+                            {% for review in due_reviews %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a href="{{ url_for('review.start_review', deck_id=review.deck_id) }}">{{ review.name }}</a>
+                                    <span class="badge bg-primary rounded-pill">{{ review.due_count }} due</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="card-text">No reviews due at the moment.</p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 </div>
 {% endblock %}
+
 
 
 

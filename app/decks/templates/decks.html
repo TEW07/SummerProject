@@ -32,6 +32,7 @@
                     {% endif %}
                 </a>
                 <a href="{{ url_for('review.start_review', deck_id=deck['deck_id']) }}" class="btn btn-primary">Review Deck</a>
+            <button class="btn btn-warning" onclick="openRenameModal('{{ deck['deck_id'] }}', '{{ deck['name'] }}')">Rename</button>
                 <button class="btn btn-danger" onclick="confirmDelete('{{ url_for('decks.delete_deck', deck_id=deck['deck_id']) }}')">Delete</button>
             </td>
         </tr>
@@ -66,6 +67,41 @@ function confirmDelete(deleteUrl) {
     deleteModal.show();
 }
 </script>
+
+    <!-- Rename Modal -->
+<div class="modal fade" id="renameModal" tabindex="-1" aria-labelledby="renameModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="renameModalLabel">Rename Deck</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="renameForm" method="POST" action="{{ url_for('decks.rename_deck') }}">
+                    <input type="hidden" name="deck_id" id="renameDeckId">
+                    <div class="mb-3">
+                        <label for="newDeckName" class="form-label">New Deck Name</label>
+                        <input type="text" class="form-control" id="newDeckName" name="new_name" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" form="renameForm" class="btn btn-warning">Rename</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function openRenameModal(deckId, currentName) {
+    document.getElementById('renameDeckId').value = deckId;
+    document.getElementById('newDeckName').value = currentName;
+    var renameModal = new bootstrap.Modal(document.getElementById('renameModal'));
+    renameModal.show();
+}
+</script>
+
 {% endblock %}
 
 

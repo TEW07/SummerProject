@@ -70,12 +70,6 @@ def decks():
     return render_template('decks.html', decks=deck_data)
 
 
-
-
-
-
-
-
 @decks_blueprint.route('/view_deck/<int:deck_id>')
 @login_required
 def view_deck(deck_id):
@@ -208,6 +202,24 @@ def clone_deck(deck_id):
     db.session.commit()
     flash('Deck has been cloned successfully!', 'success')
     return redirect(url_for('decks.decks'))
+
+
+@decks_blueprint.route('/rename_deck', methods=['POST'])
+@login_required
+def rename_deck():
+    deck_id = request.form.get('deck_id')
+    new_name = request.form.get('new_name')
+
+    deck = Deck.query.filter_by(deck_id=deck_id, user_id=current_user.user_id).first()
+    if deck:
+        deck.name = new_name
+        db.session.commit()
+        flash('Deck renamed successfully!', 'success')
+    else:
+        flash('Deck not found or you do not have permission to rename this deck.', 'danger')
+
+    return redirect(url_for('decks.decks'))
+
 
 
 

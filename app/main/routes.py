@@ -43,7 +43,7 @@ def dashboard():
     if previous_login_time:
         bst = timezone('Europe/London')
         previous_login_time = previous_login_time.replace(tzinfo=pytz.utc).astimezone(bst)
-        previous_login_time_str = previous_login_time.strftime('%Y-%m-%d %H:%M')
+        previous_login_time_str = previous_login_time.strftime('%d-%m-%Y %H:%M')
     else:
         previous_login_time_str = 'N/A'
 
