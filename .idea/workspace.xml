@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Small improvement to login view function so that users are notified of an incorrect password input for the given username" />
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Small improvement to login view function so that users are notified of an incorrect password input for the given username">
+      <change afterPath="$PROJECT_DIR$/app/static/homepage/leitner-system-diagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/static/homepage/spaced-repetition-review-schedule.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/templates/home.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +54,7 @@
       <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\static\badges" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\static\homepage" />
       <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject" />
       <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\gamification\templates" />
     </key>
@@ -61,7 +67,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
