@@ -169,12 +169,7 @@ def schedule_review(card, success, deck):
     db.session.commit()
 
 
-def check_due_cards():
-    now = datetime.utcnow()
-    due_cards = Card.query.filter(Card.next_review_date <= now).all()
-    for card in due_cards:
-        # Logic to notify user or mark cards as due for review
-        pass
+
 
 
 

@@ -56,6 +56,9 @@ def decks():
         ).order_by(ReviewOutcome.timestamp.desc()).first()
         last_review_date = last_review.timestamp.strftime('%d-%m-%Y') if last_review else 'N/A'
 
+        # Get the count of learned cards
+        learned_count = Card.query.filter(Card.deck_id == deck.deck_id, Card.box == 5, Card.next_review_date == None).count()
+
         deck_data.append({
             'deck_id': deck.deck_id,
             'name': deck.name,
@@ -65,9 +68,11 @@ def decks():
             'next_review_date': next_review_date,
             'last_review_date': last_review_date,
             'created_at': deck.created_at.strftime('%d-%m-%Y'),
+            'learned_cards': learned_count,  # Add learned cards count
         })
 
     return render_template('decks.html', decks=deck_data)
+
 
 
 @decks_blueprint.route('/view_deck/<int:deck_id>')
@@ -219,6 +224,18 @@ def rename_deck():
         flash('Deck not found or you do not have permission to rename this deck.', 'danger')
 
     return redirect(url_for('decks.decks'))
+
+
+@decks_blueprint.route('/learned_cards/<int:deck_id>')
+@login_required
+def learned_cards(deck_id):
+    deck = Deck.query.get_or_404(deck_id)
+    if deck.user_id != current_user.user_id:
+        abort(403)
+
+    learned_cards = Card.query.filter_by(deck_id=deck_id, box=5, next_review_date=None).all()
+
+    return render_template('learned_cards.html', deck=deck, cards=learned_cards)
 
 
 

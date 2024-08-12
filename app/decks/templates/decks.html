@@ -1,16 +1,45 @@
 {% extends "base.html" %}
 {% block title %}Your Decks{% endblock %}
-{% block heading %}Your Decks{% endblock %}
 {% block content %}
-<table class="table">
+    <h1 class="text-center mb-5">Your Decks</h1>
+<style>
+    .table td, .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .btn-group-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 5px; /* Adjusts the space between buttons */
+    }
+
+    .btn {
+        width: 100%; /* Ensures buttons take full width within their container */
+        text-align: center;
+    }
+
+    .table thead th {
+        text-align: center; /* Center align the table header text */
+    }
+
+    .table {
+        width: 90%; /* Adjust this percentage to control the overall width of the table */
+        margin: 0 auto; /* Center the table on the page */
+    }
+</style>
+
+
+<table class="table table-bordered">
     <thead>
         <tr>
             <th>Deck Name</th>
-            <th>Cards</th>
-            <th>Due for Review</th>
+            <th class="num-col">Cards</th>
+            <th class="num-col">Due for Review</th>
+            <th class="num-col">Learned Cards</th>
             <th>Next Review Date</th>
             <th>Last Reviewed</th>
-            <th>Date Created</th> <!-- New column for Date Created -->
+            <th>Date Created</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -18,12 +47,20 @@
         {% for deck in decks %}
         <tr>
             <td><a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}">{{ deck['name'] }}</a></td>
-            <td>{{ deck['cards'] }}</td>
-            <td>{{ deck['due_for_review'] }}</td>
+            <td class="num-col">{{ deck['cards'] }}</td>
+            <td class="num-col">{{ deck['due_for_review'] }}</td>
+             <td>
+                {% if deck['learned_cards'] > 0 %}
+                    <a href="{{ url_for('decks.view_learned_cards', deck_id=deck['deck_id']) }}">{{ deck['learned_cards'] }}</a>
+                {% else %}
+                    0
+                {% endif %}
+            </td>
             <td>{{ deck['next_review_date'] }}</td>
             <td>{{ deck['last_review_date'] }}</td>
             <td>{{ deck['created_at'] }}</td>
             <td>
+            <div class="btn-group-vertical">
                 <a href="{{ url_for('decks.share_deck', deck_id=deck['deck_id']) }}" class="btn btn-info">
                     {% if deck['shared'] %}
                     Unshare Deck
@@ -32,13 +69,15 @@
                     {% endif %}
                 </a>
                 <a href="{{ url_for('review.start_review', deck_id=deck['deck_id']) }}" class="btn btn-primary">Review Deck</a>
-            <button class="btn btn-warning" onclick="openRenameModal('{{ deck['deck_id'] }}', '{{ deck['name'] }}')">Rename</button>
+                <button class="btn btn-warning" onclick="openRenameModal('{{ deck['deck_id'] }}', '{{ deck['name'] }}')">Rename</button>
                 <button class="btn btn-danger" onclick="confirmDelete('{{ url_for('decks.delete_deck', deck_id=deck['deck_id']) }}')">Delete</button>
+            </div>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
 
 <!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -68,7 +107,7 @@ function confirmDelete(deleteUrl) {
 }
 </script>
 
-    <!-- Rename Modal -->
+<!-- Rename Modal -->
 <div class="modal fade" id="renameModal" tabindex="-1" aria-labelledby="renameModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -103,6 +142,8 @@ function openRenameModal(deckId, currentName) {
 </script>
 
 {% endblock %}
+
+
 
 
 

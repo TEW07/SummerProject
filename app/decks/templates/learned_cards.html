@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Learned Cards{% endblock %}
+{% block heading %}Learned Cards{% endblock %}
+{% block content %}
+<h2>Learned Cards for {{ deck.name }}</h2>
+<ul>
+    {% for card in cards %}
+        <li>{{ card.front }} - {{ card.back }}</li>
+    {% else %}
+        <li>No cards have been fully learned yet.</li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('decks.decks') }}" class="btn btn-primary">Back to Decks</a>
+{% endblock %}

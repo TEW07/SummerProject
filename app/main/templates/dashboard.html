@@ -13,8 +13,8 @@
                     <h5 class="card-title">Welcome, {{ user_info.username }}!</h5>
                     <p class="card-text">You have logged in {{ user_info.login_count }} times.</p>
                     <p class="card-text">Your most recent login was at {{ user_info.last_login_at }}</p>
-                    <div class="streak-badge">
-                        Current Streak: {{ 2 }} days
+                    <div class="streak-badge"> <!-- Add a class for styling -->
+    Current Streak: {{ user_info.current_streak }} {{ 'day' if user_info.current_streak == 1 else 'days' }}
                     </div>
                 </div>
             </div>

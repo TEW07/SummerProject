@@ -37,8 +37,8 @@ def login_key():
 
 
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
-@limiter.limit("5 per minute", key_func=login_key)
-@limiter.limit("10 per hour", key_func=login_key)
+@limiter.limit("4 per minute", key_func=login_key)
+@limiter.limit("7 per hour", key_func=login_key)
 def login():
     form = LoginForm()
     if form.validate_on_submit():
