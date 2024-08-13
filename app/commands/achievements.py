@@ -4,21 +4,6 @@ import click
 from app import db
 from app.gamification.models import Achievement
 
-@click.command(name='add_achievements')
-@with_appcontext
-def add_achievements():
-    achievements = [
-        Achievement(name='100 Points Achieved', description='Earn 100 points', points=0, badge_image='path/to/100_points_badge.png'),
-        Achievement(name='500 Points Achieved', description='Earn 500 points', points=0, badge_image='path/to/500_points_badge.png'),
-        Achievement(name='1000 Points Achieved', description='Earn 1000 points', points=0, badge_image='path/to/1000_points_badge.png')
-    ]
-
-    for achievement in achievements:
-        db.session.add(achievement)
-
-    db.session.commit()
-    print("Achievements added successfully!")
-
 
 @click.command(name='update_achievements')
 @with_appcontext
@@ -37,26 +22,6 @@ def update_achievements():
             print(f"Updated {name} with new badge path.")
 
 
-@click.command(name='update_targets')
-@with_appcontext
-def update_targets():
-    # Define the new achievements with their targets
-    achievements_with_targets = [
-        {'name': '100 Points Achieved', 'target': 100},
-        {'name': '500 Points Achieved', 'target': 500},
-        {'name': '1000 Points Achieved', 'target': 1000}
-    ]
-
-    # Update the existing achievements with the new target values
-    for item in achievements_with_targets:
-        achievement = Achievement.query.filter_by(name=item['name']).first()
-        if achievement:
-            achievement.target = item['target']
-            db.session.commit()
-            print(f"Updated {item['name']} with target {item['target']}.")
-
-    print("Achievements updated successfully!")
-
 @click.command(name='delete_achievements')
 @with_appcontext
 def delete_achievements():
@@ -65,5 +30,36 @@ def delete_achievements():
         db.session.delete(achievement)
     db.session.commit()
     print("All achievements deleted successfully!")
+
+
+@click.command(name='add_achievements')
+@with_appcontext
+def add_achievements():
+    achievements = [
+        # Card review achievements
+        Achievement(name='10 Cards Reviewed', description='Review 10 Different Cards', points=0,
+                    badge_image='badges/10_cards_badge.png', target="10"),
+        Achievement(name='50 Cards Reviewed', description='Review 50 Different Cards', points=0,
+                    badge_image='badges/50_cards_badge.png', target="50"),
+        Achievement(name='100 Cards Reviewed', description='Review 100 Different Cards', points=0,
+                    badge_image='badges/100_cards_badge.png', target=100),
+
+        # Points-based achievements
+        Achievement(name='100 Points', description='Reach 100 Points', points=0,
+                    badge_image='badges/100_points_badge.png', target=100),
+        Achievement(name='500 Points', description='Reach 500 Points', points=0,
+                    badge_image='badges/500_points_badge.png', target=500),
+        Achievement(name='1000 Points', description='Reach 1000 Points', points=0,
+                    badge_image='badges/1000_points_badge.png', target=1000)
+    ]
+
+    for achievement in achievements:
+        existing_achievement = Achievement.query.filter_by(name=achievement.name).first()
+        if not existing_achievement:
+            db.session.add(achievement)
+
+    db.session.commit()
+    print("Achievements added successfully!")
+
 
 

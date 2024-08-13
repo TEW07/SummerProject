@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Further improvements to homepage layout, complete with screenshots of the application interface after logging in.">
-      <change afterPath="$PROJECT_DIR$/app/data/top-10000-pass.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/decks/templates/learned_cards.html" afterDir="false" />
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Improved passwords to check for 10,000 most commonly used passwords. Created a page to store fully learned cards and a new column in decks.html to match. Improved layout of decks. Small change to dashboard to ensure &quot;day&quot; apears instead of &quot;days&quot; for a streak of 1">
+      <change afterPath="$PROJECT_DIR$/app/gamification/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/auth/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/commands/achievements.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/commands/achievements.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/decks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gamification/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/templates/user_achievements.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/review/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/review/routes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -102,7 +101,8 @@
       <workItem from="1722951605715" duration="5417000" />
       <workItem from="1723032843443" duration="624000" />
       <workItem from="1723041628619" duration="3410000" />
-      <workItem from="1723458106333" duration="8050000" />
+      <workItem from="1723458106333" duration="8363000" />
+      <workItem from="1723541702062" duration="7039000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -312,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723309416034</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Improved passwords to check for 10,000 most commonly used passwords. Created a page to store fully learned cards and a new column in decks.html to match. Improved layout of decks. Small change to dashboard to ensure &quot;day&quot; apears instead of &quot;days&quot; for a streak of 1">
+      <option name="closed" value="true" />
+      <created>1723483868290</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1723483868290</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,7 +338,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Small adjustments to review scheduling, cards correctly reviewed in box 5 are removed from the review pool and can be considered &quot;learned&quot;. Cards with next_review_date are learned cards." />
     <MESSAGE value="Added comments to scheduling algorithm" />
     <MESSAGE value="Implemented a daily login streak, displayed on the user's dashboard, and created a script &quot;generate_logins.py&quot; to test this feature. Daily streak logic is inside the route for dashboard. Created and included in base.html a custom css file to make the streak badge (only slightly) more appealing" />
     <MESSAGE value="Implemented a points system, each User has a points attribute which is defaulted to 0. Upon succesful login, users are awarded 10 points, which is amplified by their current login streak. Streak logic has been relocated to the login route so users can be awarded an appropriate number of points immediately upon login" />
@@ -355,6 +362,7 @@
     <MESSAGE value="Small improvement to login view function so that users are notified of an incorrect password input for the given username" />
     <MESSAGE value="Improvements to homepage, educating users on the underlying theory motivating the application." />
     <MESSAGE value="Further improvements to homepage layout, complete with screenshots of the application interface after logging in." />
-    <option name="LAST_COMMIT_MESSAGE" value="Further improvements to homepage layout, complete with screenshots of the application interface after logging in." />
+    <MESSAGE value="Improved passwords to check for 10,000 most commonly used passwords. Created a page to store fully learned cards and a new column in decks.html to match. Improved layout of decks. Small change to dashboard to ensure &quot;day&quot; apears instead of &quot;days&quot; for a streak of 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved passwords to check for 10,000 most commonly used passwords. Created a page to store fully learned cards and a new column in decks.html to match. Improved layout of decks. Small change to dashboard to ensure &quot;day&quot; apears instead of &quot;days&quot; for a streak of 1" />
   </component>
 </project>

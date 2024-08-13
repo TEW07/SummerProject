@@ -1,7 +1,6 @@
 from flask import render_template, url_for, flash, redirect, session, request
 from . import auth_blueprint
 from app.auth.forms import RegistrationForm, LoginForm
-from app.gamification.routes import check_achievements
 from .models import User, LoginEvent
 from flask_login import login_user, login_required, logout_user, current_user
 from flask_limiter import Limiter
@@ -9,6 +8,8 @@ from flask_limiter.util import get_remote_address
 from flask import Flask
 from datetime import datetime, timedelta
 from app import db
+from app.gamification.utils import check_achievements
+
 
 app = Flask(__name__)
 limiter = Limiter(

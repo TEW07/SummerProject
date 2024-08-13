@@ -36,7 +36,7 @@ class RegistrationForm(FlaskForm):
         if password.data in self.common_passwords:
             raise ValidationError('This password is too common. Please choose a different one.')
 
-        # Check for repetitive or sequential characters
+        # Check for repetitive characters
         if re.search(r'(.)\1{2,}', password.data):
             raise ValidationError('Password contains repetitive characters. Please choose a different one.')
         if re.search(r'(012|123|234|345|456|567|678|789)', password.data):

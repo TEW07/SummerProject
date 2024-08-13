@@ -1,12 +1,13 @@
 from flask import render_template, redirect, abort, url_for, flash, request, session
 from flask_login import current_user, login_required
 from app.decks.models import Deck, Card
-from app.gamification.routes import check_achievements
 from app import db
 from app.review.models import ReviewOutcome
 import uuid
 from datetime import datetime, timedelta
 from . import review_blueprint
+from app.gamification.utils import check_achievements
+
 
 
 @review_blueprint.route('/start_review/<int:deck_id>', methods=['GET'])

@@ -2,6 +2,7 @@ from flask import render_template, flash, redirect, url_for
 from flask_login import login_required, current_user
 from app import db
 from .models import Achievement, UserAchievement
+from app.review.models import ReviewOutcome
 from app.auth.models import User
 from . import gamification_blueprint
 
@@ -11,21 +12,6 @@ def leaderboard():
     users = User.query.order_by(User.points.desc()).limit(10).all()  # Get top 10 users
     return render_template('leaderboard.html', users=users)
 
-def award_achievement(user_id, achievement_id):
-    existing_achievement = UserAchievement.query.filter_by(user_id=user_id, achievement_id=achievement_id).first()
-    if not existing_achievement:
-        new_achievement = UserAchievement(user_id=user_id, achievement_id=achievement_id)
-        db.session.add(new_achievement)
-        db.session.commit()
-        achievement = Achievement.query.get(achievement_id)
-        flash(f'Congratulations! You have earned the achievement: {achievement.name}', 'success')
-
-# Example function to award an achievement based on some criteria
-def check_achievements(user):
-    achievements = Achievement.query.all()
-    for achievement in achievements:
-        if user.points >= achievement.target:
-            award_achievement(user.user_id, achievement.achievement_id)
 
 @gamification_blueprint.route('/user_achievements')
 @login_required
@@ -37,7 +23,8 @@ def user_achievements():
     achievements_with_progress = [
         {
             'achievement': ua,
-            'progress': calculate_progress(ua)
+            'progress': calculate_progress(ua),
+            'formatted_date': ua.date_earned.strftime('%d/%m/%Y %H:%M')  # Format the date here
         } for ua in user_achievements
     ]
 
@@ -55,16 +42,40 @@ def user_achievements():
         user_achievements=user_achievements_dict
     )
 
+
+
 def calculate_progress(user_achievement):
-    if user_achievement.achievement.target > 0:
-        progress = (current_user.points / user_achievement.achievement.target) * 100
-        return min(progress, 100)
+    # Count the number of unique card_ids reviewed by the current user
+    total_unique_cards_reviewed = db.session.query(ReviewOutcome.card_id).filter_by(user_id=current_user.user_id).distinct().count()
+
+    # Check if the achievement is for cards reviewed
+    if "Cards Reviewed" in user_achievement.achievement.name:
+        if user_achievement.achievement.target > 0:
+            progress = (total_unique_cards_reviewed / int(user_achievement.achievement.target)) * 100
+            return min(progress, 100)
+    else:  # Otherwise, it must be a points-based achievement
+        if user_achievement.achievement.target > 0:
+            progress = (current_user.points / user_achievement.achievement.target) * 100
+            return min(progress, 100)
+
     return 0
 
 def calculate_progress_all(achievement):
-    if achievement.target > 0:
-        return (current_user.points / achievement.target) * 100
+    # Count the number of unique card_ids reviewed by the current user
+    total_unique_cards_reviewed = db.session.query(ReviewOutcome.card_id).filter_by(user_id=current_user.user_id).distinct().count()
+
+    # Check if the achievement is for cards reviewed
+    if "Cards Reviewed" in achievement.name:
+        if achievement.target > 0:
+            return min((total_unique_cards_reviewed / int(achievement.target)) * 100, 100)
+    else:  # Otherwise, it must be a points-based achievement
+        if achievement.target > 0:
+            return min((current_user.points / achievement.target) * 100, 100)
+
     return 0
+
+
+
 
 
 
