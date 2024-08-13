@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Your Decks{% endblock %}
+{% block heading %}Your Decks{% endblock %}
 {% block content %}
-    <h1 class="text-center mb-5">Your Decks</h1>
 <style>
     .table td, .table th {
         vertical-align: middle;
@@ -48,7 +48,13 @@
         <tr>
             <td><a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}">{{ deck['name'] }}</a></td>
             <td class="num-col">{{ deck['cards'] }}</td>
-            <td class="num-col">{{ deck['due_for_review'] }}</td>
+            <td class="num-col">
+                {% if deck['due_for_review'] > 0 %}
+                    <a href="{{ url_for('review.start_review', deck_id=deck['deck_id']) }}">{{ deck['due_for_review'] }}</a>
+                {% else %}
+                    {{ deck['due_for_review'] }}
+                {% endif %}
+            </td>
              <td>
                 {% if deck['learned_cards'] > 0 %}
                     <a href="{{ url_for('decks.view_learned_cards', deck_id=deck['deck_id']) }}">{{ deck['learned_cards'] }}</a>
@@ -68,7 +74,6 @@
                     Share Deck
                     {% endif %}
                 </a>
-                <a href="{{ url_for('review.start_review', deck_id=deck['deck_id']) }}" class="btn btn-primary">Review Deck</a>
                 <button class="btn btn-warning" onclick="openRenameModal('{{ deck['deck_id'] }}', '{{ deck['name'] }}')">Rename</button>
                 <button class="btn btn-danger" onclick="confirmDelete('{{ url_for('decks.delete_deck', deck_id=deck['deck_id']) }}')">Delete</button>
             </div>

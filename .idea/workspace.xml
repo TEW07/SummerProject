@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Reset database. Added 3 new achievements.py centred around reviewing different cards (not repeat reviews). Changed formatting of date on Achievement earned on. Added utils.py to avoid circular imports.">
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Upgraded achievement badges with numbered labels on the icon">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/badges/1000_points_badge.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/badges/1000_points_badge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/badges/100_points_badge.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/badges/100_points_badge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/badges/500_points_badge.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/badges/500_points_badge.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/auth/templates/account_settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/templates/account_settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/decks/templates/add_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/add_card.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/decks/templates/create_deck.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/create_deck.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/decks/templates/decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/decks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/decks/templates/public_decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/public_decks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gamification/templates/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/templates/leaderboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/templates/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +103,7 @@
       <workItem from="1723032843443" duration="624000" />
       <workItem from="1723041628619" duration="3410000" />
       <workItem from="1723458106333" duration="8363000" />
-      <workItem from="1723541702062" duration="8926000" />
+      <workItem from="1723541702062" duration="11352000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -323,7 +329,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723553610844</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Upgraded achievement badges with numbered labels on the icon">
+      <option name="closed" value="true" />
+      <created>1723567689791</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1723567689791</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +355,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented a daily login streak, displayed on the user's dashboard, and created a script &quot;generate_logins.py&quot; to test this feature. Daily streak logic is inside the route for dashboard. Created and included in base.html a custom css file to make the streak badge (only slightly) more appealing" />
     <MESSAGE value="Implemented a points system, each User has a points attribute which is defaulted to 0. Upon succesful login, users are awarded 10 points, which is amplified by their current login streak. Streak logic has been relocated to the login route so users can be awarded an appropriate number of points immediately upon login" />
     <MESSAGE value="Added a new page, account_settings.html, which contains a button user's can click to delete their account. Changes made to models to facilitate this deletion, via cascading on deletion." />
     <MESSAGE value="Utilised pytz to display most recent login according to BST on dashboard" />
@@ -366,6 +379,7 @@
     <MESSAGE value="Further improvements to homepage layout, complete with screenshots of the application interface after logging in." />
     <MESSAGE value="Improved passwords to check for 10,000 most commonly used passwords. Created a page to store fully learned cards and a new column in decks.html to match. Improved layout of decks. Small change to dashboard to ensure &quot;day&quot; apears instead of &quot;days&quot; for a streak of 1" />
     <MESSAGE value="Reset database. Added 3 new achievements.py centred around reviewing different cards (not repeat reviews). Changed formatting of date on Achievement earned on. Added utils.py to avoid circular imports." />
-    <option name="LAST_COMMIT_MESSAGE" value="Reset database. Added 3 new achievements.py centred around reviewing different cards (not repeat reviews). Changed formatting of date on Achievement earned on. Added utils.py to avoid circular imports." />
+    <MESSAGE value="Upgraded achievement badges with numbered labels on the icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upgraded achievement badges with numbered labels on the icon" />
   </component>
 </project>
