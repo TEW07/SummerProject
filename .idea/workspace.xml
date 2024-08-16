@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Upgraded achievement badges with numbered labels on the icon">
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Upgraded aesthetics of several pages, with neater, bordered tables and cards and centrelised, padded headings. Also ensured users can launch review by clicking on the number of cards that are due for review in decks.html">
+      <change afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth/templates/account_settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth/templates/account_settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/add_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/add_card.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/create_deck.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/create_deck.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/decks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/public_decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/public_decks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/gamification/templates/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/gamification/templates/leaderboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +68,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -103,7 +96,8 @@
       <workItem from="1723032843443" duration="624000" />
       <workItem from="1723041628619" duration="3410000" />
       <workItem from="1723458106333" duration="8363000" />
-      <workItem from="1723541702062" duration="11352000" />
+      <workItem from="1723541702062" duration="11565000" />
+      <workItem from="1723810491459" duration="379000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -337,7 +331,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723567689791</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Upgraded aesthetics of several pages, with neater, bordered tables and cards and centrelised, padded headings. Also ensured users can launch review by clicking on the number of cards that are due for review in decks.html">
+      <option name="closed" value="true" />
+      <created>1723573410899</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1723573410899</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +357,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implemented a points system, each User has a points attribute which is defaulted to 0. Upon succesful login, users are awarded 10 points, which is amplified by their current login streak. Streak logic has been relocated to the login route so users can be awarded an appropriate number of points immediately upon login" />
     <MESSAGE value="Added a new page, account_settings.html, which contains a button user's can click to delete their account. Changes made to models to facilitate this deletion, via cascading on deletion." />
     <MESSAGE value="Utilised pytz to display most recent login according to BST on dashboard" />
     <MESSAGE value="Implemented achievement and user_achievement models, and a script to commit some basic achievements to the database. Users are awarded these basic achievements upon certain points thresholds" />
@@ -380,6 +381,7 @@
     <MESSAGE value="Improved passwords to check for 10,000 most commonly used passwords. Created a page to store fully learned cards and a new column in decks.html to match. Improved layout of decks. Small change to dashboard to ensure &quot;day&quot; apears instead of &quot;days&quot; for a streak of 1" />
     <MESSAGE value="Reset database. Added 3 new achievements.py centred around reviewing different cards (not repeat reviews). Changed formatting of date on Achievement earned on. Added utils.py to avoid circular imports." />
     <MESSAGE value="Upgraded achievement badges with numbered labels on the icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgraded achievement badges with numbered labels on the icon" />
+    <MESSAGE value="Upgraded aesthetics of several pages, with neater, bordered tables and cards and centrelised, padded headings. Also ensured users can launch review by clicking on the number of cards that are due for review in decks.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upgraded aesthetics of several pages, with neater, bordered tables and cards and centrelised, padded headings. Also ensured users can launch review by clicking on the number of cards that are due for review in decks.html" />
   </component>
 </project>
