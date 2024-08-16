@@ -35,7 +35,13 @@
                         {% endif %}
                     </td>
                     {% if is_owner %}
-                    <td>{{ card.next_review_date.strftime('%d-%m-%Y') }}</td>
+                        <td>
+                            {% if card.next_review_date %}
+                                {{ card.next_review_date.strftime('%d-%m-%Y') }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
                     <td>{{ card.box }}</td>
                     <td>
                         <a href="{{ url_for('decks.edit_card', card_id=card.card_id) }}" class="btn btn-warning">Edit</a>
