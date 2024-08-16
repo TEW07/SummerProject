@@ -57,7 +57,7 @@
             </td>
              <td>
                 {% if deck['learned_cards'] > 0 %}
-                    <a href="{{ url_for('decks.view_learned_cards', deck_id=deck['deck_id']) }}">{{ deck['learned_cards'] }}</a>
+                    <a href="{{ url_for('decks.learned_cards', deck_id=deck['deck_id']) }}">{{ deck['learned_cards'] }}</a>
                 {% else %}
                     0
                 {% endif %}
