@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Updated Flask-WTF version to avoid incompatibility issues" />
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Increase User.password_hash field size after receiving error">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/update_schema.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,22 +43,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "leitner-system",
-    "last_opened_file_path": "C:/Users/Tomwa/PycharmProjects/SummerProject/app/static/badges",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;leitner-system&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Tomwa/PycharmProjects/SummerProject/app/static/badges&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Tomwa\PycharmProjects\SummerProject\app\static\badges" />
@@ -372,7 +375,39 @@
       <option name="project" value="LOCAL" />
       <updated>1723814782298</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Link to PostgreSQL for hosted/ production version">
+      <option name="closed" value="true" />
+      <created>1723823118058</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1723823118058</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Added PostgreSQL driver (psycopg2) to requirements.txt">
+      <option name="closed" value="true" />
+      <created>1723823443688</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1723823443688</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Added PostgreSQL driver (psycopg2) to requirements.txt for production branch">
+      <option name="closed" value="true" />
+      <created>1723823518688</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1723823518688</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Increase User.password_hash field size after receiving error">
+      <option name="closed" value="true" />
+      <created>1723827310820</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1723827310820</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,10 +425,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a &quot;target&quot; attribute to the achievement schema, to facilitate progress tracking. Also added a script to update the existing schema with the target column" />
-    <MESSAGE value="Changed achievements page to display user's obtained achievements seperately to those that are incomplete. Progress bars are displayed for all." />
-    <MESSAGE value="Small changes to decks/routes and view_deck to ensure users cannot modify public decks that they do not own (have not shared themselves)" />
-    <MESSAGE value="Commiting untracked migration" />
     <MESSAGE value="Small changes to presentation of achievements. Incomplete achievements will have progress feedback presented in black to show against the grey progress bar" />
     <MESSAGE value="Text will now become white once progress reaches a 50% threshold, to make it more readable against the green progress bar" />
     <MESSAGE value="Further stylistic changes to achievements, using a multicoloured progress bar so that text is visible over the complete and incomplete bar, with greyed out achievement badges." />
@@ -415,6 +446,10 @@
     <MESSAGE value="Added files to facilitate web hosting via Render" />
     <MESSAGE value="Changed requirements to avoid local paths" />
     <MESSAGE value="Updated Flask-WTF version to avoid incompatibility issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Flask-WTF version to avoid incompatibility issues" />
+    <MESSAGE value="Link to PostgreSQL for hosted/ production version" />
+    <MESSAGE value="Added PostgreSQL driver (psycopg2) to requirements.txt" />
+    <MESSAGE value="Added PostgreSQL driver (psycopg2) to requirements.txt for production branch" />
+    <MESSAGE value="Increase User.password_hash field size after receiving error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Increase User.password_hash field size after receiving error" />
   </component>
 </project>
