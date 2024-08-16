@@ -9,6 +9,8 @@ from flask import Flask
 from datetime import datetime, timedelta
 from app import db
 from app.gamification.utils import check_achievements
+from app.review.models import ReviewOutcome
+from app.decks.models import Deck, Card
 
 
 app = Flask(__name__)
@@ -129,14 +131,23 @@ def account_settings():
 def delete_account():
     user = User.query.get(current_user.user_id)
     if user:
-        # Perform cascading deletions if necessary
+        # First, delete all ReviewOutcome records related to the user's cards
+        user_cards = Card.query.join(Deck).filter(Deck.user_id == user.user_id).all()
+        for card in user_cards:
+            ReviewOutcome.query.filter_by(card_id=card.card_id).delete()
+
+        # Now delete the user, which will also delete the user's decks and cards due to cascade delete
         db.session.delete(user)
         db.session.commit()
+
+        # Log out the user after deleting the account
         logout_user()
         flash('Your account has been deleted.', 'success')
         return redirect(url_for('main.index'))
+
     flash('Account deletion failed.', 'danger')
     return redirect(url_for('auth.account_settings'))
+
 
 
 
