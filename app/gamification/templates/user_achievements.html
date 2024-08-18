@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <p class="card-text">
-                            <small class="text-muted">Earned on: {{ entry['formatted_date'] }}</small>
+                            <small class="text-muted">Earned on: {{ entry['achievement'].date_earned | to_uk_time }}</small>
                         </p>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                             </div>
                             {% if entry['achievement'].achievement_id in user_achievements %}
                                 <p class="card-text">
-                                    <small class="text-muted">Earned on: {{ user_achievements[entry['achievement'].achievement_id].date_earned.strftime('%d/%m/%Y %H:%M') }}</small>
+                                    <small class="text-muted">Earned on: {{ entry['achievement'].date_earned | to_uk_time }}</small>
                                 </p>
                             {% else %}
                                 <p class="card-text">
@@ -69,6 +69,8 @@
     </div>
 </div>
 {% endblock %}
+
+
 
 
 

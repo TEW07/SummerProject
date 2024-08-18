@@ -1,25 +1,7 @@
-from flask import current_app
 from flask.cli import with_appcontext
 import click
 from app import db
 from app.gamification.models import Achievement
-
-
-@click.command(name='update_achievements')
-@with_appcontext
-def update_achievements():
-    updates = {
-        '100 Points Achieved': 'badges/100_points_badge.png',
-        '500 Points Achieved': 'badges/500_points_badge.png',
-        '1000 Points Achieved': 'badges/1000_points_badge.png'
-    }
-
-    for name, path in updates.items():
-        achievement = Achievement.query.filter_by(name=name).first()
-        if achievement:
-            achievement.badge_image = path
-            db.session.commit()
-            print(f"Updated {name} with new badge path.")
 
 
 @click.command(name='delete_achievements')

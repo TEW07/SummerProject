@@ -4,6 +4,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_migrate import Migrate
 import secrets
+import pytz
+from datetime import datetime
+
 
 
 app = Flask(__name__)
@@ -18,6 +21,7 @@ app.config['SQLALCHEMY_RECORD_QUERIES'] = True
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+uk_timezone = pytz.timezone('Europe/London')
 
 from .main.routes import main_blueprint
 from .auth.routes import auth_blueprint
@@ -41,10 +45,10 @@ from app.auth.models import User
 from app.decks.models import Deck, Card
 from app.gamification.models import Achievement, UserAchievement
 
-from app.commands.achievements import add_achievements, update_achievements, delete_achievements
+from app.commands.achievements import add_achievements, delete_achievements
 app.cli.add_command(add_achievements)
-app.cli.add_command(update_achievements)
 app.cli.add_command(delete_achievements)
+
 
 
 @login_manager.user_loader
@@ -61,3 +65,12 @@ def ratelimit_handler(e):
     return render_template("429.html"), 429
 
 
+@app.template_filter('to_uk_time')
+def to_uk_time(date):
+    """Convert a datetime object to UK time and format it."""
+    if date.tzinfo is None:  # If the datetime is naive, assume it's in UTC
+        date = pytz.utc.localize(date)
+    uk_date = date.astimezone(uk_timezone)
+    return uk_date.strftime('%d/%m/%Y %H:%M')
+
+app.jinja_env.filters['to_uk_time'] = to_uk_time
