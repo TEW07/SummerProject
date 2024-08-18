@@ -2,8 +2,8 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="mb-4 text-center">Welcome to the Flashcard Creation Application!</h2>
+<div class="container">
+    <h2 class="mb-4 text-center">Welcome to the Leitner Study Assistant for Flashcards!</h2>
     <p class="text-center">This web app is designed to help you create, manage, and review flashcards effectively.</p>
     <p class="text-center">By utilising the biweekly Leitner Review Schedule, you'll be able to maximise your learning retention through spaced repetition and retrieval practice.</p>
 
@@ -31,9 +31,10 @@
     <h4 class="mt-5 mb-3 text-center">Spaced Repetition Schedule</h4>
     <p class="text-center">This application uses a two-week implementation of the Leitner System, as depicted in the review schedule below:</p>
 
-    <!-- Centered Image -->
+    <!-- Centered Image with Note -->
     <div class="text-center">
         <img src="{{ url_for('static', filename='homepage/spaced-repetition-review-schedule.png') }}" alt="Spaced Repetition Benefits" class="img-fluid mt-1 mb-3" style="max-width: 80%; height: auto;">
+        <p class="mt-3"><b>Note:</b> Be sure to regularly check this schedule and the Decks page to see where each deck is in the cycle. This will help you plan your reviews and stay on track with your study sessions.</p>
     </div>
 
     <h4 class="mt-5 mb-3 text-center">Get a Glimpse of Your Learning Journey</h4>
@@ -57,6 +58,7 @@
     </div>
 </div>
 {% endblock %}
+
 
 
 

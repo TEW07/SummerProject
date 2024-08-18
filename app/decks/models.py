@@ -17,6 +17,12 @@ class Deck(db.Model):
     def __repr__(self):
         return f"Deck('{self.name}', '{self.user_id}')"
 
+    def get_day_of_cycle(self):
+        if self.review_start_date:
+            days_since_start = (datetime.utcnow().date() - self.review_start_date.date()).days
+            return (days_since_start % 14) + 1
+        return None
+
 
 class Card(db.Model):
     card_id = db.Column(db.Integer, primary_key=True)

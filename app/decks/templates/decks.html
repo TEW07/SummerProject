@@ -29,7 +29,6 @@
     }
 </style>
 
-
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -40,42 +39,44 @@
             <th>Next Review Date</th>
             <th>Last Reviewed</th>
             <th>Date Created</th>
+            <th>Day of Cycle</th>  <!-- New column for Day of Cycle -->
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        {% for deck in decks %}
+        {% for deck_data in decks %}
         <tr>
-            <td><a href="{{ url_for('decks.view_deck', deck_id=deck['deck_id']) }}">{{ deck['name'] }}</a></td>
-            <td class="num-col">{{ deck['cards'] }}</td>
+            <td><a href="{{ url_for('decks.view_deck', deck_id=deck_data.deck.deck_id) }}">{{ deck_data.deck.name }}</a></td>
+            <td class="num-col">{{ deck_data.cards }}</td>
             <td class="num-col">
-                {% if deck['due_for_review'] > 0 %}
-                    <a href="{{ url_for('review.start_review', deck_id=deck['deck_id']) }}">{{ deck['due_for_review'] }}</a>
+                {% if deck_data.due_for_review > 0 %}
+                    <a href="{{ url_for('review.start_review', deck_id=deck_data.deck.deck_id) }}">{{ deck_data.due_for_review }}</a>
                 {% else %}
-                    {{ deck['due_for_review'] }}
+                    {{ deck_data.due_for_review }}
                 {% endif %}
             </td>
-             <td>
-                {% if deck['learned_cards'] > 0 %}
-                    <a href="{{ url_for('decks.learned_cards', deck_id=deck['deck_id']) }}">{{ deck['learned_cards'] }}</a>
+            <td>
+                {% if deck_data.learned_cards > 0 %}
+                    <a href="{{ url_for('decks.view_learned_cards', deck_id=deck_data.deck.deck_id) }}">{{ deck_data.learned_cards }}</a>
                 {% else %}
                     0
                 {% endif %}
             </td>
-            <td>{{ deck['next_review_date'] }}</td>
-            <td>{{ deck['last_review_date'] }}</td>
-            <td>{{ deck['created_at'] }}</td>
+            <td>{{ deck_data.next_review_date }}</td>
+            <td>{{ deck_data.last_review_date }}</td>
+            <td>{{ deck_data.created_at }}</td>
+            <td>{{ deck_data.deck.get_day_of_cycle() }}</td>  <!-- Display the day of the cycle -->
             <td>
             <div class="btn-group-vertical">
-                <a href="{{ url_for('decks.share_deck', deck_id=deck['deck_id']) }}" class="btn btn-info">
-                    {% if deck['shared'] %}
+                <a href="{{ url_for('decks.share_deck', deck_id=deck_data.deck.deck_id) }}" class="btn btn-info">
+                    {% if deck_data.deck.shared %}
                     Unshare Deck
                     {% else %}
                     Share Deck
                     {% endif %}
                 </a>
-                <button class="btn btn-warning" onclick="openRenameModal('{{ deck['deck_id'] }}', '{{ deck['name'] }}')">Rename</button>
-                <button class="btn btn-danger" onclick="confirmDelete('{{ url_for('decks.delete_deck', deck_id=deck['deck_id']) }}')">Delete</button>
+                <button class="btn btn-warning" onclick="openRenameModal('{{ deck_data.deck.deck_id }}', '{{ deck_data.deck.name }}')">Rename</button>
+                <button class="btn btn-danger" onclick="confirmDelete('{{ url_for('decks.delete_deck', deck_id=deck_data.deck.deck_id) }}')">Delete</button>
             </div>
             </td>
         </tr>
@@ -83,8 +84,7 @@
     </tbody>
 </table>
 
-
-<!-- Modal -->
+<!-- Delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -147,6 +147,7 @@ function openRenameModal(deckId, currentName) {
 </script>
 
 {% endblock %}
+
 
 
 

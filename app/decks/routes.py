@@ -41,10 +41,10 @@ def decks():
         # Step 2: Set next_review_date based on the query result
         if next_review:
             # Check if the next_review_date is in the past
-            if next_review.next_review_date.date() < datetime.utcnow().date():
+            if next_review[0].date() < datetime.utcnow().date():
                 next_review_date = datetime.utcnow().strftime('%d-%m-%Y')
             else:
-                next_review_date = next_review.next_review_date.strftime('%d-%m-%Y')
+                next_review_date = next_review[0].strftime('%d-%m-%Y')
         else:
             next_review_date = 'N/A'
 
@@ -59,12 +59,11 @@ def decks():
         # Get the count of learned cards
         learned_count = Card.query.filter(Card.deck_id == deck.deck_id, Card.box == 5, Card.next_review_date == None).count()
 
+        # Instead of creating a dictionary, pass the `Deck` object with additional fields
         deck_data.append({
-            'deck_id': deck.deck_id,
-            'name': deck.name,
+            'deck': deck,
             'cards': card_count,
             'due_for_review': due_count,
-            'shared': deck.shared,
             'next_review_date': next_review_date,
             'last_review_date': last_review_date,
             'created_at': deck.created_at.strftime('%d-%m-%Y'),
@@ -72,6 +71,7 @@ def decks():
         })
 
     return render_template('decks.html', decks=deck_data)
+
 
 
 

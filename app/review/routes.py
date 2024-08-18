@@ -170,6 +170,11 @@ def schedule_review(card, success, deck):
     db.session.commit()
 
 
+@review_blueprint.route('/review_schedule')
+@login_required
+def review_schedule():
+    return render_template('review_schedule.html')
+
 
 
 
