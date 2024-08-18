@@ -150,17 +150,17 @@ def schedule_review(card, success, deck):
 
     # Schedule the next review date if the card still needs to be reviewed
     if card.next_review_date is not None:
-        today = datetime.utcnow().date()
-        # Calculate the current day in the 14-day review cycle
-        current_cycle_day = ((today - deck.review_start_date.date()).days % 14) + 1
+        # Calculate the current day in the 14-day review cycle using the helper method
+        current_cycle_day = deck.get_day_of_cycle()
+
         # Iterate over the next 14 days to find the next review day
         for offset in range(1, 15):
-            # Calculate the next cycle day, adjusting for zero-based indexing
+            # Calculate the next cycle day
             next_cycle_day = ((current_cycle_day + offset - 1) % 14) + 1
             # Check if the card's box is in the review schedule for that day
             if card.box in REVIEW_SCHEDULE[next_cycle_day]:
                 # Set the next review date
-                card.next_review_date = today + timedelta(days=offset)
+                card.next_review_date = datetime.utcnow().date() + timedelta(days=offset)
                 break
 
         # Combine the next review date with the minimum time (start of the day)
@@ -168,6 +168,7 @@ def schedule_review(card, success, deck):
 
     # Commit the changes to the database
     db.session.commit()
+
 
 
 @review_blueprint.route('/review_schedule')

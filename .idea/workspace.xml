@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Updated Flask-WTF version to avoid incompatibility issues">
-      <change afterPath="$PROJECT_DIR$/app/review/templates/review_schedule.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SummerProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SummerProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/data/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/app/data/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/decks/templates/decks.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/decks/templates/decks.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/main/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/review/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/review/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
-    </list>
+    <list default="true" id="7227e2c1-f5fd-4672-a0f5-c08e693da6a6" name="Changes" comment="Added a page for users to check the review schedule. Added a column in Decks so users can check where each individual deck lies within the 2-week cycle. Added Homepage to be visible to logged-in users for education." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -118,7 +107,7 @@
       <workItem from="1723541702062" duration="11565000" />
       <workItem from="1723810491459" duration="2510000" />
       <workItem from="1723813366255" duration="1514000" />
-      <workItem from="1723986450533" duration="3161000" />
+      <workItem from="1723986450533" duration="3580000" />
     </task>
     <task id="LOCAL-00001" summary="Added database file to git tracking">
       <option name="closed" value="true" />
@@ -384,7 +373,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723814782298</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Added a page for users to check the review schedule. Added a column in Decks so users can check where each individual deck lies within the 2-week cycle. Added Homepage to be visible to logged-in users for education.">
+      <option name="closed" value="true" />
+      <created>1723990068722</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1723990068722</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -402,7 +399,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a &quot;target&quot; attribute to the achievement schema, to facilitate progress tracking. Also added a script to update the existing schema with the target column" />
     <MESSAGE value="Changed achievements page to display user's obtained achievements seperately to those that are incomplete. Progress bars are displayed for all." />
     <MESSAGE value="Small changes to decks/routes and view_deck to ensure users cannot modify public decks that they do not own (have not shared themselves)" />
     <MESSAGE value="Commiting untracked migration" />
@@ -427,6 +423,7 @@
     <MESSAGE value="Added files to facilitate web hosting via Render" />
     <MESSAGE value="Changed requirements to avoid local paths" />
     <MESSAGE value="Updated Flask-WTF version to avoid incompatibility issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Flask-WTF version to avoid incompatibility issues" />
+    <MESSAGE value="Added a page for users to check the review schedule. Added a column in Decks so users can check where each individual deck lies within the 2-week cycle. Added Homepage to be visible to logged-in users for education." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a page for users to check the review schedule. Added a column in Decks so users can check where each individual deck lies within the 2-week cycle. Added Homepage to be visible to logged-in users for education." />
   </component>
 </project>
