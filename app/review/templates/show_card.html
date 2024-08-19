@@ -4,20 +4,14 @@
 {% block heading %}Review Card{% endblock %}
 {% block content %}
 <style>
+    .flashcard-container {
+        perspective: 1000px;
+    }
+
     .flashcard {
         width: 500px;
         height: 300px;
         margin: 0 auto;
-        padding: 2rem;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.5rem;
-        text-align: center;
         position: relative;
         transform-style: preserve-3d;
         transition: transform 0.6s;
@@ -36,6 +30,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        padding: 2rem;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 1.5rem;
+        text-align: center;
     }
 
     .flashcard .back {
@@ -79,17 +80,21 @@
         background-color: #dc3545;
     }
 </style>
-<div class="flashcard" id="flashcard">
-    <div class="front">
-        <div>
-            <div>{{ card.front }}</div>
-            <button class="btn btn-primary mt-3" onclick="toggleAnswer()">Show Answer (Spacebar)</button>
+
+<div class="flashcard-container">
+    <div class="flashcard" id="flashcard">
+        <div class="front">
+            <div>
+                <div>{{ card.front }}</div>
+                <button class="btn btn-primary mt-3" onclick="toggleAnswer()">Show Answer (Spacebar)</button>
+            </div>
+        </div>
+        <div class="back">
+            <div>{{ card.back }}</div>
         </div>
     </div>
-    <div class="back">
-        <div>{{ card.back }}</div>
-    </div>
 </div>
+
 <div class="review-buttons">
     <form id="incorrect-form" action="{{ url_for('review.process_review', card_id=card.card_id) }}" method="post">
         <input type="hidden" name="correct" value="0">
@@ -151,6 +156,11 @@
     });
 </script>
 {% endblock %}
+
+
+
+
+
 
 
 

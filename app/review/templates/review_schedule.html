@@ -8,12 +8,14 @@
     <ul class="text-left" style="display: inline-block; text-align: left;">
         <li><b>Consistency is Key:</b> Aim to log in daily or as often as possible to keep up with your reviews!</li>
         <li><b>Understand the Cycle:</b> Your decks rotate through the 14-day cycle. As cards are correctly reviewed, they move to higher decks with less frequent review intervals.</li>
-        <li><b>Manage Your Workload:</b> On some days, you may have multiple decks up for review. The Decks page shows you where each deck is in the cycle, allowing you to prepare for these heavier days.</li>
+        <li class=" mb-3"><b>Manage Your Workload:</b> On some days, you may have multiple decks up for review:</li>
+        <p class="mt-1"><i>-The Decks page shows you where each deck is in this review cycle, allowing you to prepare for the heavier days</i></p>
+        <p><i>-View an individual Deck to see every card listed along with its current review box</i></p>
     </ul>
 
-    <p class="mb-5 mt-5"><b>Remember:</b> Keeping up with your reviews is important to ensure the information is retained long-term.</p>
+    <p class="mb-4 mt-3"><b>Remember:</b> Keeping up with your reviews is important to ensure the information is retained long-term.</p>
 
-    <img src="{{ url_for('static', filename='homepage/spaced-repetition-review-schedule.png') }}" alt="Review Schedule" class="img-fluid" style="width: 100%; max-width: 650px;">
+    <img src="{{ url_for('static', filename='homepage/spaced-repetition-review-schedule.png') }}" alt="Review Schedule" class="img-fluid mb-5" style="width: 100%; max-width: 650px;">
 
 </div>
 {% endblock %}
