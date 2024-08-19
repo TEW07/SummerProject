@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://summerprojectpsql_user:37pCeCeAN3b0BjGUEOtdGH1PocpE9Ua5@dpg-cqvlnt8gph6c738uits0-a.frankfurt-postgres.render.com/summerprojectpsql'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data', 'data.sqlite')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Put this in your configuration file or where you initialize your app
 app.config['SQLALCHEMY_ECHO'] = True

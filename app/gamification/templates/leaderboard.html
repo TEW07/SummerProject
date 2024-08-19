@@ -1,4 +1,3 @@
-<!-- leaderboard.html -->
 {% extends "base.html" %}
 {% block title %}Leaderboard{% endblock %}
 {% block heading %}Leaderboard{% endblock %}
@@ -16,13 +15,11 @@
                 </thead>
                 <tbody>
                     {% for user in users %}
-                        {% if not session.get('opted_out_of_leaderboard') or user.user_id != current_user.user_id %}
-                        <tr>
-                            <td>{{ loop.index }}</td>
-                            <td>{{ user.username }}</td>
-                            <td>{{ user.points }}</td>
-                        </tr>
-                        {% endif %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.points }}</td>
+                    </tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -30,5 +27,6 @@
     </div>
 </div>
 {% endblock %}
+
 
 

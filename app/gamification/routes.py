@@ -6,14 +6,13 @@ from app.review.models import ReviewOutcome
 from app.auth.models import User
 from . import gamification_blueprint
 
+
 @gamification_blueprint.route('/leaderboard')
 def leaderboard():
-    if session.get('opted_out_of_leaderboard'):
-        users = User.query.filter(User.user_id != current_user.user_id).order_by(User.points.desc()).all()
-    else:
-        users = User.query.order_by(User.points.desc()).all()
-    return render_template('leaderboard.html', users=users)
+    # Filter out users who have opted out of the leaderboard
+    users = User.query.filter(User.show_on_leaderboard == True).order_by(User.points.desc()).all()
 
+    return render_template('leaderboard.html', users=users)
 
 
 @gamification_blueprint.route('/user_achievements')

@@ -1,8 +1,8 @@
-"""Initial migration
+"""Initial migration after reset
 
-Revision ID: dc84a341233c
+Revision ID: 2d40337bbb45
 Revises: 
-Create Date: 2024-07-25 11:13:33.125884
+Create Date: 2024-08-19 17:45:55.148475
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'dc84a341233c'
+revision = '2d40337bbb45'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,14 +24,16 @@ def upgrade():
     sa.Column('description', sa.String(length=255), nullable=False),
     sa.Column('points', sa.Integer(), nullable=False),
     sa.Column('badge_image', sa.String(length=255), nullable=False),
+    sa.Column('target', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('achievement_id')
     )
     op.create_table('user',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=80), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
-    sa.Column('password_hash', sa.String(length=128), nullable=False),
+    sa.Column('password_hash', sa.String(length=256), nullable=False),
     sa.Column('points', sa.Integer(), nullable=True),
+    sa.Column('show_on_leaderboard', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('user_id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')

@@ -12,7 +12,8 @@
         <form method="POST" action="{{ url_for('auth.update_leaderboard_preference') }}">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" id="optOutLeaderboard" name="opt_out_leaderboard"
-                       {% if session.get('opted_out_of_leaderboard') %}checked{% endif %}>
+       {% if not current_user.show_on_leaderboard %}checked{% endif %}>
+
                 <label class="form-check-label" for="optOutLeaderboard">
                     Opt-out of Leaderboard
                 </label>

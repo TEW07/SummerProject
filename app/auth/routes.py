@@ -130,9 +130,11 @@ def account_settings():
 @login_required
 def update_leaderboard_preference():
     if 'opt_out_leaderboard' in request.form:
-        session['opted_out_of_leaderboard'] = True
+        current_user.show_on_leaderboard = False
     else:
-        session['opted_out_of_leaderboard'] = False
+        current_user.show_on_leaderboard = True
+
+    db.session.commit()
     flash('Your leaderboard preferences have been updated.', 'success')
     return redirect(url_for('auth.account_settings'))
 
