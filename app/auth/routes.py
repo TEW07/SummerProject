@@ -126,6 +126,17 @@ def account_settings():
     return render_template('account_settings.html')
 
 
+@auth_blueprint.route('/update_leaderboard_preference', methods=['POST'])
+@login_required
+def update_leaderboard_preference():
+    if 'opt_out_leaderboard' in request.form:
+        session['opted_out_of_leaderboard'] = True
+    else:
+        session['opted_out_of_leaderboard'] = False
+    flash('Your leaderboard preferences have been updated.', 'success')
+    return redirect(url_for('auth.account_settings'))
+
+
 @auth_blueprint.route('/delete_account', methods=['POST'])
 @login_required
 def delete_account():

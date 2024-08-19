@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, session
 from flask_login import login_required, current_user
 from app import db
 from .models import Achievement, UserAchievement
@@ -7,10 +7,13 @@ from app.auth.models import User
 from . import gamification_blueprint
 
 @gamification_blueprint.route('/leaderboard')
-@login_required
 def leaderboard():
-    users = User.query.order_by(User.points.desc()).limit(10).all()  # Get top 10 users
+    if session.get('opted_out_of_leaderboard'):
+        users = User.query.filter(User.user_id != current_user.user_id).order_by(User.points.desc()).all()
+    else:
+        users = User.query.order_by(User.points.desc()).all()
     return render_template('leaderboard.html', users=users)
+
 
 
 @gamification_blueprint.route('/user_achievements')

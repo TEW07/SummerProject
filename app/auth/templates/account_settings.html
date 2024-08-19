@@ -5,6 +5,23 @@
 <div class="container">
     <h2>Account Settings</h2>
     <hr>
+
+    <!-- Leaderboard Preferences -->
+    <div class="mt-3">
+        <h4>Leaderboard Preferences</h4>
+        <form method="POST" action="{{ url_for('auth.update_leaderboard_preference') }}">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="optOutLeaderboard" name="opt_out_leaderboard"
+                       {% if session.get('opted_out_of_leaderboard') %}checked{% endif %}>
+                <label class="form-check-label" for="optOutLeaderboard">
+                    Opt-out of Leaderboard
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3 mb-3">Save Changes</button>
+        </form>
+    </div>
+
+    <!-- Account Deletion Section -->
     <div class="mt-3">
         <h4>Delete Account</h4>
         <p>Warning: This action cannot be undone. All your data will be permanently deleted.</p>
@@ -37,4 +54,5 @@
     </div>
 </div>
 {% endblock %}
+
 
