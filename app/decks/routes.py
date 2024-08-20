@@ -156,18 +156,21 @@ def delete_deck(deck_id):
     if deck.user_id != current_user.user_id:
         abort(403)
 
-    # Delete related ReviewOutcome records
-    db.session.query(ReviewOutcome).join(Card).filter(Card.deck_id == deck_id).delete(synchronize_session=False)
+    # Iterate over cards in the deck
+    cards = Card.query.filter_by(deck_id=deck_id).all()
+    for card in cards:
+        # Delete associated ReviewOutcome records for each card
+        ReviewOutcome.query.filter_by(card_id=card.card_id).delete(synchronize_session=False)
 
-    # Now delete the Cards
+    # Delete the cards in the deck
     Card.query.filter_by(deck_id=deck_id).delete(synchronize_session=False)
 
-    # Finally, delete the Deck
+    # Delete the deck itself
     db.session.delete(deck)
     db.session.commit()
+
     flash('Deck has been deleted!', 'success')
     return redirect(url_for('decks.decks'))
-
 
 
 @decks_blueprint.route('/share_deck/<int:deck_id>', methods=['POST', 'GET'])
