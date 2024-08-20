@@ -138,6 +138,11 @@ def delete_card(card_id):
     card = Card.query.get_or_404(card_id)
     if card.deck.user_id != current_user.user_id:
         abort(403)
+
+    # Delete related ReviewOutcome records
+    db.session.query(ReviewOutcome).filter_by(card_id=card_id).delete(synchronize_session=False)
+
+    # Now delete the Card
     db.session.delete(card)
     db.session.commit()
     flash('Card has been deleted!', 'success')
