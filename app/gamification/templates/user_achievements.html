@@ -8,23 +8,29 @@
         {% for entry in achievements_with_progress %}
             <div class="col-md-4 mb-4">
                 <div class="card">
-                    <img src="{{ url_for('static', filename=entry['achievement'].achievement.badge_image) }}" class="card-img-top" alt="{{ entry['achievement'].achievement.name }}">
+                    <img src="{{ url_for('static', filename=entry['achievement'].achievement.badge_image) }}"
+                         class="card-img-top" alt="{{ entry['achievement'].achievement.name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ entry['achievement'].achievement.name }}</h5>
                         <p class="card-text">{{ entry['achievement'].achievement.description }}</p>
                         <div class="progress position-relative" style="height: 25px;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ entry['progress'] if entry['progress'] <= 100 else 100 }}%;" aria-valuenow="{{ entry['progress'] if entry['progress'] <= 100 else 100 }}" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ entry['progress'] if entry['progress'] <= 100 else 100 }}%;" aria-valuenow="
+{{ entry['progress'] if entry['progress'] <= 100 else 100 }}" aria-valuemin="0" aria-valuemax="100">
                                 <span class="position-absolute w-100 text-center" style="color: white; font-size: 14px; font-weight: bold;">
                                     {% if "Cards Reviewed" in entry['achievement'].achievement.name %}
-                                        {{ entry['progress'] | round(1) }}% ({{ entry['progress'] * (entry['achievement'].achievement.target) // 100 }}/{{ entry['achievement'].achievement.target }})
+                                        {{ entry['progress'] | round(1) }}% ({{ entry['progress'] *
+                                        (entry['achievement'].achievement.target) // 100 }}/{{ entry['achievement'].
+                                        achievement.target }})
                                     {% else %}
-                                        {{ entry['progress'] | round(1) }}% ({{ current_user.points }}/{{ entry['achievement'].achievement.target }})
+                                        {{ entry['progress'] | round(1) }}% ({{ current_user.points }}/
+                                        {{ entry['achievement'].achievement.target }})
                                     {% endif %}
                                 </span>
                             </div>
                         </div>
                         <p class="card-text">
-                            <small class="text-muted">Earned on: {{ entry['achievement'].date_earned | to_uk_time }}</small>
+                            <small class="text-muted">Earned on: {{ entry['achievement'].date_earned |
+                            to_uk_time }}</small>
                         </p>
                     </div>
                 </div>
@@ -37,24 +43,30 @@
             {% if entry['achievement'].achievement_id not in user_achievements %}
                 <div class="col-md-4 mb-4">
                     <div class="card unearned">
-                        <img src="{{ url_for('static', filename=entry['achievement'].badge_image) }}" class="card-img-top achievement-image" alt="{{ entry['achievement'].name }}">
+                        <img src="{{ url_for('static', filename=entry['achievement'].badge_image) }}"
+                             class="card-img-top achievement-image" alt="{{ entry['achievement'].name }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ entry['achievement'].name }}</h5>
                             <p class="card-text">{{ entry['achievement'].description }}</p>
                             <div class="progress position-relative" style="height: 25px;">
-                                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ entry['progress'] if entry['progress'] <= 100 else 100 }}%;" aria-valuenow="{{ entry['progress'] if entry['progress'] <= 100 else 100 }}" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ entry['progress'] if entry['progress'] <= 100 else 100 }}%;"
+                                     aria-valuenow="{{ entry['progress'] if entry['progress'] <= 100 else 100 }}"
+                                     aria-valuemin="0" aria-valuemax="100">
                                     <span class="position-absolute w-100 text-center" style="color: black; font-size: 14px; font-weight: bold;">
                                         {% if "Cards Reviewed" in entry['achievement'].name %}
-                                            {{ entry['progress'] | round(1) }}% ({{ entry['progress'] * (entry['achievement'].target) // 100 }}/{{ entry['achievement'].target }})
+                                            {{ entry['progress'] | round(1) }}% ({{ entry['progress'] *
+                                            (entry['achievement'].target) // 100 }}/{{ entry['achievement'].target }})
                                         {% else %}
-                                            {{ entry['progress'] | round(1) }}% ({{ current_user.points }}/{{ entry['achievement'].target }})
+                                            {{ entry['progress'] | round(1) }}% ({{ current_user.points }}/
+                                            { entry['achievement'].target }})
                                         {% endif %}
                                     </span>
                                 </div>
                             </div>
                             {% if entry['achievement'].achievement_id in user_achievements %}
                                 <p class="card-text">
-                                    <small class="text-muted">Earned on: {{ entry['achievement'].date_earned | to_uk_time }}</small>
+                                    <small class="text-muted">Earned on: {{ entry['achievement'].date_earned |
+                                    to_uk_time }}</small>
                                 </p>
                             {% else %}
                                 <p class="card-text">

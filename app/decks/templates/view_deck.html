@@ -22,7 +22,8 @@
                 <tr>
                     <td>{{ card.front }}</td>
                     <td>
-                        <button class="btn btn-primary" onclick="toggleAnswer('answer-{{ card.card_id }}')">Show Answer</button>
+                        <button class="btn btn-primary" onclick="toggleAnswer('answer-{{ card.card_id }}')">
+                            Show Answer</button>
                         <div id="answer-{{ card.card_id }}" class="answer" style="display: none;">
                             {{ card.back }}
                         </div>
@@ -44,8 +45,10 @@
                         </td>
                     <td>{{ card.box }}</td>
                     <td>
-                        <a href="{{ url_for('decks.edit_card', card_id=card.card_id) }}" class="btn btn-warning">Edit</a>
-                        <button class="btn btn-danger" onclick="confirmDelete('{{ url_for('decks.delete_card', card_id=card.card_id) }}')">Delete</button>
+                        <a href="{{ url_for('decks.edit_card', card_id=card.card_id) }}" class="btn btn-warning">
+                            Edit</a>
+                        <button class="btn btn-danger" onclick="confirmDelete('{{ url_for('decks.delete_card',
+                        card_id=card.card_id) }}')">Delete</button>
                     </td>
                     {% endif %}
                 </tr>
@@ -54,7 +57,6 @@
     </table>
 </div>
 
-<!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

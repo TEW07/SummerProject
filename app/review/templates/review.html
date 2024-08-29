@@ -9,7 +9,8 @@
             {% for deck in decks %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     {{ deck.name }}
-                    <a href="{{ url_for('review.start_review', deck_id=deck.deck_id) }}" class="btn btn-primary">Review</a>
+                    <a href="{{ url_for('review.start_review', deck_id=deck.deck_id) }}" class="btn btn-primary">
+                        Review</a>
                 </li>
             {% endfor %}
         </ul>

@@ -1,4 +1,3 @@
-# app/auth/models.py
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
@@ -16,9 +15,8 @@ class User(db.Model, UserMixin):
     )
     show_on_leaderboard = db.Column(
         db.Boolean, default=True
-    )  # Ensure this column is present
+    )
 
-    # Relationship to LoginEvent with cascade delete
     login_events = db.relationship(
         "LoginEvent", backref="user", cascade="all, delete-orphan", lazy=True
     )

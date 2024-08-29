@@ -65,8 +65,7 @@ def create_app():
 
     @app.template_filter("to_uk_time")
     def to_uk_time(date):
-        """Convert a datetime object to UK time and format it."""
-        if date.tzinfo is None:  # If the datetime is naive, assume it's in UTC
+        if date.tzinfo is None:
             date = pytz.utc.localize(date)
         uk_date = date.astimezone(uk_timezone)
         return uk_date.strftime("%d/%m/%Y %H:%M")

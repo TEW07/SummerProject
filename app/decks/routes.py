@@ -34,7 +34,6 @@ def decks():
             Card.deck_id == deck.deck_id, Card.next_review_date <= datetime.utcnow()
         ).count()
 
-        # Step 1: Query for the earliest next_review_date for the cards in the deck
         next_review = (
             db.session.query(Card.next_review_date)
             .filter(Card.deck_id == deck.deck_id)
@@ -42,9 +41,7 @@ def decks():
             .first()
         )
 
-        # Step 2: Set next_review_date based on the query result
         if next_review:
-            # Check if the next_review_date is in the past
             if next_review[0].date() < datetime.utcnow().date():
                 next_review_date = datetime.utcnow().strftime("%d-%m-%Y")
             else:
@@ -52,7 +49,6 @@ def decks():
         else:
             next_review_date = "N/A"
 
-        # Get the last review date
         last_review = (
             db.session.query(ReviewOutcome.timestamp)
             .join(Card, Card.card_id == ReviewOutcome.card_id)
@@ -67,12 +63,10 @@ def decks():
             last_review.timestamp.strftime("%d-%m-%Y") if last_review else "N/A"
         )
 
-        # Get the count of learned cards
         learned_count = Card.query.filter(
             Card.deck_id == deck.deck_id, Card.box == 5, Card.next_review_date == None
         ).count()
 
-        # Instead of creating a dictionary, pass the `Deck` object with additional fields
         deck_data.append(
             {
                 "deck": deck,
@@ -81,7 +75,7 @@ def decks():
                 "next_review_date": next_review_date,
                 "last_review_date": last_review_date,
                 "created_at": deck.created_at.strftime("%d-%m-%Y"),
-                "learned_cards": learned_count,  # Add learned cards count
+                "learned_cards": learned_count,
             }
         )
 
@@ -96,7 +90,7 @@ def view_deck(deck_id):
     if not deck.shared and not is_owner:
         abort(
             403
-        )  # Forbidden access if the deck is not shared and not owned by the current user
+        )
 
     cards = Card.query.filter_by(deck_id=deck.deck_id).all()
     return render_template("view_deck.html", deck=deck, cards=cards, is_owner=is_owner)
@@ -109,15 +103,15 @@ def add_card():
     form = AddCardForm()
     form.deck.choices = [
         (deck.deck_id, deck.name) for deck in user_decks
-    ]  # Populate form dropdown
+    ]
 
     if form.validate_on_submit():
         card = Card(
             front=form.front.data,
             back=form.back.data,
             deck_id=form.deck.data,
-            next_review_date=datetime.utcnow(),  # Schedule for immediate review
-            box=1,  # New cards start in box 1
+            next_review_date=datetime.utcnow(),
+            box=1,
         )
         db.session.add(card)
         db.session.commit()
@@ -197,13 +191,13 @@ def public_decks():
         card_count = Card.query.filter_by(deck_id=deck.deck_id).count()
         creator = User.query.get(
             deck.user_id
-        ).username  # Fetch the username of the deck creator
+        ).username
         deck_data.append(
             {
                 "deck_id": deck.deck_id,
                 "name": deck.name,
                 "cards": card_count,
-                "creator": creator,  # Add the creator's username to the deck data
+                "creator": creator,
             }
         )
 
@@ -227,7 +221,7 @@ def clone_deck(deck_id):
         new_card = Card(
             front=card.front, back=card.back, deck_id=new_deck.deck_id, box=1
         )
-        new_card.next_review_date = datetime.utcnow()  # Schedule for review immediately
+        new_card.next_review_date = datetime.utcnow()
         db.session.add(new_card)
 
     db.session.commit()

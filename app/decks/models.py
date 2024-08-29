@@ -1,4 +1,3 @@
-# app/decks/models.py
 from app import db
 from datetime import datetime
 
@@ -11,7 +10,6 @@ class Deck(db.Model):
     shared = db.Column(db.Boolean, default=False)
     review_start_date = db.Column(db.DateTime, nullable=True)
 
-    # Relationship to Card with cascade delete
     cards = db.relationship(
         "Card", backref="deck", cascade="all, delete-orphan", lazy=True
     )
@@ -35,7 +33,7 @@ class Card(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     next_review_date = db.Column(db.DateTime, nullable=True)
     deck_id = db.Column(db.Integer, db.ForeignKey("deck.deck_id"), nullable=False)
-    box = db.Column(db.Integer, default=1)  # New field for Leitner system
+    box = db.Column(db.Integer, default=1)
 
     def __repr__(self):
         return f"Card('{self.front}', '{self.back}')"

@@ -48,7 +48,6 @@ def login():
             if user.check_password(form.password.data):
                 login_user(user, remember=True)
 
-                # Calculate the streak
                 today = datetime.utcnow().date()
                 yesterday = today - timedelta(days=1)
                 login_events = (
@@ -58,7 +57,7 @@ def login():
                 )
                 login_dates = {event.timestamp.date() for event in login_events}
 
-                streak = 1  # Default streak if today is the first login
+                streak = 1
                 if yesterday in login_dates:
                     expected_date = yesterday
                     while expected_date in login_dates:
@@ -68,14 +67,11 @@ def login():
                 points_awarded = 0
                 detailed_message = ""
 
-                # Check if user has already logged in today
                 if today not in login_dates:
-                    # Update user points
                     base_points = 10
-                    streak_points = streak * base_points  # Amplify points for streak
+                    streak_points = streak * base_points
                     points_awarded = streak_points
 
-                    # Ensure points is not None
                     if user.points is None:
                         user.points = 0
 
@@ -84,19 +80,18 @@ def login():
 
                     check_achievements(current_user)
 
-                    # Create detailed message
                     if streak == 1:
-                        detailed_message = f"You've been awarded {base_points} points! Come back tomorrow to start a streak and earn more points."
+                        detailed_message = (f"You've been awarded {base_points} points! "
+                                            f"Come back tomorrow to start a streak and earn more points.")
                     else:
-                        detailed_message = f"You've been awarded {streak_points} points! (Streak: {streak} days, {base_points} points per day)"
+                        detailed_message = (f"You've been awarded {streak_points} points! (Streak: {streak} days, "
+                                            f"{base_points} points per day)")
 
-                # Log the login event
                 now = datetime.utcnow()
                 login_event = LoginEvent(user_id=user.user_id, timestamp=now)
                 db.session.add(login_event)
                 db.session.commit()
 
-                # Store streak in session
                 session["streak"] = streak
 
                 if points_awarded > 0:
@@ -147,16 +142,13 @@ def update_leaderboard_preference():
 def delete_account():
     user = User.query.get(current_user.user_id)
     if user:
-        # First, delete all ReviewOutcome records related to the user's cards
         user_cards = Card.query.join(Deck).filter(Deck.user_id == user.user_id).all()
         for card in user_cards:
             ReviewOutcome.query.filter_by(card_id=card.card_id).delete()
 
-        # Now delete the user, which will also delete the user's decks and cards due to cascade delete
         db.session.delete(user)
         db.session.commit()
 
-        # Log out the user after deleting the account
         logout_user()
         flash("Your account has been deleted.", "success")
         return redirect(url_for("main.index"))

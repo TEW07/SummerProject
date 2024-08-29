@@ -83,7 +83,6 @@
                 if (/[0-9]/.test(password)) score += 1;
                 if (/[^a-zA-Z0-9]/.test(password)) score += 1;
 
-                // Update the strength bar and text
                 let strength = "";
                 let color = "";
                 if (score <= 2) {

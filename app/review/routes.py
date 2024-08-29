@@ -16,7 +16,6 @@ def start_review(deck_id):
     if deck.user_id != current_user.user_id:
         abort(403)
 
-    # Set the review start date if not already set
     if not deck.review_start_date:
         deck.review_start_date = datetime.utcnow()
         db.session.commit()
@@ -91,10 +90,8 @@ def review_summary():
     correct_count = sum(1 for outcome in review_outcomes if outcome.correct)
     incorrect_count = len(review_outcomes) - correct_count
 
-    # Check if points have already been awarded for this session
     points_awarded_flag = f"points_awarded_{session_id}"
     if not session.get(points_awarded_flag):
-        # Calculate points
         base_card_points = 10
         correct_bonus = 5
         total_cards_reviewed = len(review_outcomes)
@@ -102,22 +99,19 @@ def review_summary():
             correct_count * correct_bonus
         )
 
-        # Ensure user points is not None
         if current_user.points is None:
             current_user.points = 0
 
-        # Update user points
         current_user.points += points_earned
         db.session.commit()
 
-        # Set the flag in the session to indicate points have been awarded
         session[points_awarded_flag] = True
 
         check_achievements(current_user)
 
         flash(f"You earned {points_earned} points for this review session!", "success")
     else:
-        points_earned = 0  # No points awarded if already awarded
+        points_earned = 0
 
     return render_template(
         "review_summary.html",
@@ -149,7 +143,6 @@ REVIEW_SCHEDULE = {
 def schedule_review(card, success, deck):
     if success:
         if card.box == 5:
-            # If the card is in box 5 and reviewed correctly, mark it as learned
             card.next_review_date = None
         else:
             card.box += 1

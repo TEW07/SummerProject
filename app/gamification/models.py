@@ -8,7 +8,7 @@ class Achievement(db.Model):
     description = db.Column(db.String(255), nullable=False)
     points = db.Column(db.Integer, nullable=False, default=0)
     badge_image = db.Column(db.String(255), nullable=False)
-    target = db.Column(db.Integer, nullable=False, default=0)  # Add this line
+    target = db.Column(db.Integer, nullable=False, default=0)
     users = db.relationship(
         "UserAchievement", back_populates="achievement", cascade="all, delete-orphan"
     )

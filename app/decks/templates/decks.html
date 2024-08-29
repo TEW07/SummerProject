@@ -11,21 +11,21 @@
     .btn-group-vertical {
         display: flex;
         flex-direction: column;
-        gap: 5px; /* Adjusts the space between buttons */
+        gap: 5px;
     }
 
     .btn {
-        width: 100%; /* Ensures buttons take full width within their container */
+        width: 100%;
         text-align: center;
     }
 
     .table thead th {
-        text-align: center; /* Center align the table header text */
+        text-align: center;
     }
 
     .table {
-        width: 90%; /* Adjust this percentage to control the overall width of the table */
-        margin: 0 auto; /* Center the table on the page */
+        width: 90%;
+        margin: 0 auto;
     }
 </style>
 
@@ -39,25 +39,28 @@
             <th>Next Review Date</th>
             <th>Last Reviewed</th>
             <th>Date Created</th>
-            <th>Day of Cycle</th>  <!-- New column for Day of Cycle -->
+            <th>Day of Cycle</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for deck_data in decks %}
         <tr>
-            <td><a href="{{ url_for('decks.view_deck', deck_id=deck_data.deck.deck_id) }}">{{ deck_data.deck.name }}</a></td>
+            <td><a href="{{ url_for('decks.view_deck', deck_id=deck_data.deck.deck_id) }}">
+                {{ deck_data.deck.name }}</a></td>
             <td class="num-col">{{ deck_data.cards }}</td>
             <td class="num-col">
                 {% if deck_data.due_for_review > 0 %}
-                    <a href="{{ url_for('review.start_review', deck_id=deck_data.deck.deck_id) }}">{{ deck_data.due_for_review }}</a>
+                    <a href="{{ url_for('review.start_review', deck_id=deck_data.deck.deck_id) }}">
+                        {{ deck_data.due_for_review }}</a>
                 {% else %}
                     {{ deck_data.due_for_review }}
                 {% endif %}
             </td>
             <td>
                 {% if deck_data.learned_cards > 0 %}
-                    <a href="{{ url_for('decks.learned_cards', deck_id=deck_data.deck.deck_id) }}">{{ deck_data.learned_cards }}</a>
+                    <a href="{{ url_for('decks.learned_cards', deck_id=deck_data.deck.deck_id) }}">
+                        {{ deck_data.learned_cards }}</a>
                 {% else %}
                     0
                 {% endif %}
@@ -65,7 +68,7 @@
             <td>{{ deck_data.next_review_date }}</td>
             <td>{{ deck_data.last_review_date }}</td>
             <td>{{ deck_data.created_at }}</td>
-            <td>{{ deck_data.deck.get_day_of_cycle() }}</td>  <!-- Display the day of the cycle -->
+            <td>{{ deck_data.deck.get_day_of_cycle() }}</td>
             <td>
             <div class="btn-group-vertical">
                 <a href="{{ url_for('decks.share_deck', deck_id=deck_data.deck.deck_id) }}" class="btn btn-info">
@@ -75,8 +78,10 @@
                     Share Deck
                     {% endif %}
                 </a>
-                <button class="btn btn-warning" onclick="openRenameModal('{{ deck_data.deck.deck_id }}', '{{ deck_data.deck.name }}')">Rename</button>
-                <button class="btn btn-danger" onclick="confirmDelete('{{ url_for('decks.delete_deck', deck_id=deck_data.deck.deck_id) }}')">Delete</button>
+                <button class="btn btn-warning" onclick="openRenameModal('{{ deck_data.deck.deck_id }}',
+                        '{{ deck_data.deck.name }}')">Rename</button>
+                <button class="btn btn-danger" onclick="confirmDelete('{{ url_for('decks.delete_deck',
+                deck_id=deck_data.deck.deck_id) }}')">Delete</button>
             </div>
             </td>
         </tr>
@@ -84,7 +89,6 @@
     </tbody>
 </table>
 
-<!-- Delete Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -112,7 +116,6 @@ function confirmDelete(deleteUrl) {
 }
 </script>
 
-<!-- Rename Modal -->
 <div class="modal fade" id="renameModal" tabindex="-1" aria-labelledby="renameModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

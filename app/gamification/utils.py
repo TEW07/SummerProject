@@ -1,4 +1,3 @@
-# app/gamification/utils.py
 from flask import flash
 from app import db
 from .models import Achievement, UserAchievement
@@ -13,11 +12,9 @@ def check_achievements(user):
 
     for achievement in achievements:
         if achievement.name.endswith("Cards Reviewed"):
-            # Check based on cards reviewed
             if total_cards_reviewed >= int(achievement.target):
                 award_achievement(user.user_id, achievement.achievement_id)
         else:
-            # Check based on points
             if user.points >= int(achievement.target):
                 award_achievement(user.user_id, achievement.achievement_id)
 

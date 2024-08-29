@@ -18,7 +18,6 @@ def delete_achievements():
 @with_appcontext
 def add_achievements():
     achievements = [
-        # Card review achievements
         Achievement(
             name="10 Cards Reviewed",
             description="Review 10 Different Cards",
@@ -40,7 +39,6 @@ def add_achievements():
             badge_image="badges/100_cards_badge.png",
             target=100,
         ),
-        # Points-based achievements
         Achievement(
             name="100 Points",
             description="Reach 100 Points",

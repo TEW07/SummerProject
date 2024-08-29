@@ -2,25 +2,22 @@
 {% block title %}Dashboard{% endblock %}
 {% block heading %}Dashboard{% endblock %}
 {% block content %}
-<div class="container mt-1" style="max-width: 1500px;"> <!-- Set a max-width for the container -->
+<div class="container mt-1" style="max-width: 1500px;">
 
-    <!-- Row for Dashboard Cards -->
     <div class="row">
-        <!-- Welcome Card -->
         <div class="col-md-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">Welcome, {{ user_info.username }}!</h5>
                     <p class="card-text">You have logged in {{ user_info.login_count }} times.</p>
                     <p class="card-text">Your most recent login was at {{ user_info.last_login_at }}</p>
-                    <div class="streak-badge"> <!-- Add a class for styling -->
+                    <div class="streak-badge">
     Current Streak: {{ user_info.current_streak }} {{ 'day' if user_info.current_streak == 1 else 'days' }}
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Due Reviews Card -->
         <div class="col-md-6 mb-4">
             <div class="card h-100">
                 <div class="card-body">
@@ -29,7 +26,8 @@
                         <ul class="list-group">
                             {% for review in due_reviews %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a href="{{ url_for('review.start_review', deck_id=review.deck_id) }}">{{ review.name }}</a>
+                                    <a href="{{ url_for('review.start_review', deck_id=review.deck_id) }}">
+                                        {{ review.name }}</a>
                                     <span class="badge bg-primary rounded-pill">{{ review.due_count }} due</span>
                                 </li>
                             {% endfor %}
