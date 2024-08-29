@@ -136,37 +136,22 @@ REVIEW_SCHEDULE = {
 
 
 def schedule_review(card, success, deck):
-    # Determine if the card was reviewed successfully
     if success:
         if card.box == 5:
             # If the card is in box 5 and reviewed correctly, mark it as learned
             card.next_review_date = None
         else:
-            # Otherwise, move the card to the next box
             card.box += 1
     else:
-        # If the card was reviewed incorrectly, move it back to box 1
         card.box = 1
-
-    # Schedule the next review date if the card still needs to be reviewed
     if card.next_review_date is not None:
-        # Calculate the current day in the 14-day review cycle using the helper method
         current_cycle_day = deck.get_day_of_cycle()
-
-        # Iterate over the next 14 days to find the next review day
         for offset in range(1, 15):
-            # Calculate the next cycle day
             next_cycle_day = ((current_cycle_day + offset - 1) % 14) + 1
-            # Check if the card's box is in the review schedule for that day
             if card.box in REVIEW_SCHEDULE[next_cycle_day]:
-                # Set the next review date
                 card.next_review_date = datetime.utcnow().date() + timedelta(days=offset)
                 break
-
-        # Combine the next review date with the minimum time (start of the day)
         card.next_review_date = datetime.combine(card.next_review_date, datetime.min.time())
-
-    # Commit the changes to the database
     db.session.commit()
 
 
