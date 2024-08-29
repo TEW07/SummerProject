@@ -14,12 +14,10 @@ from app.decks.models import Deck, Card
 
 
 app = Flask(__name__)
-limiter = Limiter(
-    get_remote_address,
-    app=app
-)
+limiter = Limiter(get_remote_address, app=app)
 
-@auth_blueprint.route('/register', methods=['GET', 'POST'])
+
+@auth_blueprint.route("/register", methods=["GET", "POST"])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -27,19 +25,19 @@ def register():
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
-        flash('Your account has been created! You are now able to sign in.', 'success')
-        return redirect(url_for('auth.login'))
-    return render_template('register.html', title='Register', form=form)
+        flash("Your account has been created! You are now able to sign in.", "success")
+        return redirect(url_for("auth.login"))
+    return render_template("register.html", title="Register", form=form)
 
 
 def login_key():
-    username = request.form.get('username')
+    username = request.form.get("username")
     if username:
         return f"{get_remote_address()}:{username}"
     return get_remote_address()
 
 
-@auth_blueprint.route('/login', methods=['GET', 'POST'])
+@auth_blueprint.route("/login", methods=["GET", "POST"])
 @limiter.limit("4 per minute", key_func=login_key)
 @limiter.limit("7 per hour", key_func=login_key)
 def login():
@@ -53,7 +51,11 @@ def login():
                 # Calculate the streak
                 today = datetime.utcnow().date()
                 yesterday = today - timedelta(days=1)
-                login_events = LoginEvent.query.filter_by(user_id=user.user_id).order_by(LoginEvent.timestamp.desc()).all()
+                login_events = (
+                    LoginEvent.query.filter_by(user_id=user.user_id)
+                    .order_by(LoginEvent.timestamp.desc())
+                    .all()
+                )
                 login_dates = {event.timestamp.date() for event in login_events}
 
                 streak = 1  # Default streak if today is the first login
@@ -95,51 +97,52 @@ def login():
                 db.session.commit()
 
                 # Store streak in session
-                session['streak'] = streak
+                session["streak"] = streak
 
                 if points_awarded > 0:
-                    flash(f"Sign in successful! {detailed_message}", 'success')
+                    flash(f"Sign in successful! {detailed_message}", "success")
                 else:
-                    flash('Sign in successful! No points awarded as you have already logged in today.', 'success')
+                    flash(
+                        "Sign in successful! No points awarded as you have already logged in today.",
+                        "success",
+                    )
 
-                return redirect(url_for('main.dashboard'))
+                return redirect(url_for("main.dashboard"))
             else:
-                flash('Sign in unsuccessful: Incorrect password.', 'danger')
+                flash("Sign in unsuccessful: Incorrect password.", "danger")
         else:
-            flash('Sign in unsuccessful: Username does not exist.', 'danger')
-    return render_template('login.html', title='Sign In', form=form)
+            flash("Sign in unsuccessful: Username does not exist.", "danger")
+    return render_template("login.html", title="Sign In", form=form)
 
 
-
-
-@auth_blueprint.route('/logout', methods=['GET'])
+@auth_blueprint.route("/logout", methods=["GET"])
 @login_required
 def logout():
-    flash(f'{current_user.username} Logged Out', 'success')
+    flash(f"{current_user.username} Logged Out", "success")
     logout_user()
-    return redirect(url_for('auth.login'))
+    return redirect(url_for("auth.login"))
 
 
-@auth_blueprint.route('/account_settings')
+@auth_blueprint.route("/account_settings")
 @login_required
 def account_settings():
-    return render_template('account_settings.html')
+    return render_template("account_settings.html")
 
 
-@auth_blueprint.route('/update_leaderboard_preference', methods=['POST'])
+@auth_blueprint.route("/update_leaderboard_preference", methods=["POST"])
 @login_required
 def update_leaderboard_preference():
-    if 'opt_out_leaderboard' in request.form:
+    if "opt_out_leaderboard" in request.form:
         current_user.show_on_leaderboard = False
     else:
         current_user.show_on_leaderboard = True
 
     db.session.commit()
-    flash('Your leaderboard preferences have been updated.', 'success')
-    return redirect(url_for('auth.account_settings'))
+    flash("Your leaderboard preferences have been updated.", "success")
+    return redirect(url_for("auth.account_settings"))
 
 
-@auth_blueprint.route('/delete_account', methods=['POST'])
+@auth_blueprint.route("/delete_account", methods=["POST"])
 @login_required
 def delete_account():
     user = User.query.get(current_user.user_id)
@@ -155,12 +158,8 @@ def delete_account():
 
         # Log out the user after deleting the account
         logout_user()
-        flash('Your account has been deleted.', 'success')
-        return redirect(url_for('main.index'))
+        flash("Your account has been deleted.", "success")
+        return redirect(url_for("main.index"))
 
-    flash('Account deletion failed.', 'danger')
-    return redirect(url_for('auth.account_settings'))
-
-
-
-
+    flash("Account deletion failed.", "danger")
+    return redirect(url_for("auth.account_settings"))

@@ -10,22 +10,25 @@ db = SQLAlchemy()
 migrate = Migrate()
 login_manager = LoginManager()
 
-uk_timezone = pytz.timezone('Europe/London')
+uk_timezone = pytz.timezone("Europe/London")
+
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = secrets.token_hex(16)
+    app.config["SECRET_KEY"] = secrets.token_hex(16)
 
     basedir = os.path.abspath(os.path.dirname(__file__))
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data', 'data.sqlite')
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHEMY_ECHO'] = True
-    app.config['SQLALCHEMY_RECORD_QUERIES'] = True
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
+        basedir, "data", "data.sqlite"
+    )
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    app.config["SQLALCHEMY_ECHO"] = True
+    app.config["SQLALCHEMY_RECORD_QUERIES"] = True
 
     db.init_app(app)
     migrate.init_app(app, db)
     login_manager.init_app(app)
-    login_manager.login_view = 'auth.login'
+    login_manager.login_view = "auth.login"
 
     from .main.routes import main_blueprint
     from .auth.routes import auth_blueprint
@@ -44,6 +47,7 @@ def create_app():
     from app.gamification.models import Achievement, UserAchievement
 
     from app.commands.achievements import add_achievements, delete_achievements
+
     app.cli.add_command(add_achievements)
     app.cli.add_command(delete_achievements)
 
@@ -59,14 +63,14 @@ def create_app():
     def ratelimit_handler(e):
         return render_template("429.html"), 429
 
-    @app.template_filter('to_uk_time')
+    @app.template_filter("to_uk_time")
     def to_uk_time(date):
         """Convert a datetime object to UK time and format it."""
         if date.tzinfo is None:  # If the datetime is naive, assume it's in UTC
             date = pytz.utc.localize(date)
         uk_date = date.astimezone(uk_timezone)
-        return uk_date.strftime('%d/%m/%Y %H:%M')
+        return uk_date.strftime("%d/%m/%Y %H:%M")
 
-    app.jinja_env.filters['to_uk_time'] = to_uk_time
+    app.jinja_env.filters["to_uk_time"] = to_uk_time
 
     return app
