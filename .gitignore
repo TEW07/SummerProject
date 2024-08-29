@@ -1,3 +1,5 @@
 .venv/
 data/data.sqlite
 .idea/workspace.xml
+__pycache__/
+*.pyc
