@@ -76,7 +76,7 @@ def decks():
                 "next_review_date": next_review_date,
                 "last_review_date": last_review_date,
                 "created_at": deck.created_at.strftime("%d-%m-%Y"),
-                "learned_cards": learned_count,  # Add learned cards count
+                "learned_cards": learned_count,
             }
         )
 
@@ -100,15 +100,15 @@ def view_deck(deck_id):
 def add_card():
     user_decks = Deck.query.filter_by(user_id=current_user.user_id).all()
     form = AddCardForm()
-    form.deck.choices = [(deck.deck_id, deck.name) for deck in user_decks]  # Populate form dropdown
+    form.deck.choices = [(deck.deck_id, deck.name) for deck in user_decks]
 
     if form.validate_on_submit():
         card = Card(
             front=form.front.data,
             back=form.back.data,
             deck_id=form.deck.data,
-            next_review_date=datetime.utcnow(),  # Schedule for immediate review
-            box=1,  # New cards start in box 1
+            next_review_date=datetime.utcnow(),
+            box=1,
         )
         db.session.add(card)
         db.session.commit()

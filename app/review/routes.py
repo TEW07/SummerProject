@@ -110,7 +110,7 @@ def review_summary():
 
         flash(f"You earned {points_earned} points for this review session!", "success")
     else:
-        points_earned = 0  # No points awarded if already awarded
+        points_earned = 0
 
     return render_template(
         "review_summary.html",
