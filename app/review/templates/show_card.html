@@ -144,7 +144,7 @@
         showNotification('Correct!', 'correct');
         setTimeout(function() {
             event.target.submit();
-        }, 2000); // Delay for 2 seconds
+        }, 2000);
     });
 
     document.getElementById('incorrect-form').addEventListener('submit', function(event) {
@@ -152,7 +152,7 @@
         showNotification('Incorrect!', 'incorrect');
         setTimeout(function() {
             event.target.submit();
-        }, 2000); // Delay for 2 seconds
+        }, 2000);
     });
 </script>
 {% endblock %}
